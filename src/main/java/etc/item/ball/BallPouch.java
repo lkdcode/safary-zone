@@ -1,4 +1,4 @@
-package etc.item;
+package etc.item.ball;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +27,7 @@ public class BallPouch {
 
     @Override
     public String toString() {
-        return "etc.item.BallPouch{" +
+        return "etc.item.ball.BallPouch{" +
                 "ballPouch=" + ballPouch +
                 '}';
     }

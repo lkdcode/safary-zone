@@ -1,4 +1,4 @@
-package etc.item;
+package etc.item.ball;
 
 public class CheckPrice {
     private int masterBall;
