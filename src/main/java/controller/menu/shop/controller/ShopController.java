@@ -12,6 +12,9 @@ import controller.menu.shop.view.OutputView;
  * 상점 controller
  */
 public class ShopController {
+    private final String BUY_MONSTER_BALL_MENU = "1";
+    private final String BUY_BERRY_MENU = "2";
+    private final String EXIT = "0";
     private final InputView inputView;
     private final OutputView outputView;
     private final ValidateMoney validateMoney;
@@ -24,28 +27,49 @@ public class ShopController {
         this.buyItem = new BuyItem();
     }
 
+    /**
+     * - 상점 메인 메뉴
+     * 1. outputView 가 매뉴를 출력 합니다.
+     * 2. inputView 가 매뉴 번호를 입력 받습니다.
+     * 3. 해당 매뉴의 메서드를 호출합니다.
+     */
     public void menu() {
         while (true) {
             outputView.showMenu();
             String menu = inputView.inputMenu();
 
             switch (menu) {
-                case "1":
+                case BUY_MONSTER_BALL_MENU:
                     buyMonsterBallMenu();
                     break;
-                case "2":
+                case BUY_BERRY_MENU:
                     buyBerryMenu();
                     break;
-                case "0":
+                case EXIT:
                     outputView.exit();
                     return;
                 default:
+                    // TODO : 다른 곳에서 해당 메시지를 출력하는지 확인해야합니다.
                     ErrorMessage.MENU.print();
             }
         }
 
     }
 
+    /**
+     * 1. outputView 가 몬스터 볼을 선택하라는 매뉴를 출력합니다.
+     * 2. inputView 가 몬스터 볼 매뉴를 입력받습니다.
+     * 3. outputView 가 수량을 입력하란 메시지를 출력합니다.
+     * 4. inputView 가 수량을 입력 받습니다.
+     * 5. validateMoney 가 구매할 몬스터 볼의 총 가격과 현재 소지금을 비교합니다.
+     * 6. 구매금이 충분하다면
+     *      - buyItem 이 인벤토리에 접근하여 몬스터볼 구매 수량만큼 추가합니다.
+     *      - outputView 가 구매에 성공했다는 메시지를 출력합니다.
+     * 8. 구매금이 부족하다면
+     *      - outputView 가 구매에 실패했다는 메시지를 출력합니다.
+     *
+     * TODO : 구매 성공시 Player 의 소지금을 차감시켜야합니다.
+     */
     private void buyMonsterBallMenu() {
         outputView.showMonsterBallMenu();
         MonsterBall inputMonsterBallType = inputView.inputMonsterBallNumber();
@@ -60,6 +84,10 @@ public class ShopController {
         }
     }
 
+    /**
+     * 위와 같은 로직.
+     * TODO : 구매 성공시 Player 의 소지금을 차감시켜야합니다.
+     */
     private void buyBerryMenu() {
         outputView.showBerryMenu();
         Berry inputBerryType = inputView.inputBerryNumber();
