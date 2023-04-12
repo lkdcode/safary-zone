@@ -46,6 +46,7 @@ public class GardenController {
                     plantingMenu();
                     break;
                 case EXIT :
+                    // TODO: return 으로 수정해서 해당 메서드 종료
                     break;
                 default:
             }
@@ -54,7 +55,8 @@ public class GardenController {
 
     public void plantingMenu() {
         while (true) {
-            outputView.showPlantingMenu();
+            // TODO : 메서드가 없음
+//            outputView.showPlantingMenu();
             String menu = inputView.inputPlantingMenu();
             switch (menu) {
                 case "1": // 라즈베리 심기
