@@ -1,8 +1,8 @@
 package controller.menu.shop.service;
 
-import User.Player;
-import User.item.ball.MonsterBall;
-import User.item.berry.Berry;
+import user.Player;
+import user.item.ball.MonsterBall;
+import user.item.berry.Berry;
 
 public class BuyItem {
 

@@ -1,7 +1,7 @@
 package controller.menu.shop.view;
 
-import User.item.ball.MonsterBall;
-import User.item.berry.Berry;
+import user.item.ball.MonsterBall;
+import user.item.berry.Berry;
 
 /**
  * 콘솔에 출력하는 역할

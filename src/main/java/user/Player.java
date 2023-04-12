@@ -1,27 +1,27 @@
-package etc.player;
+package User;
 
 import etc.garden.Garden;
 
 /**
- * player single-tone
+ * 플레이어 클래스
  */
 public class Player {
     private static Player instance;
     private Inventory inventory;
-    private Garden garden;
     private int level;
+    private Garden garden;
+    private final int START_LEVEL = 1;
 
     private Player() {
         this.inventory = new Inventory();
         this.garden = new Garden();
-        this.level = 1;
+        this.level = START_LEVEL;
     }
 
     public static Player getInstance() {
         if (instance == null) {
             instance = new Player();
         }
-
         return instance;
     }
 

@@ -1,7 +1,7 @@
 package controller.menu.shop.controller;
 
-import User.item.ball.MonsterBall;
-import User.item.berry.Berry;
+import user.item.ball.MonsterBall;
+import user.item.berry.Berry;
 import controller.menu.shop.exception.ErrorMessage;
 import controller.menu.shop.service.BuyItem;
 import controller.menu.shop.service.ValidateMoney;
@@ -15,8 +15,12 @@ public class ShopController {
     private final String BUY_MONSTER_BALL_MENU = "1";
     private final String BUY_BERRY_MENU = "2";
     private final String EXIT = "0";
+
+
     private final InputView inputView;
     private final OutputView outputView;
+
+
     private final ValidateMoney validateMoney;
     private final BuyItem buyItem;
 

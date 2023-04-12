@@ -1,7 +1,7 @@
 package controller.menu.shop.view;
 
-import User.item.ball.MonsterBall;
-import User.item.berry.Berry;
+import user.item.ball.MonsterBall;
+import user.item.berry.Berry;
 import controller.menu.shop.exception.ErrorMessage;
 
 import java.io.BufferedReader;
