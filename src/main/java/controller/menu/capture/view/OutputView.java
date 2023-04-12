@@ -15,6 +15,8 @@ public class OutputView {
     private final String MasterBall = "➡️마스터볼";
     private final String ThrowBall = "을 던졌다!";
 
+
+
     public void showMenu() {
 
         //메뉴에 들어갈 항목
@@ -31,8 +33,6 @@ public class OutputView {
         print(HyperBall);
         print(MasterBall);
     }
-
-
 
 
 

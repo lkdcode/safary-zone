@@ -2,6 +2,7 @@ package controller.menu.capture.view;
 
 import controller.menu.capture.exception.ErrorMessage;
 import controller.menu.capture.view.InputValidate;
+import user.item.ball.MonsterBall;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -38,11 +39,13 @@ public class InputView {
      * 입력 받은 값에 유효성 검사를 먼저 진행합니다.
      * 통과되면 몬스터볼을 리턴받습니다.
      * */
-    public String inputMonsterBall(){
+    public MonsterBall inputMonsterBall(){
         while(true){
             String inputMonsterBall = sc.nextLine();
-
-            if (inputValidate.menuNumber(inputMonsterBall)) return inputMonsterBall;
+            //1 2 3 중에서 입력받음, 다른건 에러메세지 출력
+            //검증은 InputValidate에서 진행
+            MonsterBall monsterBall = inputValidate.chooseMonsterBall(inputMonsterBall); //1 받으면 몬스터볼
+            if(monsterBall!=null)  return monsterBall;
             ErrorMessage.MENU.print();
         }
     }
