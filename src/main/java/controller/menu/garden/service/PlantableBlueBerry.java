@@ -13,19 +13,23 @@ public class PlantableBlueBerry extends PlantingRate implements GardenService {
     private final int SIZE = 5;
 
     @Override
-    public void plantingBerry(int row, int column) {
+    public void plantingBerry(int row, int column, int escape) {
         Player.getInstance().getGarden().planting(BLUE_BERRY, row, column);
-        bonusPlanting(row, column);
+        if (escape == 0) {
+            bonusPlanting(row, column);
+        }
     }
 
     private void bonusPlanting(int row, int column) {
+        int escape = 0;
         for (int i = 0; i < BLUEBERRY_COLUMN.length; i++) {
             int rowIndex = row + BLUEBERRY_ROW[i];
             int columnIndex = column + BLUEBERRY_COLUMN[i];
 
             if (rowIndex >= 0 && rowIndex < SIZE
                     && columnIndex >= 0 && columnIndex < SIZE) {
-                if (super.isPlanting(BLUEBERRY_RATE)) plantingBerry(rowIndex, columnIndex);
+                if (super.isPlanting(BLUEBERRY_RATE)) plantingBerry(rowIndex, columnIndex, escape);
+                escape ++;
             }
         }
     }

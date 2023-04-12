@@ -2,6 +2,7 @@ package user;
 
 import pokemon.PokemonList;
 
+
 /**
  * 플레이어 클래스
  */
