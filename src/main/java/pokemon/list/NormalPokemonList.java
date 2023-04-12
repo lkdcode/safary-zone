@@ -14,7 +14,6 @@ import java.util.Map;
  * bookNumber 로 1을 넣으면 이상해씨, 이상해풀, 이상해꽃 중 현재 벨류에 있는 값을 리턴하고
  * 만약에 이상해씨가 진화 조건이 충족되면 RarePokemon인 이상해풀로 .put 해주어서 맵을 업데이트 해줄 수 있습니다.
  * map.put(key, value) -> 키 값이 존재하면 수정, 없으면 추가
- *
  */
 public class NormalPokemonList {
     private final Map<Integer, Pokemon> NORMAL_POKEMON_LIST;
@@ -37,4 +36,7 @@ public class NormalPokemonList {
         }
     }
 
+    public Map<Integer, Pokemon> getNORMAL_POKEMON_LIST() {
+        return NORMAL_POKEMON_LIST;
+    }
 }

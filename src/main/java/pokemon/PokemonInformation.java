@@ -103,4 +103,17 @@ public class PokemonInformation {
     public int getSkillDamage() {
         return skillDamage;
     }
+
+    @Override
+    public String toString() {
+        return "PokemonInformation{" +
+                "bookNumber=" + bookNumber +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", level=" + level +
+                ", hp=" + hp +
+                ", damage=" + damage +
+                ", skillDamage=" + skillDamage +
+                '}';
+    }
 }

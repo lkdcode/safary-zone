@@ -19,4 +19,8 @@ public class FinallyPokemonList {
             this.FINALLY_POKEMON_LIST.put(finallyPokemon.getInformation().getBookNumber(), finallyPokemon);
         }
     }
+
+    public Map<Integer, Pokemon> getFINALLY_POKEMON_LIST() {
+        return FINALLY_POKEMON_LIST;
+    }
 }

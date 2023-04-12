@@ -1,20 +1,22 @@
-package User;
+package user;
 
-import etc.garden.Garden;
+import pokemon.PokemonList;
 
 /**
  * 플레이어 클래스
  */
 public class Player {
     private static Player instance;
+    private final int START_LEVEL = 8;
+    private PokemonList pokemonList;
     private Inventory inventory;
     private int level;
     private Garden garden;
-    private final int START_LEVEL = 1;
 
     private Player() {
         this.inventory = new Inventory();
         this.garden = new Garden();
+        this.pokemonList = new PokemonList();
         this.level = START_LEVEL;
     }
 
@@ -36,4 +38,9 @@ public class Player {
     public int getLevel() {
         return level;
     }
+
+    public PokemonList getPokemonList() {
+        return pokemonList;
+    }
+
 }

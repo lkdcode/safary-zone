@@ -1,9 +1,6 @@
 package controller.menu.garden.view;
 
-import User.Player;
-import etc.garden.Garden;
-
-import java.util.Arrays;
+import user.Player;
 
 /**
  * 콘솔에 출력하는 역할
@@ -27,16 +24,16 @@ public class OutputView {
     public void showMyGarden() {
 
         // 플레이어의 정원 가져오기
-        int[][] gardenArr = Player.getInstance().getGarden().getGardenArr();
+        String[][] gardenArr = Player.getInstance().getGarden().getMap();
 
         // 정원 배열 출력
         for (int i = 0; i < gardenArr.length; i++) {
-            int[] inGardenArr = gardenArr[i];
+            String[] inGardenArr = gardenArr[i];
             showInGardenArr(inGardenArr);
         }
     }
 
-    private void showInGardenArr(int[] inGardenArr) {
+    private void showInGardenArr(String[] inGardenArr) {
         for (int j = 0; j < inGardenArr.length; j++) {
             System.out.print(inGardenArr[j] + "\t");
         }

@@ -1,7 +1,7 @@
-package User;
+package user;
 
-import User.item.ball.BallPouch;
-import User.item.berry.BerryPouch;
+import user.item.ball.BallPouch;
+import user.item.berry.BerryPouch;
 
 public class Inventory {
     private BallPouch ballPouch;
