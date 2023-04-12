@@ -40,7 +40,7 @@ public class GardenController {
 
             switch (menu) {
                 case CHECK_MY_GARDEN :
-                    outputView.showMyGarden();
+//                    outputView.showMyGarden();
                     break;
                 case PLANTING_BERRY :
                     plantingMenu();
