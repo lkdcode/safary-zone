@@ -31,7 +31,7 @@ public class CaptureController {
 
 
 
-        outputView.showStatus(pokemon);
+//        outputView.showStatus(pokemon);
         //조우하고 난 뒤에 메뉴 출력
         outputView.showMenu();
         String menu = inputView.inputMenu();
