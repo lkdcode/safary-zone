@@ -5,4 +5,7 @@ package controller.menu.capture.view;
  */
 public class InputValidate {
 
+    public boolean menuNumber(String inputMenuNumber) {
+        return true;
+    }
 }

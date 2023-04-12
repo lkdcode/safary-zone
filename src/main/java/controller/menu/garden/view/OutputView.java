@@ -1,7 +1,6 @@
 package controller.menu.garden.view;
 
-import User.Player;
-import etc.garden.Garden;
+import user.Player;
 
 import java.util.Arrays;
 
@@ -24,17 +23,17 @@ public class OutputView {
         print(BACK_MENU);
     }
 
-    public void showMyGarden() {
-
-        // 플레이어의 정원 가져오기
-        int[][] gardenArr = Player.getInstance().getGarden().getGardenArr();
-
-        // 정원 배열 출력
-        for (int i = 0; i < gardenArr.length; i++) {
-            int[] inGardenArr = gardenArr[i];
-            showInGardenArr(inGardenArr);
-        }
-    }
+//    public void showMyGarden() {
+//
+//        // 플레이어의 정원 가져오기
+//        int[][] gardenArr = Player.getInstance().getGarden().getGardenArr();
+//
+//        // 정원 배열 출력
+//        for (int i = 0; i < gardenArr.length; i++) {
+//            int[] inGardenArr = gardenArr[i];
+//            showInGardenArr(inGardenArr);
+//        }
+//    }
 
     private void showInGardenArr(int[] inGardenArr) {
         for (int j = 0; j < inGardenArr.length; j++) {
