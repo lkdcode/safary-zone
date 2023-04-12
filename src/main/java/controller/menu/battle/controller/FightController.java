@@ -4,52 +4,64 @@ import controller.menu.battle.service.FightServiceLogic;
 import controller.menu.battle.view.FightOutputView;
 import pokemon.pokemon.Pokemon;
 
+/**
+ * 야생 몬스터와 배틀을 진행하는 컨트롤러
+ */
 public class FightController {
     private final FightServiceLogic fightServiceLogic;
     private final FightOutputView fightOutputView;
-    private Pokemon wildPokemon;
-    private Pokemon playerPokemon;
 
     public FightController() {
         this.fightServiceLogic = new FightServiceLogic();
         this.fightOutputView = new FightOutputView();
     }
 
-    public void readyFight(Pokemon whildPokemon, Pokemon playerPokemon) {
-        this.wildPokemon = whildPokemon;
-        this.playerPokemon = playerPokemon;
-        if (whildPokemon.getInformation().getLevel() > playerPokemon.getInformation().getLevel()) {
-            // 야생의 몬스터가 레벨이 더 높은 경우
-            // 야생의 몬스터가 선빵
-        }
-
+    /**
+     * 포켓몬 전투를 준비하는 메서드입니다.
+     * 선공권 결정을 직접 비교하지 않고 전투의 결과값들을 보관하고 있는
+     * FightServiceLogic 을 호출해 매개변수로 포켓몬들을 넘겨줍니다.
+     * 선공권을 결정하고 전투를 진행하는 playFight() 메서드를 호출합니다.
+     *
+     * @param wildPokemon   : 야생 포켓몬스터
+     * @param playerPokemon : Player 가 소환한 포켓몬스터
+     */
+    public void readyFight(Pokemon wildPokemon, Pokemon playerPokemon) {
+        fightServiceLogic.setFight(wildPokemon, playerPokemon);
         playFight();
+        resultFight();
     }
 
+    /**
+     * 야생 포켓몬스터와 Player 의 포켓몬스터의 전투를 진행하는 메서드입니다.
+     */
     private void playFight() {
-
         while (true) {
-            fightServiceLogic.attack(playerPokemon, wildPokemon);
+            fightServiceLogic.attack();
             attackResultView();
-
-            if (fightServiceLogic.getTargetHp() <= 0) return;
-
-            fightServiceLogic.attack(wildPokemon, playerPokemon);
-            attackResultView();
-
-
             if (fightServiceLogic.getTargetHp() <= 0) return;
         }
     }
 
+    /**
+     * 한 턴의 공격을 마치면 결과를 출력하는 메서드
+     * outputView 를 호출해 결과에 필요한 매개변수를 넘겨줍니다.
+     */
     private void attackResultView() {
         String attackerName = fightServiceLogic.getAttackerName();
         String targetName = fightServiceLogic.getTargetName();
-        int damage = fightServiceLogic.getAttackDamage();
-        int currentHp = fightServiceLogic.getTargetHp();
-        boolean isSkillAttack = fightServiceLogic.isSkillAttack();
+        int damage = fightServiceLogic.getDamage();
+        int targetHp = fightServiceLogic.getTargetHp();
 
-        fightOutputView.attackResult(attackerName, targetName, damage, currentHp, isSkillAttack);
+        fightOutputView.attackResult(attackerName, targetName, damage, targetHp);
+    }
+
+    /**
+     * 전투의 최종 결과를 담당하는 메서드입니다.
+     * 최종 결과를 출력해주고,
+     * Player 의 상태를 업데이트해줍니다.
+     */
+    private void resultFight() {
+        System.out.println("# 전 투 종 료 #");
     }
 
 }
