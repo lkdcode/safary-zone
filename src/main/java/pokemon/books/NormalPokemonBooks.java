@@ -41,6 +41,7 @@ public enum NormalPokemonBooks implements NormalPokemon {
                 .build();
     }
 
+    @Override
     public PokemonInformation getInformation() {
         return information;
     }

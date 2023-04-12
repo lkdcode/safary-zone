@@ -36,8 +36,8 @@ public enum FinallyPokemonBooks implements FinallyPokemon {
                 .build();
     }
 
+    @Override
     public PokemonInformation getInformation() {
         return information;
     }
-
 }

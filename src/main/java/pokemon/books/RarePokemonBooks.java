@@ -34,6 +34,7 @@ public enum RarePokemonBooks implements RarePokemon {
                 .build();
     }
 
+    @Override
     public PokemonInformation getInformation() {
         return information;
     }

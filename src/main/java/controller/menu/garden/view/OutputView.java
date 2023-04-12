@@ -3,6 +3,7 @@ package controller.menu.garden.view;
 import user.Player;
 
 
+
 /**
  * 콘솔에 출력하는 역할
  */
@@ -28,24 +29,22 @@ public class OutputView {
     public void showMyGarden() {
 
         // 플레이어의 정원 가져오기
-        String[][] gardenMap = Player.getInstance().getGarden().getMap();
+
+        String[][] gardenArr = Player.getInstance().getGarden().getMap();
 
         // 정원 배열 출력
-        print("1\t2\t3\t4\t5");
-        for (int i = 0; i < gardenMap.length; i++) {
-            String[] inGardenMap = gardenMap[i];
-            for (int j = 0; j < inGardenMap.length; j++) {
-                System.out.print(inGardenMap[j] + "\t");
-            }
-            System.out.println(i+1);
+        for (int i = 0; i < gardenArr.length; i++) {
+            String[] inGardenArr = gardenArr[i];
+            showInGardenArr(inGardenArr);
         }
     }
 
-    public void showPlantingMenu() {
-        print(RASP_BERRY);
-        print(BLUE_BERRY);
-        print(BLACK_BERRY);
-        print(BACK_MENU);
+    private void showInGardenArr(String[] inGardenArr) {
+        for (int j = 0; j < inGardenArr.length; j++) {
+            System.out.print(inGardenArr[j] + "\t");
+        }
+        System.out.println();
+
     }
 
     public void rowAndColumn(String location) {
