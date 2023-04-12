@@ -1,8 +1,5 @@
 package controller.menu.battle.view;
 
-import user.item.ball.MonsterBall;
-import user.item.berry.Berry;
-
 /**
  * 유저로부터 입력받은 값의 유효성 검사
  */
