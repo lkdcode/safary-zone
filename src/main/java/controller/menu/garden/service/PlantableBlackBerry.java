@@ -31,10 +31,12 @@ public class PlantableBlackBerry extends PlantingRate implements GardenService {
      * @param column : column Index
      */
     @Override
-    public void plantingBerry(int row, int column) {
+    public void plantingBerry(int row, int column, int escape) {
         Player.getInstance().getGarden().planting(BLACK_BERRY, row, column);
         // TODO : 재귀로 호출하기 때문에 리팩터링 필요
-        bonusPlanting(row, column);
+        if (escape == 0) {
+            bonusPlanting(row, column);
+        }
     }
 
     /**
@@ -55,7 +57,8 @@ public class PlantableBlackBerry extends PlantingRate implements GardenService {
             if (rowIndex >= 0 && rowIndex < SIZE
                     && columnIndex >= 0 && columnIndex < SIZE) {
                 // 확률에 따라 열매가 심어집니다.
-                if (super.isPlanting(BLACKBERRY_RATE)) plantingBerry(rowIndex, columnIndex);
+                int escape = 1;
+                if (super.isPlanting(BLACKBERRY_RATE)) plantingBerry(rowIndex, columnIndex, escape);
             }
         }
     }

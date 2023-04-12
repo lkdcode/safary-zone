@@ -1,4 +1,4 @@
-package User.item.ball;
+package user.item.ball;
 
 public enum MonsterBall {
     NORMAL, HYPER, MASTER
