@@ -1,5 +1,7 @@
 package User;
 
+import etc.garden.Garden;
+
 /**
  * 플레이어 클래스
  */

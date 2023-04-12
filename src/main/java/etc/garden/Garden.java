@@ -1,11 +1,15 @@
 package etc.garden;
 
 public class Garden {
-    private int[][] garden;
-    private final int SIZE = 5;
+    private int[][] gardenArr;
+    private static final int SIZE = 5;
 
     public Garden() {
-        this.garden = new int[SIZE][SIZE];
+        gardenArr = new int[SIZE][SIZE];
+    }
+
+    public int[][] getGardenArr() {
+        return gardenArr;
     }
 
 }
