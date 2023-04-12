@@ -1,4 +1,4 @@
-package User.item.berry;
+package user.item.berry;
 
 import java.util.Collections;
 import java.util.HashMap;

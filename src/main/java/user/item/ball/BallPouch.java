@@ -1,4 +1,4 @@
-package User.item.ball;
+package user.item.ball;
 
 import java.util.Collections;
 import java.util.HashMap;
