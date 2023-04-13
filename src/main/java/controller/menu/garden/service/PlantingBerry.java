@@ -30,8 +30,19 @@ public class PlantingBerry {
         this.outputView = new OutputView();
         this.berryPouch = Player.getInstance().getInventory().getBerryPouch()
                 .getBerryPouch();
+        this.plantableRaspBerry = new PlantableRaspBerry();
+        this.plantableBlueBerry = new PlantableBlueBerry();
+        this.plantableBlackBerry = new PlantableBlackBerry();
     }
 
+    /**
+     * 플레이어가 선택한 열매를 소지하고 있는지 확인하고
+     * 소지여부에 따라 boolean 값을 리턴합니다.
+     * - 열매를 소지하고 있을 시, 인벤토리에서 해당 열매를 1개 감소시킵니다. 이후 true 를 리턴합니다.
+     * - 열매를 소지하고 있지 않을 시, false 를 리턴합니다.
+     * @param berry: 플레이어가 심기로 선택한 열매
+     * @return 열매를 갖고 있으면 true, 없으면 false
+     */
     private boolean findBerry(Berry berry) {
         if (berryPouch.get(berry) != null) {
             // 열매 1개 감소
@@ -49,10 +60,8 @@ public class PlantingBerry {
             // 입력한 열매 위치로 plantingBerry 호출
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableRaspBerry.plantingBerry(row-1, column-1, 0);
-        } else {
-            ErrorMessage.NO_BERRY_ERROR.print();
-        }
+            plantableRaspBerry.plantingBerry(row-1, column-1);
+        } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 
     public void plantingBlueBerry() {
@@ -60,7 +69,7 @@ public class PlantingBerry {
             plantLocation = plantLocationSelect();
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableBlueBerry.plantingBerry(row - 1, column - 1, 0);
+            plantableBlueBerry.plantingBerry(row - 1, column - 1);
         } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 
@@ -69,7 +78,7 @@ public class PlantingBerry {
             plantLocation = plantLocationSelect();
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableBlackBerry.plantingBerry(row - 1, column - 1, 0);
+            plantableBlackBerry.plantingBerry(row - 1, column - 1);
         } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 

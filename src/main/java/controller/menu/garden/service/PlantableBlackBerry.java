@@ -31,12 +31,20 @@ public class PlantableBlackBerry extends PlantingRate implements GardenService {
      * @param column : column Index
      */
     @Override
-    public void plantingBerry(int row, int column, int escape) {
+    public void plantingBerry(int row, int column) {
         Player.getInstance().getGarden().planting(BLACK_BERRY, row, column);
-        // TODO : 재귀로 호출하기 때문에 리팩터링 필요
-        if (escape == 0) {
-            bonusPlanting(row, column);
-        }
+        bonusPlanting(row, column);
+    }
+
+    /**
+     * 보너스 심기 당첨 시, 보너스 열매를 심습니다.
+     *
+     * @param row    : row Index
+     * @param column : column Index
+     */
+    @Override
+    public void plantingBonusBerry(int row, int column) {
+        Player.getInstance().getGarden().planting(BLACK_BERRY, row, column);
     }
 
     /**
@@ -57,8 +65,7 @@ public class PlantableBlackBerry extends PlantingRate implements GardenService {
             if (rowIndex >= 0 && rowIndex < SIZE
                     && columnIndex >= 0 && columnIndex < SIZE) {
                 // 확률에 따라 열매가 심어집니다.
-                int escape = 1;
-                if (super.isPlanting(BLACKBERRY_RATE)) plantingBerry(rowIndex, columnIndex, escape);
+                if (super.isPlanting(BLACKBERRY_RATE)) plantingBonusBerry(rowIndex, columnIndex);
             }
         }
     }

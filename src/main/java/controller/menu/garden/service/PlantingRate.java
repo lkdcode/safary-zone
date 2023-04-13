@@ -15,10 +15,11 @@ public class PlantingRate {
      * boolean 으로 리턴해줍니다.
      *
      * @param rate : 해당 열매가 가지고 있는 확률
-     * @return
+     * @return 1 ~ 100 사이의 숫자가 열매의 확률보다 적거나 같으면 true 리턴, 크면 false 리턴
+     * ex) 보너스 블루베리 심기의 확률은 10.0 입니다.
+     *     랜덤 난수가 1 ~ 10 사이의 숫자일 경우 true 를 리턴, 11 ~ 100 사이의 숫자일 경우 false 를 리턴합니다.
      */
     public boolean isPlanting(double rate) {
         return (Math.random() * MAX_SIZE) + MIN_SIZE <= rate;
     }
-
 }

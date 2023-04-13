@@ -26,10 +26,16 @@ public class OutputView {
         print(BACK_MENU);
     }
 
+    public void showPlantingMenu() {
+        print(RASP_BERRY);
+        print(BLUE_BERRY);
+        print(BLACK_BERRY);
+        print(BACK_MENU);
+    }
+
     public void showMyGarden() {
 
         // 플레이어의 정원 가져오기
-
         String[][] gardenArr = Player.getInstance().getGarden().getMap();
 
         // 정원 배열 출력
