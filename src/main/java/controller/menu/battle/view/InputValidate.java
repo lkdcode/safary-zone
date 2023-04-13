@@ -4,8 +4,8 @@ package controller.menu.battle.view;
  * 유저로부터 입력받은 값의 유효성 검사
  */
 public class InputValidate {
-    private final String BATTLE = "1";
-    private final String RUN = "2";
+    private final String BATTLE_OR_DATAIL_VIEW = "1";
+    private final String RUN_OR_SUMMON = "2";
 
     /**
      * 유저로부터 입력받은 배틀 매뉴의 유효성 검사를 합니다.
@@ -16,7 +16,7 @@ public class InputValidate {
      * @return : 올바른 값을 입력하면 true, 잘못된 값을 입력하면 false
      */
     public boolean menuNumber(String input) {
-        if (input.equals(BATTLE) || input.equals(RUN)) {
+        if (input.equals(BATTLE_OR_DATAIL_VIEW) || input.equals(RUN_OR_SUMMON)) {
             return true;
         }
         return false;
