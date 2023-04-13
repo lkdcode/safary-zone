@@ -1,9 +1,9 @@
 package pokemon;
 
+import common.MakeCommon;
 import pokemon.books.NormalPokemonBooks;
 import pokemon.pokemon.Pokemon;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,15 +18,22 @@ public class PokemonList {
         initialize();
     }
 
-    public Map<Integer, Pokemon> getPokemonList() {
+    public Map<Integer, Pokemon> playerPokemonList() {
         return pokemonList;
     }
 
+    /**
+     * 유저의 포켓몬리스트의 bookNumber(key) 를 입력해주고 null 로 초기값을 넣어줍니다.
+     * NormalPokemon 리스트 중 무작위 포켓몬 하나를 추가로 넣어줍니다.
+     * Player 는 하나의 포켓몬스터를 가지고 게임을 시작합니다.
+     */
     private void initialize() {
+
         for (NormalPokemonBooks pokemon : NormalPokemonBooks.values()) {
             pokemonList.put(pokemon.getInformation().getBookNumber(), null);
         }
-        pokemonList.put(1, NormalPokemonBooks.GGOBUGI);
+        int index = (int) MakeCommon.getRandom(1, NormalPokemonBooks.values().length);
+        pokemonList.put(index, NormalPokemonBooks.values()[index - 1]);
     }
 
 }
