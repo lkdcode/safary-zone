@@ -1,10 +1,12 @@
 package controller.menu.garden.service;
 
 import controller.menu.garden.exception.ErrorMessage;
+import controller.menu.garden.view.InputValidate;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
 import user.Player;
 import user.item.berry.Berry;
+import user.item.berry.BerryPouch;
 
 import java.util.Map;
 
@@ -17,26 +19,42 @@ public class PlantingBerry {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private Map<Berry, Integer> berryPouch;
+    private BerryPouch berryPouch;
     private int[] plantLocation;
     private PlantableRaspBerry plantableRaspBerry;
     private PlantableBlueBerry plantableBlueBerry;
     private PlantableBlackBerry plantableBlackBerry;
+    private InputValidate inputValidate;
     private int row;
     private int column;
 
     public PlantingBerry() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.berryPouch = Player.getInstance().getInventory().getBerryPouch()
-                .getBerryPouch();
+        this.berryPouch = Player.getInstance().getInventory().getBerryPouch();
+        this.plantLocation = new int[2];
+        this.plantableRaspBerry = new PlantableRaspBerry();
+        this.plantableBlueBerry = new PlantableBlueBerry();
+        this.plantableBlackBerry = new PlantableBlackBerry();
+        this.inputValidate = new InputValidate();
     }
 
+    /**
+     * 플레이어가 선택한 열매를 소지하고 있는지 확인하고
+     * 소지여부에 따라 boolean 값을 리턴합니다.
+     * - 열매를 소지하고 있을 시, 인벤토리에서 해당 열매를 1개 감소시킵니다. 이후 true 를 리턴합니다.
+     * - 열매를 소지하고 있지 않을 시, false 를 리턴합니다.
+     * @param berry: 플레이어가 심기로 선택한 열매
+     * @return 열매를 갖고 있으면 true, 없으면 false
+     */
     private boolean findBerry(Berry berry) {
-        if (berryPouch.get(berry) != null) {
-            // 열매 1개 감소
-            berryPouch.put(berry, berryPouch.get(berry) - 1);
-            return true;
+        // TODO: NullPointerException 해결
+        if (berryPouch.getBerryPouch().get(berry) != null) {
+            if (berryPouch.getBerryPouch().get(berry) > 0) {
+                // 열매 1개 감소
+                berryPouch.useOneBerry(berry);
+                return true;
+            }
         }
         return false;
     }
@@ -49,10 +67,8 @@ public class PlantingBerry {
             // 입력한 열매 위치로 plantingBerry 호출
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableRaspBerry.plantingBerry(row-1, column-1, 0);
-        } else {
-            ErrorMessage.NO_BERRY_ERROR.print();
-        }
+            plantableRaspBerry.plantingBerry(row, column);
+        } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 
     public void plantingBlueBerry() {
@@ -60,7 +76,7 @@ public class PlantingBerry {
             plantLocation = plantLocationSelect();
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableBlueBerry.plantingBerry(row - 1, column - 1, 0);
+            plantableBlueBerry.plantingBerry(row, column);
         } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 
@@ -69,16 +85,29 @@ public class PlantingBerry {
             plantLocation = plantLocationSelect();
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableBlackBerry.plantingBerry(row - 1, column - 1, 0);
+            plantableBlackBerry.plantingBerry(row, column);
         } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 
+    /**
+     * 
+     * @return
+     */
     private int[] plantLocationSelect() {
-        outputView.showMyGarden();
-        outputView.rowAndColumn("↔ 가로"); // row
-        plantLocation[0] = inputView.inputPlantLocation();
-        outputView.rowAndColumn("↕ 세로"); // column
-        plantLocation[1] = inputView.inputPlantLocation();
-        return plantLocation;
+        while(true) {
+            // 심을 위치를 확인하기 위해 플레이어의 정원 출력
+            outputView.showMyGarden();
+            // 1. 입력한 위치를 범위 안으로 입력했는지 검사
+            outputView.rowAndColumn("↔ 가로"); // row
+            plantLocation[0] = inputView.inputPlantLocation();
+            outputView.rowAndColumn("↕ 세로"); // column
+            plantLocation[1] = inputView.inputPlantLocation();
+            // 1. 입력한 위치가 이미 열매가 심어진 곳인지 검사
+            if (!inputValidate.plantingBerryValidate(plantLocation[0], plantLocation[1])) {
+                ErrorMessage.ALREADY_PLANTED_ERROR.print();
+                continue;
+            }
+            return plantLocation;
+        }
     }
 }

@@ -4,6 +4,7 @@ import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
+import controller.menu.shop.controller.ShopController;
 
 /**
  * 정원 controller
@@ -16,28 +17,24 @@ public class GardenController {
     private final InputView inputView;
     private final OutputView outputView;
     private final PlantingBerry plantingBerry;
-    private int[] plantLocation;
-    private PlantableRaspBerry plantableRaspBerry;
-    private PlantableBlueBerry plantableBlueBerry;
-    private PlantableBlackBerry plantableBlackBerry;
-    private int row;
-    private int column;
 
     public GardenController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.plantingBerry = new PlantingBerry();
-        this.plantLocation = new int[2];
-        this.plantableRaspBerry = new PlantableRaspBerry();
-        this.plantableBlueBerry = new PlantableBlueBerry();
-        this.plantableBlackBerry = new PlantableBlackBerry();
     }
 
+    /**
+     * 열매심기 메인메뉴입니다.
+     * 1 을 입력하면 플레이어의 현재 정원 상태를 보여주고
+     * 2 를 입력하면 내 정원에 열매를 심을 수 있습니다.
+     * 0 을 입력하면 시작메뉴로 돌아갑니다.
+     * 잘못된 문자를 입력하면 오류 메세지가 출력되고 재입력 요청합니다.
+     */
     public void menu() {
         while(true) {
             outputView.showGardenMenu();
             String menu = inputView.inputMenu();
-
             switch (menu) {
                 case CHECK_MY_GARDEN :
 //                    outputView.showMyGarden();
@@ -46,19 +43,34 @@ public class GardenController {
                     plantingMenu();
                     break;
                 case EXIT :
-                    // TODO: return 으로 수정해서 해당 메서드 종료
-                    break;
+                    // test
+//                    ShopController shopController = new ShopController();
+//                    shopController.menu();
+                    // test
+                    outputView.exit();
+                    return;
                 default:
+                    ErrorMessage.GARDEN_MENU.print();
             }
         }
     }
 
+    /**
+     * 2. 열매 심기
+     * 플레이어가 소지 중인 열매를 정원에 심을 수 있습니다.
+     * 1 입력시 라즈베리 심기
+     * 2 입력시 블루베리 심기
+     * 3 입력시 블랙베리 심기가 실행됩니다.
+     * 성공적으로 열매를 심으면 심은 뒤의 정원을 출력하고, 또 열매를 심을지 이전메뉴로 돌아갈지 묻습니다.
+     * 잘못된 문자를 입력하면 오류 메세지가 출력되고 재입력 요청합니다.
+     */
     public void plantingMenu() {
         while (true) {
-            // TODO : 메서드가 없음
-//            outputView.showPlantingMenu();
+            outputView.showMyGarden();
+            outputView.showPlantingMenu();
             String menu = inputView.inputPlantingMenu();
             switch (menu) {
+                // TODO : 라즈베리, 블루베리 순서 변경
                 case "1": // 라즈베리 심기
                     plantingBerry.plantingRaspBerry();
                     break;
@@ -68,9 +80,9 @@ public class GardenController {
                 case "3": // 블랙베리 심기
                     plantingBerry.plantingBlackBerry();
                     break;
-                case "0": // 이전 메뉴로 돌아가기
-                    menu();
-                    break;
+                case EXIT: // 이전 메뉴로 돌아가기
+                    outputView.exit();
+                    return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
             }
@@ -80,17 +92,8 @@ public class GardenController {
             // 더 심을거면 베리 선택 메뉴로 돌아가기
             if (answer.equals("1")) continue;
             // 그만 심을거면 메인 메뉴로 돌아가기
-            if (answer.equals("2")) menu();
+            if (answer.equals("2")) return;
         }
     }
-    private int[] plantLocationSelect() {
-        outputView.showMyGarden();
-        outputView.rowAndColumn("↔ 가로"); // row
-        plantLocation[0] = inputView.inputPlantLocation();
-        outputView.rowAndColumn("↕ 세로"); // column
-        plantLocation[1] = inputView.inputPlantLocation();
-        return plantLocation;
-    }
-
 
 }

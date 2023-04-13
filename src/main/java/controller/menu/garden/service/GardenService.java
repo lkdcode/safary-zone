@@ -7,6 +7,7 @@ public interface GardenService {
      * @param row    : row Index
      * @param column : column Index
      */
-    void plantingBerry(int row, int column, int escape);
+    void plantingBerry(int row, int column);
+    void plantingBonusBerry(int row, int column);
 
 }

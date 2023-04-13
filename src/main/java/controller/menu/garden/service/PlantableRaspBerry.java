@@ -14,11 +14,14 @@ public class PlantableRaspBerry extends PlantingRate implements GardenService {
     private final int SIZE = 5;
 
     @Override
-    public void plantingBerry(int row, int column, int escape) {
+    public void plantingBerry(int row, int column) {
         Player.getInstance().getGarden().planting(RASP_BERRY, row, column);
-        if (escape == 0) {
-            bonusPlanting(row, column);
-        }
+        bonusPlanting(row, column);
+    }
+
+    @Override
+    public void plantingBonusBerry(int row, int column) {
+        Player.getInstance().getGarden().planting(RASP_BERRY, row, column);
     }
 
     private void bonusPlanting(int row, int column) {
@@ -28,7 +31,7 @@ public class PlantableRaspBerry extends PlantingRate implements GardenService {
 
             if (rowIndex >= 0 && rowIndex < SIZE
                     && columnIndex >= 0 && columnIndex < SIZE) {
-                if (super.isPlanting(RASPBERRY_RATE)) plantingBerry(rowIndex, columnIndex, 1);
+                if (super.isPlanting(RASPBERRY_RATE)) plantingBerry(rowIndex, columnIndex);
             }
         }
     }
