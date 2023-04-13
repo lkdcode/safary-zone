@@ -1,10 +1,11 @@
 package controller.menu.battle.controller;
 
+import controller.menu.battle.exception.ErrorMessageBattle;
 import controller.menu.battle.service.SummonServiceLogic;
 import controller.menu.battle.view.InputView;
 import controller.menu.battle.view.OutputView;
-import pokemon.books.NormalPokemonBooks;
 import pokemon.pokemon.Pokemon;
+import user.Player;
 
 /**
  * 야생 포켓몬과 배틀 컨텐츠를 관리하는 클래스
@@ -14,68 +15,88 @@ public class BattleController {
     private final SummonServiceLogic summonServiceLogic;
     private final OutputView outputView;
     private final InputView inputView;
+    private final Pokemon wildPokemon;
 
     public BattleController() {
         this.fightController = new FightController();
         this.summonServiceLogic = new SummonServiceLogic();
         this.outputView = new OutputView();
         this.inputView = new InputView();
+        this.wildPokemon = summonServiceLogic.getWhildPokemon();
     }
 
 
     public void start() {
-        System.out.println("포켓몬 전투가 시작 됩니다.");
-        System.out.println("잠시 뒤 포켓몬스터가 등장합니다.");
-        System.out.println("야생의 꼬부기가 등장하였습니다.");
+        String wildPokemonName = wildPokemon.getInformation().getName();
+        outputView.appearWildPokemon(wildPokemonName);
 
         while (true) {
-            System.out.println("메뉴를 선택해주세요");
-            System.out.println("1. 내 포켓몬 꺼내기");
-            System.out.println("2. 도망가기");
-
+            outputView.choiceMenu();
             String inputMenu = inputView.battleMenu();
+
             switch (inputMenu) {
                 case "1":
                     // 싸우기
+                    outputView.inputFight();
                     setMyPokemon();
-
-                    break;
+                    return;
                 case "2":
                     // 도망가기
-                    System.out.println("\n도망가기를 선택하였습니다. !! \n");
+                    outputView.inputRun();
                     return;
             }
 
+            outputView.show(ErrorMessageBattle.INPUT_MENU.getMessage());
         }
     }
 
+    /**
+     * 플레이어의 포켓몬을 선택하는 메서드
+     */
     private void setMyPokemon() {
-        System.out.println("선택할 포켓몬");
-        System.out.println("꼬부기를 선택하였습니다.");
-        goMyPokemon();
+        showMyPokemonList();
+        choiceListMenu();
     }
 
-    private void goMyPokemon() {
-        System.out.println("포켓몬을 꺼냈습니다.");
-        System.out.println("가라 꼬부기");
-        // TODO : 야생 포켓몬이 랜덤으로 선택돼서 매개변수로 전달.
-        //       플레이어가 고른 포켓몬을 매개변수로 전달.
-
-//        fightController.readyFight(choiceMyPokemon(), summonServiceLogic.getWhildPokemon());
-        fightController.readyFight(NormalPokemonBooks.GGOBUGI, NormalPokemonBooks.PYREE);
+    private void showMyPokemonList() {
+        outputView.choiceMyPokemon();
+        StringBuilder myPokemonListInformation = new StringBuilder();
+        for (Pokemon pokemon : Player.getInstance().getPokemonList().playerPokemonList().values()) {
+            if (pokemon != null)
+                myPokemonListInformation.append(pokemon.getInformation().toString());
+        }
+        outputView.showMyPokemonInformation(myPokemonListInformation.toString());
     }
 
-    private Pokemon choiceMyPokemon() {
-        // 현재 플레이어가 보유한 포켓몬스터 목록을 보여줍니다.
-        // 목록을 보여줄 때 소환 번호와 이름, 간단한 내용만 보여주기
 
-        // 1. 상세보기 기능
-        // -->
-        // 2. 소환 기능
-        // 3. 도망가기 기능
+    private void choiceListMenu() {
+        while (true) {
+            outputView.showSummon();
+            String inputMyPokemonName = inputView.choiceMyPokemon();
 
-        //
-        return null;
+            for (Pokemon myPokemon : Player.getInstance().getPokemonList().playerPokemonList().values()) {
+                if (myPokemon != null) {
+                    if (myPokemon.getInformation().getName().equals(inputMyPokemonName)) {
+                        goMyPokemon(myPokemon);
+                        return;
+                    }
+                }
+            }
+
+            outputView.show(ErrorMessageBattle.INPUT_MY_POKEMON_NAME.getMessage());
+            showMyPokemonList();
+        }
+    }
+
+    /**
+     * 가라 꼬부기를 담당하는 메서드
+     */
+    private void goMyPokemon(Pokemon playerPokemon) {
+        String playerPokemonName = playerPokemon.getInformation().getName();
+        System.out.println("[" + playerPokemonName + "] 을(를) 꺼냈습니다.");
+        System.out.println("가라 [" + playerPokemonName + "] !!!!!!!!!!!!!!!!!");
+
+        fightController.readyFight(playerPokemon, wildPokemon);
     }
 
 }

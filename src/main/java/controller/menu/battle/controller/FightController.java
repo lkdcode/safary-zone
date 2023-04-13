@@ -30,7 +30,7 @@ public class FightController {
     public void readyFight(Pokemon wildPokemon, Pokemon playerPokemon) {
         fightServiceLogic.setFight(wildPokemon, playerPokemon);
         playFight();
-        resultFight();
+        result();
     }
 
     /**
@@ -39,11 +39,7 @@ public class FightController {
     private void playFight() {
         while (true) {
             fightServiceLogic.attack();
-            try {
-                sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            fightOutputView.loading();
             attackResultView();
             if (fightServiceLogic.getTargetHp() <= 0) return;
         }
@@ -67,8 +63,31 @@ public class FightController {
      * 최종 결과를 출력해주고,
      * Player 의 상태를 업데이트해줍니다.
      */
-    private void resultFight() {
-        System.out.println("\n\n# 전 투 종 료 #\n\n");
+    private void result() {
+        System.out.println("\n\n\n# 전 투 종 료 #\n\n\n");
+        // 승리시
+        if (fightServiceLogic.isWon()) {
+            win();
+            return;
+        }
+
+        lose();
+        // 패배시
     }
+
+    private void win() {
+        fightServiceLogic.fightResult();
+        System.out.println("\n\n전투에서 승리하였습니다.\n\n");
+        if (fightServiceLogic.isGetWildPokemon()) System.out.println("야생 포켓몬스터 [테스트] 를 획득하였습니다.");
+        System.out.println("[playerPokemon] 의 레벨이 1 상승하였습니다. (최대 : 10)");
+        System.out.println("player의 경험치가 올랐습니다.");
+        System.out.println("[gold] 원을 획득하였습니다.");
+        System.out.println("메인 매뉴로 돌아갑니다.");
+    }
+
+    private void lose() {
+        System.out.println("패배하였습니다 ㅠ");
+    }
+
 
 }

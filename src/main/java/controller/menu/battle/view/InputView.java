@@ -10,9 +10,7 @@ import java.io.InputStreamReader;
  * 유저로부터 입력을 받는 역할
  */
 public class InputView {
-
     private final BufferedReader br;
-
     private final InputValidate validate;
 
     public InputView() {
@@ -35,7 +33,11 @@ public class InputView {
     }
 
     public String choiceMyPokemon() {
-
+        try {
+            return br.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

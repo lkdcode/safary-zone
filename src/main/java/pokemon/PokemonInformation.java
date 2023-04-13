@@ -8,7 +8,7 @@ public class PokemonInformation {
     private final int bookNumber;
     private final String name;
     private final PokemonType type;
-    private final int level;
+    private int level;
     private final int hp;
     private final int damage;
     private final int skillDamage;
@@ -104,16 +104,18 @@ public class PokemonInformation {
         return skillDamage;
     }
 
+    public void setLevel(int exp) {
+        this.level += exp;
+    }
+
     @Override
     public String toString() {
-        return "PokemonInformation{" +
-                "bookNumber=" + bookNumber +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", level=" + level +
-                ", hp=" + hp +
-                ", damage=" + damage +
-                ", skillDamage=" + skillDamage +
-                '}';
+        return "📕 도감 번호 : [" + bookNumber + "]\n"
+                + "📌 이름 : [" + name + "]\n"
+                + "📝 속성 : [" + type + "]\n"
+                + "🎚️ 레벨 : [" + level + "]\n"
+                + "🩸 HP : [" + hp + "]\n"
+                + "🥊 데미지 : [" + damage + "]\n"
+                + "⚔️ 스킬 데미지 : [" + skillDamage + "]\n\n\n";
     }
 }

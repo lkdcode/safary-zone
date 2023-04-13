@@ -1,7 +1,13 @@
 package controller.menu.battle.service;
 
+import common.MakeCommon;
 import pokemon.PokemonType;
+import pokemon.books.FinallyPokemonBooks;
+import pokemon.books.NormalPokemonBooks;
+import pokemon.books.RarePokemonBooks;
 import pokemon.pokemon.Pokemon;
+import pokemon.pokemon.RarePokemon;
+import user.Player;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -24,7 +30,7 @@ public class FightServiceLogic {
     private int playerPokemonHp;
     private int playerPokemonDamage;
     private int playerPokemonSkillDamage;
-    private int fightCount;
+    private int fightFlag;
     private int targetHp;
     private boolean isSkillAttack;
 
@@ -57,7 +63,7 @@ public class FightServiceLogic {
      * 선공권을 결정해주는 메서드
      */
     private void setFirstAttack() {
-        this.fightCount = wildPokemon.getInformation().getLevel() > playerPokemon.getInformation().getLevel() ? 1 : 0;
+        this.fightFlag = wildPokemon.getInformation().getLevel() > playerPokemon.getInformation().getLevel() ? 1 : 0;
     }
 
     /**
@@ -98,7 +104,7 @@ public class FightServiceLogic {
      */
     public void attack() {
         setSkillAttack();
-        if (fightCount++ % 2 == 1) {
+        if (fightFlag++ % 2 == 1) {
             playerPokemonAttack();
         } else {
             wildPokemonAttack();
@@ -106,6 +112,74 @@ public class FightServiceLogic {
 
     }
 
+    public boolean isWon() {
+        if (fightFlag % 2 == 1) return true;
+        return false;
+    }
+
+
+    /**
+     * 전투 결과를 담당하는 메서드
+     * 승리시 로직
+     * 1. 일정 확률로 해당 야생 포켓몬스터를 획득할 수 있습니다.
+     * 2. 전투에 참여한 포켓몬스터의 레벨을 1 상승 시킵니다. (최대 : 10)
+     * 3. 플레이어의 경험치를 올려줍니다. (전투에 3번 참가시 레벨을 1 올려줍니다. 최대 : 10)
+     * 4. 포켓몬스터의 등급에 따라 게임 머니를 획득합니다.
+     */
+    public void fightResult() {
+        addExp();
+        playerSetupMoney();
+    }
+
+    /**
+     * 1. 일정 확률로 해당 야생 포켓몬스터를 획득할 수 있습니다.
+     *
+     * @return
+     */
+    public boolean isGetWildPokemon() {
+        if (MakeCommon.getRandom(1, 100) <= 11) {
+            Player.getInstance().getPokemonList().playerPokemonList().put(wildPokemon.getInformation().getBookNumber(), wildPokemon);
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * 2. 전투에 참여한 포켓몬스터의 레벨을 1 상승 시킵니다. (최대 : 10)
+     * 3. 플레이어의 경험치를 올려줍니다. (전투에 3번 참가시 레벨을 1 올려줍니다. 최대 : 10)
+     */
+    private void addExp() {
+        Pokemon pokemon = playerPokemon;
+        if (pokemon.getInformation().getLevel() < 10) pokemon.getInformation().setLevel(1);
+        Player.getInstance().getPokemonList().playerPokemonList().put(pokemon.getInformation().getBookNumber(), pokemon);
+        Player.getInstance().addExp(1);
+    }
+
+    /**
+     * 4. 포켓몬스터의 등급에 따라 게임 머니를 획득합니다.
+     * NormalPokemon : 200₩ ~ 500₩
+     * RarePokemon : 400₩ ~ 800₩
+     * FinallyPokemon : 700₩ ~ 1200₩
+     */
+    private void playerSetupMoney() {
+        int money = 0;
+        if (wildPokemon instanceof NormalPokemonBooks) {
+            money = (int) MakeCommon.getRandom(200, 500);
+        }
+        if (wildPokemon instanceof RarePokemonBooks) {
+            money = (int) MakeCommon.getRandom(400, 800);
+        }
+        if (wildPokemon instanceof FinallyPokemonBooks) {
+            money = (int) MakeCommon.getRandom(700, 1200);
+        }
+        System.out.println("money = " + money);
+        Player.getInstance().getInventory().setMoney(money);
+    }
+
+    /**
+     * Player 의 포켓몬스터가 야생 포켓몬을 공격하는 메서드
+     */
     private void playerPokemonAttack() {
         if (isSkillAttack) {
             this.wildPokemonHp -= this.playerPokemonSkillDamage;
@@ -115,6 +189,9 @@ public class FightServiceLogic {
         this.targetHp = this.wildPokemonHp;
     }
 
+    /**
+     * 야생 포켓몬이 Player 의 포켓몬스터를 공격하는 메서드
+     */
     private void wildPokemonAttack() {
         if (isSkillAttack) {
             this.playerPokemonHp -= this.wildPokemonSkillDamage;
@@ -170,7 +247,7 @@ public class FightServiceLogic {
      * @return
      */
     public String getAttackerName() {
-        if (fightCount % 2 == 0) {
+        if (fightFlag % 2 == 0) {
             // Player 가 공격했다면,
             return this.playerPokemonName;
         } else {
@@ -179,7 +256,7 @@ public class FightServiceLogic {
     }
 
     public String getTargetName() {
-        if (fightCount % 2 == 0) {
+        if (fightFlag % 2 == 0) {
             // 야생 포켓몬이 타겟이라면,
             return this.wildPokemonName;
         } else {
@@ -188,7 +265,7 @@ public class FightServiceLogic {
     }
 
     public int getDamage() {
-        if (fightCount % 2 == 0) {
+        if (fightFlag % 2 == 0) {
             return this.isSkillAttack ? this.playerPokemonSkillDamage : this.playerPokemonDamage;
         } else {
             return this.isSkillAttack ? this.wildPokemonSkillDamage : this.wildPokemonDamage;
