@@ -50,10 +50,9 @@ public class ShopController {
                     buyBerryMenu();
                     break;
                 case EXIT:
-                    outputView.exit();
+//                    outputView.exit();
                     return;
                 default:
-                    // TODO : 다른 곳에서 해당 메시지를 출력하는지 확인해야합니다.
                     ErrorMessage.MENU.print();
             }
         }
@@ -72,7 +71,6 @@ public class ShopController {
      * 8. 구매금이 부족하다면
      *      - outputView 가 구매에 실패했다는 메시지를 출력합니다.
      *
-     * TODO : 구매 성공시 Player 의 소지금을 차감시켜야합니다.
      */
     private void buyMonsterBallMenu() {
         outputView.showMonsterBallMenu();
@@ -80,6 +78,7 @@ public class ShopController {
         outputView.inputQuantity();
         int quantity = inputView.inputQuantity();
 
+        // true 면 구매가능, false 면 구매불가
         if (validateMoney.isEnoughMoney(inputMonsterBallType, quantity)) {
             buyItem.addMonsterBall(inputMonsterBallType, quantity);
             outputView.successfulBuyMonsterBall(inputMonsterBallType, quantity);
@@ -90,7 +89,6 @@ public class ShopController {
 
     /**
      * 위와 같은 로직.
-     * TODO : 구매 성공시 Player 의 소지금을 차감시켜야합니다.
      */
     private void buyBerryMenu() {
         outputView.showBerryMenu();

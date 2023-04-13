@@ -44,10 +44,10 @@ public class GardenController {
                     break;
                 case EXIT :
                     // test
-//                    ShopController shopController = new ShopController();
-//                    shopController.menu();
+                    ShopController shopController = new ShopController();
+                    shopController.menu();
                     // test
-                    outputView.exit();
+//                    outputView.exit();
                     return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
@@ -70,12 +70,11 @@ public class GardenController {
             outputView.showPlantingMenu();
             String menu = inputView.inputPlantingMenu();
             switch (menu) {
-                // TODO : 라즈베리, 블루베리 순서 변경
-                case "1": // 라즈베리 심기
-                    plantingBerry.plantingRaspBerry();
-                    break;
-                case "2": // 블루베리 심기
+                case "1": // 블루베리 심기
                     plantingBerry.plantingBlueBerry();
+                    break;
+                case "2": // 라즈베리 심기
+                    plantingBerry.plantingRaspBerry();
                     break;
                 case "3": // 블랙베리 심기
                     plantingBerry.plantingBlackBerry();
