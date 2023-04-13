@@ -23,4 +23,14 @@ public class BerryPouch {
     public Map<Berry, Integer> getBerryPouch() {
         return Collections.unmodifiableMap(berryPouch);
     }
+
+    /**
+     * Garden(열매심기) 에서 사용합니다.
+     * 파라미터인 berry 의 개수를 1개 줄입니다.
+     * @param berry : 열매심기에 사용한 열매
+     */
+    public void useOneBerry(Berry berry) {
+        berryPouch.put(berry, berryPouch.get(berry) - 1);
+    }
+
 }

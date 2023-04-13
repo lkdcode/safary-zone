@@ -37,7 +37,7 @@ public class InputView {
         while(true) {
             try {
                 String inputMenuNumber = br.readLine();
-                if (inputValidate.PlantingMenuNumberValidate(inputMenuNumber)) return inputMenuNumber;
+                if (inputValidate.plantingMenuNumberValidate(inputMenuNumber)) return inputMenuNumber;
                 ErrorMessage.GARDEN_MENU.print();
             } catch (IOException e) {
                 ErrorMessage.UNKNOWN_ERROR.print();
@@ -53,11 +53,12 @@ public class InputView {
                 // 범위 안의 숫자를 입력했는지 검사
                 // 1 ~ 5 사이로 입력했을 시 입력한 위치를 리턴
                 // 잘못 입력했으면 반복문 처음으로 돌아가서 재입력 요청
-                if (!inputValidate.PlantingLocationValidate(rowOrColumn)) {
+                if (!inputValidate.plantingLocationValidate(rowOrColumn)) {
                     ErrorMessage.PLANT_LOCATION.print();
                     continue;
                 }
-                return rowOrColumn;
+                // 심을 위치를 1 ~ 5 사이 정수로 입력받으므로, 배열 index 에 맞추기 위해 -1 해주었습니다.
+                return rowOrColumn - 1;
             } catch (IOException e) {
                 ErrorMessage.UNKNOWN_ERROR.print();
             } catch (NumberFormatException e) {

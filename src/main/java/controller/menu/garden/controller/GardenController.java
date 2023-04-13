@@ -4,6 +4,7 @@ import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
+import controller.menu.shop.controller.ShopController;
 
 /**
  * 정원 controller
@@ -16,21 +17,11 @@ public class GardenController {
     private final InputView inputView;
     private final OutputView outputView;
     private final PlantingBerry plantingBerry;
-    private int[] plantLocation;
-    private PlantableRaspBerry plantableRaspBerry;
-    private PlantableBlueBerry plantableBlueBerry;
-    private PlantableBlackBerry plantableBlackBerry;
-    private int row;
-    private int column;
 
     public GardenController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.plantingBerry = new PlantingBerry();
-        this.plantLocation = new int[2];
-        this.plantableRaspBerry = new PlantableRaspBerry();
-        this.plantableBlueBerry = new PlantableBlueBerry();
-        this.plantableBlackBerry = new PlantableBlackBerry();
     }
 
     /**
@@ -52,6 +43,11 @@ public class GardenController {
                     plantingMenu();
                     break;
                 case EXIT :
+                    // test
+//                    ShopController shopController = new ShopController();
+//                    shopController.menu();
+                    // test
+                    outputView.exit();
                     return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
@@ -74,6 +70,7 @@ public class GardenController {
             outputView.showPlantingMenu();
             String menu = inputView.inputPlantingMenu();
             switch (menu) {
+                // TODO : 라즈베리, 블루베리 순서 변경
                 case "1": // 라즈베리 심기
                     plantingBerry.plantingRaspBerry();
                     break;
@@ -84,6 +81,7 @@ public class GardenController {
                     plantingBerry.plantingBlackBerry();
                     break;
                 case EXIT: // 이전 메뉴로 돌아가기
+                    outputView.exit();
                     return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
