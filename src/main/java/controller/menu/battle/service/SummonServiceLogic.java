@@ -14,14 +14,15 @@ import java.security.SecureRandom;
  * 야생의 포켓몬을 소환하는 클래스
  */
 public class SummonServiceLogic {
+    private final WildPokemonList wildPokemonList;
     private final int LOW_LEVEL = 3;
     private final int HIGH_LEVEL = 8;
     private final int RATE_RANGE_MAX = 100;
     private final int RATE_RANGE_MIN = 1;
     private final int MIN_BOOK_NUMBER = 1;
-    private WildPokemonList wildPokemonList = new WildPokemonList();
 
     public SummonServiceLogic() {
+        this.wildPokemonList = new WildPokemonList();
     }
 
     /**
@@ -78,9 +79,9 @@ public class SummonServiceLogic {
      */
     private Pokemon normalPokemonRandomPick() {
         int normalBookSize = NormalPokemonBooks.values().length;
-        int index = (int) random(MIN_BOOK_NUMBER, normalBookSize);
+        int keyIndex = (int) random(MIN_BOOK_NUMBER, normalBookSize);
 
-        return wildPokemonList.getNORMAL_POKEMON_LIST().get(index);
+        return wildPokemonList.getNORMAL_POKEMON_LIST().get(keyIndex);
     }
 
     private Pokemon rarePokemonRandomPick() {

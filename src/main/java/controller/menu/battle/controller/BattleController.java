@@ -25,7 +25,6 @@ public class BattleController {
         this.wildPokemon = summonServiceLogic.getWhildPokemon();
     }
 
-
     public void start() {
         String wildPokemonName = wildPokemon.getInformation().getName();
         outputView.appearWildPokemon(wildPokemonName);
@@ -39,14 +38,15 @@ public class BattleController {
                     // 싸우기
                     outputView.inputFight();
                     setMyPokemon();
-                    return;
+                    break;
                 case "2":
                     // 도망가기
                     outputView.inputRun();
                     return;
+                default:
+                    outputView.show(ErrorMessageBattle.INPUT_MENU.getMessage());
             }
 
-            outputView.show(ErrorMessageBattle.INPUT_MENU.getMessage());
         }
     }
 
@@ -93,10 +93,8 @@ public class BattleController {
      */
     private void goMyPokemon(Pokemon playerPokemon) {
         String playerPokemonName = playerPokemon.getInformation().getName();
-        System.out.println("[" + playerPokemonName + "] 을(를) 꺼냈습니다.");
-        System.out.println("가라 [" + playerPokemonName + "] !!!!!!!!!!!!!!!!!");
-
-        fightController.readyFight(playerPokemon, wildPokemon);
+        outputView.goMyPokemon(playerPokemonName);
+        fightController.readyFight(wildPokemon, playerPokemon);
     }
 
 }

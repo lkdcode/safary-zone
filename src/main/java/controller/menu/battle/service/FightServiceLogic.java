@@ -6,11 +6,7 @@ import pokemon.books.FinallyPokemonBooks;
 import pokemon.books.NormalPokemonBooks;
 import pokemon.books.RarePokemonBooks;
 import pokemon.pokemon.Pokemon;
-import pokemon.pokemon.RarePokemon;
 import user.Player;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 
 import static pokemon.PokemonType.*;
 
@@ -104,7 +100,7 @@ public class FightServiceLogic {
      */
     public void attack() {
         setSkillAttack();
-        if (fightFlag++ % 2 == 1) {
+        if (fightFlag++ % 2 == 0) {
             playerPokemonAttack();
         } else {
             wildPokemonAttack();
@@ -128,7 +124,6 @@ public class FightServiceLogic {
      */
     public void fightResult() {
         addExp();
-        playerSetupMoney();
     }
 
     /**
@@ -162,7 +157,7 @@ public class FightServiceLogic {
      * RarePokemon : 400₩ ~ 800₩
      * FinallyPokemon : 700₩ ~ 1200₩
      */
-    private void playerSetupMoney() {
+    public int playerSetupMoney() {
         int money = 0;
         if (wildPokemon instanceof NormalPokemonBooks) {
             money = (int) MakeCommon.getRandom(200, 500);
@@ -173,8 +168,8 @@ public class FightServiceLogic {
         if (wildPokemon instanceof FinallyPokemonBooks) {
             money = (int) MakeCommon.getRandom(700, 1200);
         }
-        System.out.println("money = " + money);
         Player.getInstance().getInventory().setMoney(money);
+        return money;
     }
 
     /**
@@ -208,29 +203,11 @@ public class FightServiceLogic {
      * @return
      */
     private void setSkillAttack() {
-        if (random(1, 100) <= 11.0) {
+        if (MakeCommon.getRandom(1, 100) <= 11.0) {
             this.isSkillAttack = true;
             return;
         }
         this.isSkillAttack = false;
-    }
-
-    /**
-     * 랜덤 난수 생성 메서드
-     *
-     * @param minRange : 최소 범위
-     * @param maxRange : 최대 범위
-     * @return
-     */
-    private double random(int minRange, int maxRange) {
-        try {
-            SecureRandom instanceStrong = SecureRandom.getInstanceStrong();
-            return (instanceStrong.nextDouble() * maxRange) + minRange;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        return (Math.random() * maxRange) + minRange;
     }
 
     public int getTargetHp() {
@@ -247,7 +224,7 @@ public class FightServiceLogic {
      * @return
      */
     public String getAttackerName() {
-        if (fightFlag % 2 == 0) {
+        if (fightFlag % 2 == 1) {
             // Player 가 공격했다면,
             return this.playerPokemonName;
         } else {
@@ -256,7 +233,7 @@ public class FightServiceLogic {
     }
 
     public String getTargetName() {
-        if (fightFlag % 2 == 0) {
+        if (fightFlag % 2 == 1) {
             // 야생 포켓몬이 타겟이라면,
             return this.wildPokemonName;
         } else {
@@ -265,7 +242,7 @@ public class FightServiceLogic {
     }
 
     public int getDamage() {
-        if (fightFlag % 2 == 0) {
+        if (fightFlag % 2 == 1) {
             return this.isSkillAttack ? this.playerPokemonSkillDamage : this.playerPokemonDamage;
         } else {
             return this.isSkillAttack ? this.wildPokemonSkillDamage : this.wildPokemonDamage;
