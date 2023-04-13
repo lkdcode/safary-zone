@@ -4,6 +4,8 @@ import controller.menu.battle.service.FightServiceLogic;
 import controller.menu.battle.view.FightOutputView;
 import pokemon.pokemon.Pokemon;
 
+import static java.lang.Thread.sleep;
+
 /**
  * 야생 몬스터와 배틀을 진행하는 컨트롤러
  */
@@ -37,6 +39,11 @@ public class FightController {
     private void playFight() {
         while (true) {
             fightServiceLogic.attack();
+            try {
+                sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             attackResultView();
             if (fightServiceLogic.getTargetHp() <= 0) return;
         }
@@ -61,7 +68,7 @@ public class FightController {
      * Player 의 상태를 업데이트해줍니다.
      */
     private void resultFight() {
-        System.out.println("# 전 투 종 료 #");
+        System.out.println("\n\n# 전 투 종 료 #\n\n");
     }
 
 }
