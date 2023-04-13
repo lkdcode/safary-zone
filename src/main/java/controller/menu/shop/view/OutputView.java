@@ -16,8 +16,8 @@ public class OutputView {
     private final String SECOND_BALL = "2. 하이퍼 몬스터 볼 👉 [포획 확률 : ??%]";
     private final String THIRD_BALL = "3. 마스터 몬스터 볼 👉 [포획 확률 : ??%]";
     private final String BUY_BERRY_MENU = "\n# 열매 구매 매뉴\n";
-    private final String FIRST_BERRY = "1. 🍓 블루 베리 👉 [일정 확률로 상,하로 열매를 뿌립니다.]";
-    private final String SECOND_BERRY = "2. 🫐 라즈 베리 👉 [일정 확률로 좌,우로 열매를 뿌립니다.]";
+    private final String FIRST_BERRY = "1. 🍓 라즈 베리 👉 [일정 확률로 상,하로 열매를 뿌립니다.]";
+    private final String SECOND_BERRY = "2. 🍇 블루 베리 👉 [일정 확률로 좌,우로 열매를 뿌립니다.]";
     private final String THIRD_BERRY = "3. ♣️ 블랙 베리 👉 [일정 확률로 상,하,좌,우로 열매를 뿌립니다.]";
     private final String INPUT_QUANTITY = "구매할 수량을 입력해주세요.";
     private final String BACK = "\n돌아갑니다.\n";
