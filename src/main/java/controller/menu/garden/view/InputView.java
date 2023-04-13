@@ -50,7 +50,7 @@ public class InputView {
     public int inputPlantLocation() {
         while (true) {
             try {
-                // 열매를 심을 가로 또는 세로 위치 입력 (1~5)
+                // 열매를 심을 가로 또는 세로 위치 입력 (1~5) 5 0 1 2 3 4
                 int rowOrColumn = Integer.parseInt(br.readLine());
                 // 범위 안의 숫자를 입력했는지 검사
                 // 잘못 입력했으면 반복문 처음으로 돌아가기
