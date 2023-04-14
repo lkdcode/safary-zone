@@ -4,6 +4,7 @@ import View.InputView;
 import View.OutputView;
 import controller.menu.battle.controller.BattleController;
 import controller.menu.capture.controller.CaptureController;
+import controller.menu.ending.controller.EndingController;
 import controller.menu.garden.controller.GardenController;
 import controller.menu.playerinformation.controller.PlayerInformationController;
 import controller.menu.shop.controller.ShopController;
@@ -17,6 +18,7 @@ public class SystemController {
     private final CaptureController captureController;
     private final GardenController gardenController;
     private final PlayerInformationController playerInformationController;
+    private final EndingController endingController;
     private final OutputView outputView;
     private final InputView inputView;
     private final String SHOP_MENU = "1";
@@ -35,6 +37,7 @@ public class SystemController {
         this.captureController = new CaptureController();
         this.gardenController = new GardenController();
         this.playerInformationController = new PlayerInformationController();
+        this.endingController = new EndingController();
         this.outputView = new OutputView();
         this.inputView = new InputView();
     }
@@ -43,6 +46,8 @@ public class SystemController {
         outputView.welcome();
 
         while (true) {
+            endingController.check();
+
             outputView.menu();
             String input = inputView.menu();
 
