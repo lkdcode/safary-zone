@@ -16,7 +16,7 @@ public class CaptureController {
     private final OutputView outputView;
     private final String THROW_BALL_MENU = "1";
     private final String GO_NEAR_MENU = "2";
-    private final String EXIT = "3";
+    private final String EXIT_MENU = "0";
 
     public CaptureController() {
         this.captureServiceLogic = new CaptureServiceLogic();
@@ -60,7 +60,7 @@ public class CaptureController {
                     outputView.successGoNear();
                     break;
 
-                case EXIT:
+                case EXIT_MENU:
                     outputView.exit();
                     return;
                 default:
@@ -76,6 +76,7 @@ public class CaptureController {
     /**
      * 유저가 입력한(사용하고자 하는) 몬스터 볼의 수량을 검사합니다.
      * 0개가 있다면 사용할 수 없도록 리턴합니다.
+     *
      * @param inputBallName : 유저가 사용하고자하는 몬스터볼
      * @return
      */
@@ -86,6 +87,7 @@ public class CaptureController {
 
     /**
      * 유저가 보유하고 있는 몬스터 볼 리스트를 문자열로 리턴합니다.
+     *
      * @return
      */
     private String myBallList() {

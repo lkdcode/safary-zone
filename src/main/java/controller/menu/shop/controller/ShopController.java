@@ -9,6 +9,8 @@ import controller.menu.shop.service.ValidateMoney;
 import controller.menu.shop.view.InputView;
 import controller.menu.shop.view.OutputView;
 
+import static common.MakeCommon.stopLine;
+
 /**
  * 상점 controller
  */
@@ -42,7 +44,7 @@ public class ShopController {
      * 2. inputView 가 매뉴 번호를 입력 받습니다.
      * 3. 해당 매뉴의 메서드를 호출합니다.
      */
-    public void menu() {
+    public void start() {
         while (true) {
             outputView.showMenu();
             String menu = inputView.inputMenu();
@@ -74,11 +76,10 @@ public class ShopController {
      * 4. inputView 가 수량을 입력 받습니다.
      * 5. validateMoney 가 구매할 몬스터 볼의 총 가격과 현재 소지금을 비교합니다.
      * 6. 구매금이 충분하다면
-     *      - buyItem 이 인벤토리에 접근하여 몬스터볼 구매 수량만큼 추가합니다.
-     *      - outputView 가 구매에 성공했다는 메시지를 출력합니다.
+     * - buyItem 이 인벤토리에 접근하여 몬스터볼 구매 수량만큼 추가합니다.
+     * - outputView 가 구매에 성공했다는 메시지를 출력합니다.
      * 8. 구매금이 부족하다면
-     *      - outputView 가 구매에 실패했다는 메시지를 출력합니다.
-     *
+     * - outputView 가 구매에 실패했다는 메시지를 출력합니다.
      */
     private void buyMonsterBallMenu() {
         outputView.showMonsterBallMenu();
@@ -113,7 +114,7 @@ public class ShopController {
     }
 
     private void stop() {
-        outputView.stopMessage();
+        stopLine();
         inputView.stopInput();
     }
 }

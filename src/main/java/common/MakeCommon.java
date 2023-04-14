@@ -2,6 +2,7 @@ package common;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
 
@@ -32,10 +33,11 @@ public class MakeCommon {
 
     /**
      * 메세지와 시간을 매개변수로 입력받아서 도트형식으로 콘솔에 출력하는 메서드
+     *
      * @param message : 출력할 메시지
-     * @param millis : 1 = 1/1000 초
+     * @param millis  : 1 = 1/1000 초
      */
-    public static void dottedPrint(String message , int millis) {
+    public static void dottedPrint(String message, int millis) {
         for (int i = 0; i < message.length(); i++) {
             System.out.print(message.charAt(i));
             try {
@@ -45,5 +47,11 @@ public class MakeCommon {
             }
 
         }
+    }
+
+    public static void stopLine() {
+        String message = "\n\n ↪ 계속 하려면 엔터를 누르세요...\n\n";
+        dottedPrint(message, 30);
+        new Scanner(System.in).nextLine();
     }
 }

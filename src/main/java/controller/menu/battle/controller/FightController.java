@@ -12,10 +12,12 @@ public class FightController {
     private final FightOutputView fightOutputView;
     private Pokemon wildPokemon;
     private Pokemon playerPokemon;
+    private boolean isWon;
 
     public FightController() {
         this.fightServiceLogic = new FightServiceLogic();
         this.fightOutputView = new FightOutputView();
+        this.isWon = false;
     }
 
     /**
@@ -82,6 +84,7 @@ public class FightController {
     private void win() {
         fightServiceLogic.fightResult();
         fightOutputView.win(fightServiceLogic.isGetWildPokemon(), wildPokemon.getInformation().getName(), playerPokemon.getInformation().getName(), fightServiceLogic.playerSetupMoney());
+        this.isWon = true;
     }
 
     private void lose() {
@@ -89,4 +92,7 @@ public class FightController {
     }
 
 
+    public boolean isWon() {
+        return isWon;
+    }
 }

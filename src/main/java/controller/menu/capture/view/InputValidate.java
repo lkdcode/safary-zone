@@ -7,7 +7,7 @@ public class InputValidate {
 
     private final String FIRST_MENU = "1";
     private final String SECOND_MENU = "2";
-    private final String THIRD_MENU = "3";
+    private final String THIRD_MENU = "0";
     private final String NORMAL = "NORMAL";
     private final String MASTER = "MASTER";
     private final String HYPER = "HYPER";

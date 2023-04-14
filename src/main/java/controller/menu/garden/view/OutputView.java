@@ -57,9 +57,6 @@ public class OutputView {
         dottedPrint(message, MILLIS);
     }
 
-    public void stopMessage() {
-        print("\n ↪ 계속 하려면 엔터를 누르세요...");
-    }
 
     private void print(String str) {
         dottedPrint(str, MILLIS);

@@ -4,8 +4,8 @@ import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
-import controller.menu.save.service.SaveFile;
-import controller.menu.shop.controller.ShopController;
+
+import static common.MakeCommon.stopLine;
 
 /**
  * 정원 controller
@@ -32,20 +32,24 @@ public class GardenController {
      * 0 을 입력하면 시작메뉴로 돌아갑니다.
      * 잘못된 문자를 입력하면 오류 메세지가 출력되고 재입력 요청합니다.
      */
-    public void menu() {
-        while(true) {
+    public void start() {
+        while (true) {
             outputView.showGardenMenu();
             String menu = inputView.inputMenu();
             switch (menu) {
-                case CHECK_MY_GARDEN :
+                case CHECK_MY_GARDEN:
                     outputView.showMyGarden();
                     stop();
                     break;
-                case PLANTING_BERRY :
+                case PLANTING_BERRY:
                     plantingMenu();
                     stop();
                     break;
-                case EXIT :
+                case EXIT:
+                    // test
+//                    ShopController shopController = new ShopController();
+//                    shopController.menu();
+                    // test
                     outputView.exit();
                     return;
                 default:
@@ -72,12 +76,15 @@ public class GardenController {
             switch (menu) {
                 case "1": // 블루베리 심기
                     plantingBerry.plantingBlueBerry();
+                    stop();
                     break;
                 case "2": // 라즈베리 심기
                     plantingBerry.plantingRaspBerry();
+                    stop();
                     break;
                 case "3": // 블랙베리 심기
                     plantingBerry.plantingBlackBerry();
+                    stop();
                     break;
                 case EXIT: // 이전 메뉴로 돌아가기
                     outputView.exit();
@@ -97,7 +104,7 @@ public class GardenController {
     }
 
     private void stop() {
-        outputView.stopMessage();
+        stopLine();
         inputView.stopInput();
     }
 

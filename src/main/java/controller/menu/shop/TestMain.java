@@ -4,6 +4,6 @@ import controller.menu.shop.controller.ShopController;
 
 public class TestMain {
     public static void main(String[] args) {
-        new ShopController().menu();
+        new ShopController().start();
     }
 }
