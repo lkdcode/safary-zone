@@ -1,7 +1,6 @@
 package controller.menu.playerinformation.controller;
 
 import controller.SystemController;
-import controller.SystemMain;
 import controller.menu.playerinformation.PlayerInformationServiceLogic;
 import controller.menu.playerinformation.view.InputView;
 import controller.menu.playerinformation.view.OutputView;
