@@ -1,6 +1,7 @@
 package controller.menu.capture.controller;
 
 import controller.menu.capture.exception.ErrorMessage;
+import controller.menu.capture.service.CaptureServiceLogic;
 import controller.menu.capture.view.InputView;
 import controller.menu.capture.view.OutputView;
 import user.item.ball.MonsterBall;
@@ -10,10 +11,12 @@ import user.item.ball.MonsterBall;
  */
 public class CaptureController {
 
+    private final CaptureServiceLogic captureServiceLogic;
     private final OutputView outputView;
     private final InputView inputView;
 
     public CaptureController() {
+        this.captureServiceLogic = new CaptureServiceLogic();
         this.outputView = new OutputView();
         this.inputView = new InputView();
     }
@@ -24,30 +27,28 @@ public class CaptureController {
      * 2. 다가간다
      * 3. 도망간다
      */
-    public void CaptureMenu() {
+    public void captureMenu() {
 
-        //호출했을 때 랜덤으로 시간을 둬서 몬스터와 조우
-//      pokemon ??=  randomEncounter();
+        while (true) {
+            //2. 세 가지 메뉴를 보여주고 선택을 입력받는다
+            outputView.menu();
+            String menu = inputView.menu();
 
+            switch (menu) {
+                case "1":
+                    outputView.selectBall();
+                    inputView.selectBall();
 
+//                    String ballNumber = inputView.selectBall();
 
-//        outputView.showStatus(pokemon);
-        //조우하고 난 뒤에 메뉴 출력
-        outputView.showMenu();
-        String menu = inputView.inputMenu();
-
-        switch (menu) {
-            case "1":
-                captureMonster();
-                break;
-            case "2":
-                goNearMonster();
-                break;
-            case "0":
-                outputView.exit();
-                break;
-            default:
-                ErrorMessage.MENU.print();
+                    break;
+                case "2":
+//                    goNearMonster();
+                    break;
+                case "3":
+                    outputView.exit();
+                    return;
+            }
         }
     }
 
@@ -55,22 +56,6 @@ public class CaptureController {
      * 어떤 볼을 쓸지 먼저 보여줍니다.
      * 어떤 볼을 쓸지 고릅니다.
      */
-    private void captureMonster() {
-
-        outputView.chooseBall();
-        // 몬스터볼, 하이퍼볼, 마스터볼
-
-        // 셋 중에서 고르기
-        MonsterBall monsterBall = inputView.inputMonsterBall(); //몬스터볼
-
-        //고른 몬스터볼을 던지면 볼의 확률에 따라 포획여부 결정
-
-
-
-    }
-
-    private void goNearMonster() {
-    }
 
 
 }

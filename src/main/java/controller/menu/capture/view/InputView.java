@@ -20,16 +20,15 @@ public class InputView {
     }
 
     /**
-     * 몬스터와 조우한 뒤 포획 메인 메뉴에서 입력을 받는다.
-     * 입력값을 inputValidate를 통해 유효성 검사를 진행한다.
-     * 검사에 실패하면 에러 메세지를 보여주준 뒤 다시 입력받도록 유도한다.
-     *
+     * 유저한테서 어떤 메뉴를 실행할지 입력을 받는다.
+     * 1. 입력받는다 (메뉴 번호 1 2 3)
+     * 2. 유효성 검사 (inputValidate)
      */
-    public String inputMenu() {
+    public String menu() {
         while (true) {
             String inputMenuNumber = sc.nextLine();
-
-            if (inputValidate.menuNumber(inputMenuNumber)) return inputMenuNumber;
+            if (inputValidate.menuNumber(inputMenuNumber))
+                return inputMenuNumber;
             ErrorMessage.MENU.print();
         }
     }
@@ -38,16 +37,9 @@ public class InputView {
      * 어떤 몬스터볼을 사용할지 압력받습니다.
      * 입력 받은 값에 유효성 검사를 먼저 진행합니다.
      * 통과되면 몬스터볼을 리턴받습니다.
-     * */
-    public MonsterBall inputMonsterBall(){
-        while(true){
-            String inputMonsterBall = sc.nextLine();
-            //1 2 3 중에서 입력받음, 다른건 에러메세지 출력
-            //검증은 InputValidate에서 진행
-            MonsterBall monsterBall = inputValidate.chooseMonsterBall(inputMonsterBall); //1 받으면 몬스터볼
-            if(monsterBall!=null)  return monsterBall;
-            ErrorMessage.MENU.print();
-        }
+     */
+    public void selectBall() {
+
     }
 
 

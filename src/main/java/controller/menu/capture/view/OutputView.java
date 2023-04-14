@@ -17,15 +17,16 @@ public class OutputView {
 
 
 
-    public void showMenu() {
+    public void menu() {
 
         //메뉴에 들어갈 항목
         //1. 포획
         //2. 다가간다 (go near)
         //3. 도망간다 (Capture 종료)
-        print(Capture);
-        print(GoNear);
-        println(RunAway);
+//        print(Capture);
+//        print(GoNear);
+//        println(RunAway);
+        System.out.println("[1.포획] [2.다가간다] [3.도망간다]");
     }
 
     public void showMonsterBallMenu(){
@@ -33,8 +34,6 @@ public class OutputView {
         print(HyperBall);
         print(MasterBall);
     }
-
-
 
     private void print(String message) {
         System.out.print(message+"\t");
@@ -50,11 +49,10 @@ public class OutputView {
         System.exit(0);
     }
 
-    public void chooseBall() {
+    public void selectBall() {
         println(ChooseBall);
         showMonsterBallMenu();
 
-        //고른 볼을 던진다는 메세지 출력
 
 
     }

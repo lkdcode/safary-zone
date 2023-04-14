@@ -1,4 +1,4 @@
-package controller.menu.myinformation.view;
+package controller.menu.playerinformation.view;
 
 /**
  * 유저로부터 입력받은 값의 유효성 검사

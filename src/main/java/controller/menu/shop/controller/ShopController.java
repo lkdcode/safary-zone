@@ -1,5 +1,6 @@
 package controller.menu.shop.controller;
 
+import controller.SystemController;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
 import controller.menu.shop.exception.ErrorMessage;
@@ -51,7 +52,8 @@ public class ShopController {
                     break;
                 case EXIT:
                     outputView.exit();
-                    return;
+                    new SystemController().start();
+                    break;
                 default:
                     // TODO : 다른 곳에서 해당 메시지를 출력하는지 확인해야합니다.
                     ErrorMessage.MENU.print();

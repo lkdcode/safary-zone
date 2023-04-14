@@ -1,5 +1,6 @@
 package controller.menu.garden.controller;
 
+import controller.SystemController;
 import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
@@ -48,7 +49,8 @@ public class GardenController {
 //                    shopController.menu();
                     // test
                     outputView.exit();
-                    return;
+                    new SystemController().start();
+                    break;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
             }

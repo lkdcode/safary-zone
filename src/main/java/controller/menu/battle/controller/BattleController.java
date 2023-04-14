@@ -1,5 +1,6 @@
 package controller.menu.battle.controller;
 
+import controller.SystemController;
 import controller.menu.battle.exception.ErrorMessageBattle;
 import controller.menu.battle.service.SummonServiceLogic;
 import controller.menu.battle.view.InputView;
@@ -43,7 +44,9 @@ public class BattleController {
                 case "2":
                     // 도망가기
                     outputView.inputRun();
-                    return;
+//                    return;
+                    new SystemController().start();
+                    break;
             }
 
             outputView.show(ErrorMessageBattle.INPUT_MENU.getMessage());

@@ -19,9 +19,10 @@ public class SummonServiceLogic {
     private final int RATE_RANGE_MAX = 100;
     private final int RATE_RANGE_MIN = 1;
     private final int MIN_BOOK_NUMBER = 1;
-    private WildPokemonList wildPokemonList = new WildPokemonList();
+    private final WildPokemonList wildPokemonList;
 
     public SummonServiceLogic() {
+        this.wildPokemonList = new WildPokemonList();
     }
 
     /**
