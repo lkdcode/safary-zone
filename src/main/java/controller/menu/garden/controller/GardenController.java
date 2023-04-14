@@ -5,6 +5,8 @@ import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
 
+import static common.MakeCommon.stopLine;
+
 /**
  * 정원 controller
  */
@@ -31,19 +33,19 @@ public class GardenController {
      * 잘못된 문자를 입력하면 오류 메세지가 출력되고 재입력 요청합니다.
      */
     public void start() {
-        while(true) {
+        while (true) {
             outputView.showGardenMenu();
             String menu = inputView.inputMenu();
             switch (menu) {
-                case CHECK_MY_GARDEN :
+                case CHECK_MY_GARDEN:
                     outputView.showMyGarden();
                     stop();
                     break;
-                case PLANTING_BERRY :
+                case PLANTING_BERRY:
                     plantingMenu();
                     stop();
                     break;
-                case EXIT :
+                case EXIT:
                     // test
 //                    ShopController shopController = new ShopController();
 //                    shopController.menu();
@@ -102,7 +104,7 @@ public class GardenController {
     }
 
     private void stop() {
-        outputView.stopMessage();
+        stopLine();
         inputView.stopInput();
     }
 
