@@ -5,8 +5,8 @@ import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
 
 public class ValidateMoney implements TradeItem {
-    private final int RASPBERRY_PRICE = 1000;
-    private final int BLUEBERRY_PRICE = 1200;
+    private final int BLUEBERRY_PRICE = 1000;
+    private final int RASPBERRY_PRICE = 1200;
     private final int BLACKBERRY_PRICE = 1500;
     private final int NORMAL_MONSTER_BALL_PRICE = 1200;
     private final int HYPER_MONSTER_BALL_PRICE = 5000;

@@ -51,17 +51,18 @@ public class ShopController {
             switch (menu) {
                 case BUY_MONSTER_BALL_MENU:
                     buyMonsterBallMenu();
+                    stop();
                     break;
                 case BUY_BERRY_MENU:
                     buyBerryMenu();
+                    stop();
                     break;
                 case EXIT:
-                    GardenController gardenController = new GardenController();
-                    gardenController.menu();
-//                    outputView.exit();
-//                    return;
+                    outputView.exit();
+                    return;
                 default:
                     ErrorMessage.MENU.print();
+                    stop();
             }
         }
 
@@ -113,5 +114,10 @@ public class ShopController {
         } else {
             outputView.failBuyBerry();
         }
+    }
+
+    private void stop() {
+        outputView.stopMessage();
+        inputView.stopInput();
     }
 }
