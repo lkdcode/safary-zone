@@ -4,10 +4,11 @@ import user.Player;
 
 /**
  * 블랙 베리와 같은 로직
+ * 좌, 우 보너스 열매 심기 이벤트
  */
 public class PlantableRaspBerry extends PlantingRate implements GardenService {
-    private final int[] RASPBERRY_ROW = {0, 0};
-    private final int[] RASPBERRY_COLUMN = {-1, 1};
+    private final int[] RASPBERRY_ROW = {-1, 1};
+    private final int[] RASPBERRY_COLUMN = {0, 0};
     private final double RASPBERRY_RATE = 20.0;
     private final String RASP_BERRY = "🍓";
 

@@ -13,7 +13,6 @@ public class WildPokemonList {
     private final Map<Integer, Pokemon> RARE_POKEMON_LIST;
     private final Map<Integer, Pokemon> FINALLY_POKEMON_LIST;
 
-
     public WildPokemonList() {
         this.NORMAL_POKEMON_LIST = new HashMap<>();
         this.RARE_POKEMON_LIST = new HashMap<>();

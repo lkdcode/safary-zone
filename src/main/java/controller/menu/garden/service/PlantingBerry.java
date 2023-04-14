@@ -48,7 +48,6 @@ public class PlantingBerry {
      * @return 열매를 갖고 있으면 true, 없으면 false
      */
     private boolean findBerry(Berry berry) {
-        // TODO: NullPointerException 해결
         if (berryPouch.getBerryPouch().get(berry) != null) {
             if (berryPouch.getBerryPouch().get(berry) > 0) {
                 // 열매 1개 감소
@@ -59,24 +58,25 @@ public class PlantingBerry {
         return false;
     }
 
-    public void plantingRaspBerry() {
-        // 소지한 라즈베리가 있는지 확인
-        if (findBerry(RASPBERRY)) {
+
+    public void plantingBlueBerry() {
+        // 소지한 블루베리가 있는지 확인
+        if (findBerry(BLUEBERRY)) {
             // 나의 정원을 출력하고, 심을 위치 입력
             plantLocation = plantLocationSelect();
             // 입력한 열매 위치로 plantingBerry 호출
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableRaspBerry.plantingBerry(row, column);
+            plantableBlueBerry.plantingBerry(row, column);
         } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 
-    public void plantingBlueBerry() {
-        if (findBerry(BLUEBERRY)) {
+    public void plantingRaspBerry() {
+        if (findBerry(RASPBERRY)) {
             plantLocation = plantLocationSelect();
             row = plantLocation[0];
             column = plantLocation[1];
-            plantableBlueBerry.plantingBerry(row, column);
+            plantableRaspBerry.plantingBerry(row, column);
         } else ErrorMessage.NO_BERRY_ERROR.print();
     }
 

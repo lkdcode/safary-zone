@@ -4,12 +4,13 @@ import user.Player;
 
 /**
  * 블랙 베리와 같은 로직
+ * 상, 하 보너스 열매 심기 이벤트
  */
 public class PlantableBlueBerry extends PlantingRate implements GardenService {
-    private final int[] BLUEBERRY_ROW = {-1, 1};
-    private final int[] BLUEBERRY_COLUMN = {0, 0};
+    private final int[] BLUEBERRY_ROW = {0, 0};
+    private final int[] BLUEBERRY_COLUMN = {-1, 1};
     private final double BLUEBERRY_RATE = 30.0;
-    private final String BLUE_BERRY = "🫐";
+    private final String BLUE_BERRY = "🍇";
     private final int SIZE = 5;
 
     @Override

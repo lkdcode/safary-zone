@@ -1,5 +1,7 @@
 package controller.menu.battle.view;
 
+import user.Player;
+
 import static common.MakeCommon.dottedPrint;
 
 /**
@@ -24,7 +26,6 @@ public class FightOutputView {
                 + "😵 [" + target + "] 의 현재 체력은 [" + targetHp + "] 이다 💔\n\n";
 
         dottedPrint(message, MILLIS);
-
     }
 
     public void loading() {
@@ -32,4 +33,24 @@ public class FightOutputView {
         dottedPrint(message, MILLIS);
     }
 
+    public void lose() {
+        String message = "패배 하였습니다. ㅠㅠ ㅠㅠ ㅠㅠ";
+        dottedPrint(message, MILLIS);
+    }
+
+    public void win(boolean isGetWildPokemon, String wildPokemonName, String playerPokemonName, int money) {
+        String message = "\n\n전투에서 승리하였습니다.\n\n"
+                + playerPokemonName + "의 레벨이 1 상승하였습니다. (최대 : 10)\n";
+        if (isGetWildPokemon) message += "야생의 [" + wildPokemonName + "] 을(를) 획득하였습니다.\n";
+        message += "Player의 경험치가 올랐습니다.\n"
+                + "[" + money + "] 원을 획득하였습니다.\n"
+                + "메인 메뉴로 돌아갑니다. \n\n";
+
+        dottedPrint(message, MILLIS);
+    }
+
+    public void fightExit() {
+        String message = "🚫 # # # 전투 종료 # # # 🚫";
+        dottedPrint(message, MILLIS);
+    }
 }

@@ -1,5 +1,7 @@
 package controller.menu.garden.exception;
 
+import static common.MakeCommon.dottedPrint;
+
 /**
  * 열매 심기 메뉴의 오류메세지를 모아둔 enum 입니다.
  */
@@ -10,6 +12,7 @@ public enum ErrorMessage {
     UNKNOWN_ERROR("❌ 알 수 없는 오류가 발생하였습니다. 다시 시도해주세요.\n"),
     NO_BERRY_ERROR("❌ 선택한 열매가 없습니다. 다른 열매를 심거나, 상점에서 구입해주세요.\n"),
     ALREADY_PLANTED_ERROR("❌ 이미 열매가 심어져있는 곳입니다. 다른 곳에 심어주세요.\n");
+    private final int MILLIS = 30;
     private String message;
 
     ErrorMessage(String message) {
@@ -17,7 +20,7 @@ public enum ErrorMessage {
     }
 
     public void print() {
-        System.out.println(message);
+        dottedPrint(message, MILLIS);
     }
 
 }

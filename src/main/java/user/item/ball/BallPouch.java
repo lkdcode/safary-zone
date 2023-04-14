@@ -9,6 +9,16 @@ public class BallPouch {
 
     public BallPouch() {
         this.ballPouch = new HashMap<>();
+        initialize();
+    }
+
+    /**
+     * TODO : test 용 시작부터 몬스터볼을 1개씩 가지고 시작함,
+     */
+    private void initialize() {
+        for (MonsterBall monsterBall : MonsterBall.values()) {
+            this.ballPouch.put(monsterBall, 1);
+        }
     }
 
     public void buyMonsterBall(MonsterBall monsterBall, int quantity) {
@@ -22,5 +32,21 @@ public class BallPouch {
 
     public Map<MonsterBall, Integer> getBallPouch() {
         return Collections.unmodifiableMap(ballPouch);
+    }
+
+    public void usedBall(MonsterBall ball) {
+        if (this.ballPouch.get(ball) > 0) {
+            this.ballPouch.put(ball, this.ballPouch.get(ball) - 1);
+        }
+    }
+
+    public String getBallList() {
+        String myBallList = "";
+        for (MonsterBall monsterBall : ballPouch.keySet()) {
+            if (monsterBall != null)
+                myBallList += "🔴 Type : [" + monsterBall + "], 수량 : [" + this.ballPouch.get(monsterBall) + "] 개 \n";
+        }
+
+        return myBallList;
     }
 }

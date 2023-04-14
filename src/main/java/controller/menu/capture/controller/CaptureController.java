@@ -1,61 +1,94 @@
 package controller.menu.capture.controller;
 
-import controller.menu.capture.exception.ErrorMessage;
+
 import controller.menu.capture.service.CaptureServiceLogic;
 import controller.menu.capture.view.InputView;
 import controller.menu.capture.view.OutputView;
+import user.Player;
 import user.item.ball.MonsterBall;
 
 /**
  * 포획 controller
  */
 public class CaptureController {
-
     private final CaptureServiceLogic captureServiceLogic;
-    private final OutputView outputView;
     private final InputView inputView;
+    private final OutputView outputView;
+    private final String THROW_BALL_MENU = "1";
+    private final String GO_NEAR_MENU = "2";
+    private final String EXIT = "3";
 
     public CaptureController() {
         this.captureServiceLogic = new CaptureServiceLogic();
-        this.outputView = new OutputView();
         this.inputView = new InputView();
+        this.outputView = new OutputView();
     }
 
-    /**
-     * - Capture 메인메뉴
-     * 1. 포획
-     * 2. 다가간다
-     * 3. 도망간다
-     */
-    public void captureMenu() {
+    public void start() {
+        String wildPokemonName = captureServiceLogic.getWildPokemonName();
+        outputView.ready(wildPokemonName);
 
         while (true) {
-            //2. 세 가지 메뉴를 보여주고 선택을 입력받는다
             outputView.menu();
-            String menu = inputView.menu();
+            String inputMenuNumber = inputView.menu();
+            switch (inputMenuNumber) {
+                case THROW_BALL_MENU:
+                    outputView.showBallList(myBallList());
+                    MonsterBall throwBall = inputView.choiceMyBall();
 
-            switch (menu) {
-                case "1":
-                    outputView.selectBall();
-                    inputView.selectBall();
+                    if (!validateBallQuantity(throwBall)) {
+                        outputView.notEnoughQuantity(throwBall);
+                    }
+                    outputView.throwBall(wildPokemonName, throwBall);
 
-//                    String ballNumber = inputView.selectBall();
+                    if (captureServiceLogic.throwBall(throwBall)) {
+                        outputView.successCapture(wildPokemonName);
+                        return;
+                    }
 
+                    outputView.failCapture();
                     break;
-                case "2":
-//                    goNearMonster();
+
+                case GO_NEAR_MENU:
+                    outputView.goNear();
+
+                    if (!captureServiceLogic.isNearSuccess()) {
+                        outputView.runAway(wildPokemonName);
+                        return;
+                    }
+                    outputView.successGoNear();
                     break;
-                case "3":
+
+                case EXIT:
                     outputView.exit();
                     return;
+                default:
+                    if (captureServiceLogic.isRun()) {
+                        outputView.runAway(wildPokemonName);
+                        return;
+                    }
             }
+
         }
     }
 
     /**
-     * 어떤 볼을 쓸지 먼저 보여줍니다.
-     * 어떤 볼을 쓸지 고릅니다.
+     * 유저가 입력한(사용하고자 하는) 몬스터 볼의 수량을 검사합니다.
+     * 0개가 있다면 사용할 수 없도록 리턴합니다.
+     * @param inputBallName : 유저가 사용하고자하는 몬스터볼
+     * @return
      */
+    private boolean validateBallQuantity(MonsterBall inputBallName) {
+        if (Player.getInstance().getInventory().getBallPouch().getBallPouch().get(inputBallName) == 0) return false;
+        return true;
+    }
 
+    /**
+     * 유저가 보유하고 있는 몬스터 볼 리스트를 문자열로 리턴합니다.
+     * @return
+     */
+    private String myBallList() {
+        return Player.getInstance().getInventory().getBallPouch().getBallList();
+    }
 
 }

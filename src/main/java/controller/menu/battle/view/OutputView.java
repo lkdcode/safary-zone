@@ -57,4 +57,9 @@ public class OutputView {
         dottedPrint(message, MILLIS);
     }
 
+    public void goMyPokemon(String playerPokemonName) {
+        String messge = "[" + playerPokemonName + "] 을(를) 꺼냈습니다.\n"
+                + "가라 [" + playerPokemonName + "] !!!!!!!!!!!!!!!!!!!\n\n";
+        dottedPrint(messge, MILLIS);
+    }
 }

@@ -50,8 +50,8 @@ public class InputValidate {
      * @return : 1, 2, 3 중에 하나일 경우 해당 번호에 알맞는 열매를 리턴, 잘못된 값은 null을 리턴합니다.
      */
     public Berry BerryNumber(String inputBerryNumber) {
-        if (inputBerryNumber.equals(FIRST_MENU)) return Berry.RASPBERRY;
-        if (inputBerryNumber.equals(SECOND_MENU)) return Berry.BLUEBERRY;
+        if (inputBerryNumber.equals(FIRST_MENU)) return Berry.BLUEBERRY;
+        if (inputBerryNumber.equals(SECOND_MENU)) return Berry.RASPBERRY;
         if (inputBerryNumber.equals(THIRD_MENU)) return Berry.BLACKBERRY;
 
         return null;

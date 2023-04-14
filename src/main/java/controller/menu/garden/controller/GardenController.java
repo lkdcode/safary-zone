@@ -1,6 +1,5 @@
 package controller.menu.garden.controller;
 
-import controller.SystemController;
 import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
@@ -38,10 +37,12 @@ public class GardenController {
             String menu = inputView.inputMenu();
             switch (menu) {
                 case CHECK_MY_GARDEN :
-//                    outputView.showMyGarden();
+                    outputView.showMyGarden();
+                    stop();
                     break;
                 case PLANTING_BERRY :
                     plantingMenu();
+                    stop();
                     break;
                 case EXIT :
                     // test
@@ -49,10 +50,10 @@ public class GardenController {
 //                    shopController.menu();
                     // test
                     outputView.exit();
-                    new SystemController().start();
-                    break;
+                    return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
+                    stop();
             }
         }
     }
@@ -72,21 +73,24 @@ public class GardenController {
             outputView.showPlantingMenu();
             String menu = inputView.inputPlantingMenu();
             switch (menu) {
-                // TODO : 라즈베리, 블루베리 순서 변경
-                case "1": // 라즈베리 심기
-                    plantingBerry.plantingRaspBerry();
-                    break;
-                case "2": // 블루베리 심기
+                case "1": // 블루베리 심기
                     plantingBerry.plantingBlueBerry();
+                    stop();
+                    break;
+                case "2": // 라즈베리 심기
+                    plantingBerry.plantingRaspBerry();
+                    stop();
                     break;
                 case "3": // 블랙베리 심기
                     plantingBerry.plantingBlackBerry();
+                    stop();
                     break;
                 case EXIT: // 이전 메뉴로 돌아가기
                     outputView.exit();
                     return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
+                    stop();
             }
             // 심은 뒤 정원을 출력하고, 더 심을지 확인
             outputView.showMyGarden();
@@ -96,6 +100,11 @@ public class GardenController {
             // 그만 심을거면 메인 메뉴로 돌아가기
             if (answer.equals("2")) return;
         }
+    }
+
+    private void stop() {
+        outputView.stopMessage();
+        inputView.stopInput();
     }
 
 }
