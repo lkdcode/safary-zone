@@ -9,7 +9,6 @@ import controller.menu.playerinformation.controller.PlayerInformationController;
 import controller.menu.save.controller.SaveController;
 import controller.menu.shop.controller.ShopController;
 
-import java.util.Scanner;
 
 /**
  * main controller
@@ -51,7 +50,7 @@ public class SystemController {
                 gardenController.menu();
                 break;
             case ("3"): //포획
-                captureController.captureMenu();
+                captureController.start();
                 break;
             case ("4"): //배틀
                 battleController.start();

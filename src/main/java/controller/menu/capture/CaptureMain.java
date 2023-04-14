@@ -6,6 +6,6 @@ import controller.menu.capture.controller.CaptureController;
 public class CaptureMain {
 
     public static void main(String[] args) {
-        new CaptureController().captureMenu();
+        new CaptureController().start();
     }
 }

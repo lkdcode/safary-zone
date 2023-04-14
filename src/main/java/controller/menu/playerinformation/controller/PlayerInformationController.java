@@ -1,6 +1,7 @@
 package controller.menu.playerinformation.controller;
 
 import controller.SystemController;
+import controller.SystemMain;
 import controller.menu.playerinformation.PlayerInformationServiceLogic;
 import controller.menu.playerinformation.view.InputView;
 import controller.menu.playerinformation.view.OutputView;
@@ -23,10 +24,6 @@ public class PlayerInformationController {
     // 1.인벤토리, 캐릭터 레벨  getlevel, getinventory
     // 2. 보유한 포켓몬 리스트  -> servicelogic
     // 3. 나가기
-//    fightoutputview
-
-    //service로 호출?
-
 
 
     public PlayerInformationController() {
@@ -36,23 +33,28 @@ public class PlayerInformationController {
     }
 
     public void start() {
-        Scanner sc = new Scanner(System.in);
+        while (true) {
+            outputView.showPlayerMenu();
+            Scanner sc = new Scanner(System.in);
 
-        String selectPlayerInformation = sc.nextLine();
-        //유효성 검사
+            String selectPlayerInformation = inputView.menu();
 
 
-        switch (selectPlayerInformation) {
-            case "1":
-                //인벤토리, 플레이어 레벨 보여줌
-                break;
-            case "2":
-                outputView.showPokemonList(playerInformationServiceLogic.playerPokemonList());
-                break;
-            case "3":
-                return;
+            switch (selectPlayerInformation) {
+                case "1":
+                    outputView.showPlayerInventory();
+                    outputView.showPlayerLevel();
+                    //인벤토리, 플레이어 레벨 보여줌
+                    break;
+                case "2":
+                    outputView.showPokemonList(playerInformationServiceLogic.playerPokemonList());
+                    break;
+                case "3":
+                    outputView.backToMain();
+                    new SystemController().start();
+                    return;
+            }
         }
-
 
     }
 }

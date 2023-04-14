@@ -1,5 +1,7 @@
 package user.item.ball;
 
+import user.item.berry.Berry;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,5 +50,18 @@ public class BallPouch {
         }
 
         return myBallList;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder ballInformation = new StringBuilder();
+        for (MonsterBall ball : ballPouch.keySet()) {
+            ballInformation.append(ball)
+                    .append("\t")
+                    .append(ballPouch.get(ball))
+                    .append("\n");
+
+        }
+        return ballInformation.toString();
     }
 }

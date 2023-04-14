@@ -2,7 +2,9 @@ package controller.menu.playerinformation;
 
 
 import pokemon.pokemon.Pokemon;
+import user.Inventory;
 import user.Player;
+import user.item.ball.MonsterBall;
 
 import java.util.Map;
 
@@ -31,4 +33,9 @@ public class PlayerInformationServiceLogic {
         }
         return String.valueOf(playerPokemonList);
     }
+//    public String playerBallList(){
+//        StringBuilder playerBallList = new StringBuilder();
+//        Map<MonsterBall, Integer> ballList = Player
+//    }
+
 }
