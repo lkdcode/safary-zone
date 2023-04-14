@@ -4,13 +4,14 @@ import common.MakeCommon;
 import pokemon.books.NormalPokemonBooks;
 import pokemon.pokemon.Pokemon;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 포켓몬 리스트를 관리할 클래스입니다.
  */
-public class PokemonList {
+public class PokemonList implements Serializable {
     protected final Map<Integer, Pokemon> pokemonList;
 
     public PokemonList() {
