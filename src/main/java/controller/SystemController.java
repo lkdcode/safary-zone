@@ -1,5 +1,7 @@
 package controller;
 
+import View.InputView;
+import View.OutputView;
 import controller.menu.battle.controller.BattleController;
 import controller.menu.capture.controller.CaptureController;
 import controller.menu.garden.controller.GardenController;
