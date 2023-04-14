@@ -82,9 +82,6 @@ public class ShopController {
      *
      */
     private void buyMonsterBallMenu() {
-        // test
-        deleteBerry.deleteBerry();
-        // test
         outputView.showMonsterBallMenu();
         MonsterBall inputMonsterBallType = inputView.inputMonsterBallNumber();
         outputView.inputQuantity();

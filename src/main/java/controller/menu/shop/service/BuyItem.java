@@ -4,6 +4,9 @@ import user.Player;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
 
+/**
+ * 아이템을 구매하는 클래스
+ */
 public class BuyItem {
 
     public BuyItem() {
@@ -19,7 +22,9 @@ public class BuyItem {
                 .getBerryPouch().buyBerry(berry, quantity);
     }
 
-    private void setPlayerMoney(int price) {
-
+    protected void setPlayerMoney(int price) {
+        Player.getInstance().getInventory().setMoney(price);
     }
+
+
 }

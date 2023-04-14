@@ -11,6 +11,11 @@ public class ValidateMoney implements TradeItem {
     private final int NORMAL_MONSTER_BALL_PRICE = 1200;
     private final int HYPER_MONSTER_BALL_PRICE = 5000;
     private final int MASTER_MONSTER_BALL_PRICE = 7500;
+    private final BuyItem buyItem;
+
+    public ValidateMoney() {
+        this.buyItem = new BuyItem();
+    }
 
     @Override
     public boolean isEnoughMoney(Object o, int quantity) {
@@ -33,17 +38,17 @@ public class ValidateMoney implements TradeItem {
         switch (berry) {
             case BLUEBERRY:
                 if (playerMoney >= BLUEBERRY_PRICE * quantity) {
-                    Player.getInstance().getInventory().setMoney(playerMoney - BLUEBERRY_PRICE * quantity);
+                    buyItem.setPlayerMoney(playerMoney - BLUEBERRY_PRICE * quantity);
                     return true;
                 }
             case RASPBERRY:
                 if (playerMoney >= RASPBERRY_PRICE * quantity) {
-                    Player.getInstance().getInventory().setMoney(playerMoney - RASPBERRY_PRICE * quantity);
+                    buyItem.setPlayerMoney(playerMoney - RASPBERRY_PRICE * quantity);
                     return true;
                 }
             case BLACKBERRY:
                 if (playerMoney >= BLACKBERRY_PRICE * quantity) {
-                    Player.getInstance().getInventory().setMoney(playerMoney - BLACKBERRY_PRICE * quantity);
+                    buyItem.setPlayerMoney(playerMoney - BLACKBERRY_PRICE * quantity);
                     return true;
                 }
         }

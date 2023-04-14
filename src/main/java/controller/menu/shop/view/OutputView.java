@@ -12,7 +12,7 @@ public class OutputView {
     private final String WELCOME_MESSAGE = "\n🏪 상점에 오신 걸 환영합니다.";
     private final String FIRST_MENU = "1. 🖲️ 몬스터볼 구매";
     private final String SECOND_MENU = "2. 🍓 열매 구매";
-    private final String BACK_MENU = "0. 🔙 돌아가기\n";
+    private final String BACK_MENU = "0. 🔙 돌아가기";
     private final String BUY_MONSTER_BALL_MENU = "\n# 몬스터 볼 구매 매뉴\n";
     private final String FIRST_BALL = "1. 일반 몬스터 볼 - 1200머니 👉 [포획 확률 : ??%]";
     private final String SECOND_BALL = "2. 하이퍼 몬스터 볼 - 5000머니 👉 [포획 확률 : ??%]";
@@ -111,7 +111,7 @@ public class OutputView {
     }
 
     public void stopMessage() {
-        print("\n ↪ 계속 하려면 엔터를 누르세요...");
+        print(" ↪ 계속 하려면 엔터를 누르세요...");
     }
 
     private void print(String message) {
