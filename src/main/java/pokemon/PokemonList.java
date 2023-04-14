@@ -28,7 +28,6 @@ public class PokemonList {
      * Player 는 하나의 포켓몬스터를 가지고 게임을 시작합니다.
      */
     private void initialize() {
-
         for (NormalPokemonBooks pokemon : NormalPokemonBooks.values()) {
             pokemonList.put(pokemon.getInformation().getBookNumber(), null);
         }

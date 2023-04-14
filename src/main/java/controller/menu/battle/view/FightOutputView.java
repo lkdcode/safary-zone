@@ -26,7 +26,6 @@ public class FightOutputView {
                 + "😵 [" + target + "] 의 현재 체력은 [" + targetHp + "] 이다 💔\n\n";
 
         dottedPrint(message, MILLIS);
-
     }
 
     public void loading() {

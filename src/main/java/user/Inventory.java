@@ -28,6 +28,6 @@ public class Inventory {
     }
 
     public void setMoney(int money) {
-        this.money = money;
+        this.money += money;
     }
 }
