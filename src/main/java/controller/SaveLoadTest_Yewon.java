@@ -24,10 +24,10 @@ public class SaveLoadTest_Yewon {
             throw new RuntimeException(e);
         }
         switch (num) {
-            case "1": new GardenController().menu(); break;
-            case "2": new ShopController().menu(); break;
+            case "1": new GardenController().start();break;
+            case "2": new ShopController().start(); break;
             case "3": saveFile.saveFile(); break;
-            case "4": loadFile.loadFile(); new ShopController().menu(); break;
+            case "4": loadFile.loadFile(); new ShopController().start(); break;
             default:
                 System.out.println("default");
         }
