@@ -12,7 +12,7 @@ public class OutputView {
 
     public void menu() {
         System.out.println("👉 매뉴 번호를 입력해주세요");
-        System.out.println("[1️⃣ 몬스터볼 던지기] [2️⃣ 다가가기] [3️⃣ 종료하기]");
+        System.out.println("[1️⃣ 몬스터볼 던지기] [2️⃣ 다가가기] [0️⃣ 종료하기]");
     }
 
     public void ready(String wildPokemonName) {

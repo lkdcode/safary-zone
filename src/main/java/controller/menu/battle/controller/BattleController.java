@@ -12,20 +12,20 @@ import user.Player;
  */
 public class BattleController {
     private final FightController fightController;
-    private final SummonServiceLogic summonServiceLogic;
     private final OutputView outputView;
     private final InputView inputView;
-    private final Pokemon wildPokemon;
+    private SummonServiceLogic summonServiceLogic;
+    private Pokemon wildPokemon;
 
     public BattleController() {
         this.fightController = new FightController();
-        this.summonServiceLogic = new SummonServiceLogic();
         this.outputView = new OutputView();
         this.inputView = new InputView();
-        this.wildPokemon = summonServiceLogic.getWhildPokemon();
     }
 
     public void start() {
+        this.summonServiceLogic = new SummonServiceLogic();
+        this.wildPokemon = summonServiceLogic.getWhildPokemon();
         String wildPokemonName = wildPokemon.getInformation().getName();
         outputView.appearWildPokemon(wildPokemonName);
 
@@ -38,6 +38,7 @@ public class BattleController {
                     // 싸우기
                     outputView.inputFight();
                     setMyPokemon();
+                    if (fightController.isWon()) return;
                     break;
                 case "2":
                     // 도망가기

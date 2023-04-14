@@ -3,6 +3,7 @@ package controller.menu.battle.view;
 import user.Player;
 
 import static common.MakeCommon.dottedPrint;
+import static common.MakeCommon.stopLine;
 
 /**
  * 전투 결과를 출력해주는 클래스
@@ -29,6 +30,7 @@ public class FightOutputView {
     }
 
     public void loading() {
+        stopLine();
         String message = "전 투 중 . . . . . ⚔️ 🥊 ⚔️ 🥊 ⚔️ 🥊 ⚔️ 🥊 ⚔️ 🥊";
         dottedPrint(message, MILLIS);
     }

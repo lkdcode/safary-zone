@@ -1,6 +1,5 @@
 package controller.menu.shop.controller;
 
-import controller.menu.garden.controller.GardenController;
 import controller.menu.garden.service.DeleteBerry;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
@@ -43,7 +42,7 @@ public class ShopController {
      * 2. inputView 가 매뉴 번호를 입력 받습니다.
      * 3. 해당 매뉴의 메서드를 호출합니다.
      */
-    public void menu() {
+    public void start() {
         while (true) {
             outputView.showMenu();
             String menu = inputView.inputMenu();

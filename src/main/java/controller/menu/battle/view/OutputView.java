@@ -14,7 +14,7 @@ public class OutputView {
     private final String DO_IT_FIGHT = "1. 싸우기 🥊\n";
     private final String EXIT_RUN = "2. 도망가기 🏃‍\n";
     private final String INPUT_FIGHT = "\n🥊⚔️🥊 싸우기를 선택하였습니다. 🥊⚔️🥊\n";
-    private final String INPUT_RUN = "\n\n도망가기를 선택하였습니다. 🏃‍💨💨";
+    private final String INPUT_RUN = "\n\n도망가기를 선택하였습니다. 🏃‍💨💨\n\n";
     private final String CHOICE_MY_POKEMON = "\n\n😼포켓몬을 😾 선택해주세요 🙀\n";
     private final String MY_POKEMON_LIST_START = "➖➖➖➖ 나의 포켓몬 리스트 ➖➖➖➖\n\n";
     private final String MY_POKEMON_LIST_END = "➖➖➖➖ ➖➖➖➖➖➖ ➖➖➖➖\n\n";
@@ -25,6 +25,7 @@ public class OutputView {
     public void appearWildPokemon(String wildPokemonName) {
         String message = READY + WARNING + APPEAR_FIRST + wildPokemonName + APPEAR_LAST;
         dottedPrint(message, MILLIS);
+        stopLine();
     }
 
     public void choiceMenu() {

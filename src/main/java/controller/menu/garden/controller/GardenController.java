@@ -4,7 +4,6 @@ import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
-import controller.menu.shop.controller.ShopController;
 
 /**
  * 정원 controller
@@ -31,7 +30,7 @@ public class GardenController {
      * 0 을 입력하면 시작메뉴로 돌아갑니다.
      * 잘못된 문자를 입력하면 오류 메세지가 출력되고 재입력 요청합니다.
      */
-    public void menu() {
+    public void start() {
         while(true) {
             outputView.showGardenMenu();
             String menu = inputView.inputMenu();

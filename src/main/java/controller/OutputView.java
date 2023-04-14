@@ -1,33 +1,79 @@
 package controller;
 
 
-import controller.menu.battle.controller.BattleController;
-import controller.menu.capture.controller.CaptureController;
-import controller.menu.collector.controller.CollectorController;
-import controller.menu.garden.controller.GardenController;
-import controller.menu.save.controller.SaveController;
+import static common.MakeCommon.*;
 
 public class OutputView {
-
-    private BattleController battleController;
-    private CaptureController captureController;
-    private CollectorController collectorController;
-    private GardenController gardenController;
-    private SaveController saveController;
-    private String exit;
+    private final int MILLIS = 30;
 
     //메인메뉴를 보여준다
     public void menu() {
-        System.out.println("\n\t\t<사파리존에 어서오세요!>\n");
-        System.out.println("\t\t┌────게임 메뉴────┐");
-        System.out.println("\t\t\t1. 상점");
-        System.out.println("\t\t\t2. 정원");
-        System.out.println("\t\t\t3. 포획");
-        System.out.println("\t\t\t4. 배틀");
-        System.out.println("\t\t\t5. 프로필");
-        System.out.println("\t\t\t6. 저장");
-        System.out.println("\t\t\t7. 나가기");
-        System.out.println("\t\t└────────────────┘");
+
+        System.out.println("1번 매뉴");
+        System.out.println("2번 매뉴");
+        System.out.println("3번 매뉴");
+        System.out.println("4번 매뉴");
+        System.out.println("5번 매뉴");
+        System.out.println("6번 매뉴");
+        System.out.println("7번 매뉴");
 
     }
+
+    public void welcome() {
+        System.out.println("게임 사용 설명서 ....... 개요 등");
+        System.out.println("게임 사용 설명서 ....... 개요 등");
+        System.out.println("게임 사용 설명서 ....... 개요 등");
+        System.out.println("게임 사용 설명서 ....... 개요 등");
+        System.out.println("게임 사용 설명서 ....... 개요 등");
+        System.out.println("게임 사용 설명서 ....... 개요 등");
+    }
+
+    public void shop() {
+        String message = "\n\n🏪 상점으로 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
+    public void garden() {
+        String message = "\n\n🌸 정원으로 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
+    public void capture() {
+        String message = "\n\n🎣 포획하러 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
+    public void battle() {
+        String message = "\n\n🤜 전투하러 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
+    public void information() {
+        String message = "\n\nℹ️ 내 정보 보러 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
+    public void save() {
+        String message = "\n\n📀 저장/불러오기하러 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
+    public void isExit() {
+        String message = "\n\n🤷 정말로 종료하시겠습니까? 🤷\n"
+                + "[1️⃣ 종료] [2️⃣ 돌아가기]\n";
+        dottedPrint(message, MILLIS);
+    }
+
+    public void exit() {
+        String message = "\n\n🙋🙋🙋🙋‍👋✋ 종료되었습니다. ✋👋🙋🙋🙋\n\n";
+        dottedPrint(message, MILLIS);
+    }
+
+
 }
