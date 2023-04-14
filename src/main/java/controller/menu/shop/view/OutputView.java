@@ -3,6 +3,7 @@ package controller.menu.shop.view;
 import user.Player;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
+
 import static common.MakeCommon.*;
 
 /**
@@ -46,9 +47,9 @@ public class OutputView {
 
     public void showMonsterBallMenu() {
         String message = BUY_MONSTER_BALL_MENU + System.lineSeparator()
-        + FIRST_BALL + System.lineSeparator()
-        + SECOND_BALL + System.lineSeparator()
-        + THIRD_BALL + System.lineSeparator();
+                + FIRST_BALL + System.lineSeparator()
+                + SECOND_BALL + System.lineSeparator()
+                + THIRD_BALL + System.lineSeparator();
         dottedPrint(message, SHORT_MILLIS);
     }
 
@@ -67,7 +68,6 @@ public class OutputView {
     public void failBuyBerry() {
         dottedPrint(FAIL_BUY_BERRY, MILLIS);
     }
-
 
 
     public void successfulBuyMonsterBall(MonsterBall monsterBall, int quantity) {
@@ -110,11 +110,4 @@ public class OutputView {
         dottedPrint(BACK, MILLIS);
     }
 
-    public void stopMessage() {
-        print(" ↪ 계속 하려면 엔터를 누르세요...");
-    }
-
-    private void print(String message) {
-        dottedPrint(message, MILLIS);
-    }
 }
