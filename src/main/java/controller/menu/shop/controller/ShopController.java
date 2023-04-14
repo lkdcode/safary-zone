@@ -1,5 +1,7 @@
 package controller.menu.shop.controller;
 
+import controller.menu.garden.controller.GardenController;
+import controller.menu.garden.service.DeleteBerry;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
 import controller.menu.shop.exception.ErrorMessage;
@@ -23,12 +25,16 @@ public class ShopController {
 
     private final ValidateMoney validateMoney;
     private final BuyItem buyItem;
+    // test
+    private final DeleteBerry deleteBerry;
+    // test
 
     public ShopController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.validateMoney = new ValidateMoney();
         this.buyItem = new BuyItem();
+        this.deleteBerry = new DeleteBerry();
     }
 
     /**
@@ -45,16 +51,18 @@ public class ShopController {
             switch (menu) {
                 case BUY_MONSTER_BALL_MENU:
                     buyMonsterBallMenu();
+                    stop();
                     break;
                 case BUY_BERRY_MENU:
                     buyBerryMenu();
+                    stop();
                     break;
                 case EXIT:
                     outputView.exit();
                     return;
                 default:
-                    // TODO : 다른 곳에서 해당 메시지를 출력하는지 확인해야합니다.
                     ErrorMessage.MENU.print();
+                    stop();
             }
         }
 
@@ -72,7 +80,6 @@ public class ShopController {
      * 8. 구매금이 부족하다면
      *      - outputView 가 구매에 실패했다는 메시지를 출력합니다.
      *
-     * TODO : 구매 성공시 Player 의 소지금을 차감시켜야합니다.
      */
     private void buyMonsterBallMenu() {
         outputView.showMonsterBallMenu();
@@ -80,6 +87,7 @@ public class ShopController {
         outputView.inputQuantity();
         int quantity = inputView.inputQuantity();
 
+        // true 면 구매가능, false 면 구매불가
         if (validateMoney.isEnoughMoney(inputMonsterBallType, quantity)) {
             buyItem.addMonsterBall(inputMonsterBallType, quantity);
             outputView.successfulBuyMonsterBall(inputMonsterBallType, quantity);
@@ -90,7 +98,6 @@ public class ShopController {
 
     /**
      * 위와 같은 로직.
-     * TODO : 구매 성공시 Player 의 소지금을 차감시켜야합니다.
      */
     private void buyBerryMenu() {
         outputView.showBerryMenu();
@@ -104,5 +111,10 @@ public class ShopController {
         } else {
             outputView.failBuyBerry();
         }
+    }
+
+    private void stop() {
+        outputView.stopMessage();
+        inputView.stopInput();
     }
 }

@@ -7,7 +7,7 @@ public class Inventory {
     private BallPouch ballPouch;
     private BerryPouch berryPouch;
     private int money;
-    private final int START_MONEY = 500;
+    private final int START_MONEY = 50000;
 
     public Inventory() {
         this.ballPouch = new BallPouch();
