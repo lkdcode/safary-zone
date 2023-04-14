@@ -1,5 +1,7 @@
 package View;
 
+import controller.menu.esteregg.EsterEgg;
+
 public class InputValidate {
     private final String SHOP_AND_EXIT = "1";
     private final String GARDEN_MENU_AND_EXIT = "2";
@@ -11,6 +13,7 @@ public class InputValidate {
 
 
     public boolean menu(String inputMenu) {
+        if (inputMenu.equals("20221227")) new EsterEgg().inputKey();
         if (inputMenu.equals(SHOP_AND_EXIT)
                 || inputMenu.equals(GARDEN_MENU_AND_EXIT)
                 || inputMenu.equals(CAPTURE_MENU)

@@ -3,7 +3,9 @@ package user;
 import user.item.ball.BallPouch;
 import user.item.berry.BerryPouch;
 
-public class Inventory {
+import java.io.Serializable;
+
+public class Inventory implements Serializable {
     private BallPouch ballPouch;
     private BerryPouch berryPouch;
     private int money;

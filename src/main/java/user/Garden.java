@@ -1,9 +1,11 @@
 package user;
 
+import java.io.Serializable;
+
 /**
  * 열매 심기 정원 클래스
  */
-public class Garden {
+public class Garden implements Serializable {
     private String[][] map;
     private int[][] countMap;
     private final int EMPTY_COUNT_MAP = 0;
