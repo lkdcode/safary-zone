@@ -10,13 +10,13 @@ import java.io.*;
 /**
  * 저장되어있는 유저 데이터를 불러오는 클래스
  */
-public class loadFile {
+public class LoadFile {
 
     private final InputView inputView;
     private final OutputView outputView;
     private Player player;
 
-    public loadFile() {
+    public LoadFile() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }

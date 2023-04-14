@@ -12,17 +12,17 @@ import java.io.*;
  * - 이미 데이터가 있는 경우: 기존파일 삭제하고 업데이트된 파일 저장
  * - 데이터가 없는 경우: 새로 저장
  */
-public class saveFile {
+public class SaveFile {
 
     private final InputView inputView;
     private final OutputView outputView;
 
-    public saveFile() {
+    public SaveFile() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
-    public void saveFile(String[] args) {
+    public void saveFile() {
 
         // 기존 플레이어 객체 가져오기
         Player savePlayer = Player.getInstance();

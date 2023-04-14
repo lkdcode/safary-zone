@@ -1,6 +1,5 @@
 package controller.menu.shop.controller;
 
-import controller.menu.garden.controller.GardenController;
 import controller.menu.garden.service.DeleteBerry;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
