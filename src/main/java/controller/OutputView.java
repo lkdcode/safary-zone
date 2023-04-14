@@ -3,7 +3,6 @@ package controller;
 
 import controller.menu.battle.controller.BattleController;
 import controller.menu.capture.controller.CaptureController;
-import controller.menu.collector.controller.CollectorController;
 import controller.menu.garden.controller.GardenController;
 import controller.menu.playerinformation.controller.PlayerInformationController;
 import controller.menu.save.controller.SaveController;
@@ -12,7 +11,6 @@ public class OutputView {
 
     private BattleController battleController;
     private CaptureController captureController;
-    private CollectorController collectorController;
     private GardenController gardenController;
     private PlayerInformationController myInformationController;
     private SaveController saveController;
