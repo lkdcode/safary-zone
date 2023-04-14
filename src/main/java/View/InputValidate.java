@@ -1,4 +1,4 @@
-package controller;
+package View;
 
 public class InputValidate {
     private final String SHOP_AND_EXIT = "1";
