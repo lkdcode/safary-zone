@@ -38,9 +38,7 @@ public class Player implements Serializable {
     }
 
     public static void load(Player player) {
-
-            instance = player;
-
+        instance = player;
     }
 
     public Inventory getInventory() {
