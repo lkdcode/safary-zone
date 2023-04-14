@@ -3,9 +3,7 @@ package controller;
 
 import controller.menu.battle.controller.BattleController;
 import controller.menu.capture.controller.CaptureController;
-import controller.menu.collector.controller.CollectorController;
 import controller.menu.garden.controller.GardenController;
-import controller.menu.playerinformation.controller.PlayerInformationController;
 import controller.menu.save.controller.SaveController;
 import controller.menu.shop.controller.ShopController;
 
@@ -16,23 +14,19 @@ import controller.menu.shop.controller.ShopController;
 public class SystemController {
 
     private final OutputView outputView;
-    private final InputView inputView;
     private ShopController shopController;
     private GardenController gardenController;
     private CaptureController captureController;
     private BattleController battleController;
-    private PlayerInformationController playerInformationController;
     private SaveController saveController;
 
 
     public SystemController() {
         this.outputView = new OutputView();
-        this.inputView = new InputView();
         this.shopController = new ShopController();
-        this.gardenController =new GardenController();
+        this.gardenController = new GardenController();
         this.captureController = new CaptureController();
         this.battleController = new BattleController();
-        this.playerInformationController = new PlayerInformationController();
         this.saveController = new SaveController();
     }
 
@@ -40,9 +34,7 @@ public class SystemController {
 
         outputView.menu();
 
-        String menuNumber = inputView.selectMenu();
-
-        switch (menuNumber) {
+        switch ("1") {
             case ("1"): //상점
                 shopController.menu();
                 break;
@@ -56,7 +48,6 @@ public class SystemController {
                 battleController.start();
                 break;
             case ("5"): //프로필
-                playerInformationController.start();
                 break;
             case ("6"): //저장
 //                saveController.
