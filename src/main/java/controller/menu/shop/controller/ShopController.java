@@ -1,5 +1,7 @@
 package controller.menu.shop.controller;
 
+import controller.menu.garden.controller.GardenController;
+import controller.menu.garden.service.DeleteBerry;
 import user.item.ball.MonsterBall;
 import user.item.berry.Berry;
 import controller.menu.shop.exception.ErrorMessage;
@@ -23,12 +25,16 @@ public class ShopController {
 
     private final ValidateMoney validateMoney;
     private final BuyItem buyItem;
+    // test
+    private final DeleteBerry deleteBerry;
+    // test
 
     public ShopController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.validateMoney = new ValidateMoney();
         this.buyItem = new BuyItem();
+        this.deleteBerry = new DeleteBerry();
     }
 
     /**
@@ -50,8 +56,10 @@ public class ShopController {
                     buyBerryMenu();
                     break;
                 case EXIT:
+                    GardenController gardenController = new GardenController();
+                    gardenController.menu();
 //                    outputView.exit();
-                    return;
+//                    return;
                 default:
                     ErrorMessage.MENU.print();
             }
@@ -73,6 +81,9 @@ public class ShopController {
      *
      */
     private void buyMonsterBallMenu() {
+        // test
+        deleteBerry.deleteBerry();
+        // test
         outputView.showMonsterBallMenu();
         MonsterBall inputMonsterBallType = inputView.inputMonsterBallNumber();
         outputView.inputQuantity();

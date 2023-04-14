@@ -32,8 +32,8 @@ public class OutputView {
     private final String BOUGHT_BERRY = "구매한 열매 종류 👉 ";
     private final String BALANCE_MONEY = "구매 후 남은 머니 💰 ";
     private final String NOW_MONEY = "현재 소지한 머니 💰 ";
-    private final int MILLIS = 30;
-    private final int SHORT_MILLIS = 10;
+    private final int MILLIS = 1; // 30
+    private final int SHORT_MILLIS = 1; // 10
 
     public void showMenu() {
         String message = WELCOME_MESSAGE + System.lineSeparator()

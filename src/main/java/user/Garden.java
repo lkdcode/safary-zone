@@ -43,7 +43,7 @@ public class Garden {
         return map;
     }
 
-    public String setMap(String[][] map) {
+    public void setMap(String[][] map) {
         this.map = map;
     }
 

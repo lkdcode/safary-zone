@@ -18,8 +18,8 @@ public class OutputView {
     private final String PLANTING_RASP_BERRY = "2. 🍓 라즈베리 심기 👉 [일정 확률로 좌,우로 열매를 뿌립니다.]";
     private final String PLANTING_BLACK_BERRY = "3. ♣️ 블랙베리 심기 👉 [일정 확률로 상,하,좌,우로 열매를 뿌립니다.]";
     private final String BACK = "\n돌아갑니다.\n\n";
-    private final int MILLIS = 30;
-    private final int SHORT_MILLS = 10;
+    private final int MILLIS = 1; // 30
+    private final int SHORT_MILLS = 1; // 10
 
     public void showGardenMenu() {
         String message = GARDEN_WELCOME_MESSAGE
