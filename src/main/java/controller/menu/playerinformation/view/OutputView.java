@@ -28,8 +28,8 @@ public class OutputView {
     public void showPlayerInventory(){
         Inventory inventory = Player.getInstance().getInventory();
         System.out.println("<<플레이어 인벤토리>>");
-        System.out.println(inventory.getBallPouch().getBallPouch().toString());
-        System.out.println(inventory.getBerryPouch().getBerryPouch().toString());
+        System.out.println(inventory.getBallPouch().getBallList());
+        System.out.println(inventory.getBerryPouch().getBerryList());
         System.out.printf("용돈: %d원\n\n", inventory.getMoney());
 
     }

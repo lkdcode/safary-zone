@@ -1,5 +1,7 @@
 package user.item.berry;
 
+import user.item.ball.MonsterBall;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,5 +47,15 @@ public class BerryPouch {
 
         }
         return berryInformation.toString();
+    }
+
+    public String getBerryList() {
+        String myBerryList = "";
+        for (Berry berry : berryPouch.keySet()) {
+            if (berry != null)
+                myBerryList += "🟢 Type : [" + berry + "], 수량 : [" + this.berryPouch.get(berry) + "] 개 \n";
+        }
+
+        return myBerryList;
     }
 }

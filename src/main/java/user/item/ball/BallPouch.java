@@ -52,16 +52,4 @@ public class BallPouch {
         return myBallList;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder ballInformation = new StringBuilder();
-        for (MonsterBall ball : ballPouch.keySet()) {
-            ballInformation.append(ball)
-                    .append("\t")
-                    .append(ballPouch.get(ball))
-                    .append("\n");
-
-        }
-        return ballInformation.toString();
-    }
 }
