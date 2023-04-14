@@ -2,11 +2,14 @@ package user;
 
 import pokemon.PokemonList;
 
+import java.io.Serializable;
+
 
 /**
  * 플레이어 클래스
  */
-public class Player {
+// TODO : Player 객체 저장을 위해 직렬화클래스 상속받았습니다.
+public class Player implements Serializable {
     private static Player instance;
     private final int START_LEVEL = 1;
     private final int START_EXP = 0;
@@ -26,11 +29,18 @@ public class Player {
         this.exp = START_EXP;
     }
 
+    // TODO: 유저데이터 로드받아서 객체 생성하는 걸로 변경
     public static Player getInstance() {
         if (instance == null) {
             instance = new Player();
         }
         return instance;
+    }
+
+    public static void load(Player player) {
+
+            instance = player;
+
     }
 
     public Inventory getInventory() {
@@ -47,6 +57,11 @@ public class Player {
 
     public PokemonList getPokemonList() {
         return pokemonList;
+    }
+
+    // TODO : 유저 객체 저장을 위해 getExp 추가했습니다.
+    public int getExp() {
+        return exp;
     }
 
     /**

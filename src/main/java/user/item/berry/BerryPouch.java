@@ -1,10 +1,11 @@
 package user.item.berry;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BerryPouch {
+public class BerryPouch implements Serializable {
     private Map<Berry, Integer> berryPouch;
 
     public BerryPouch() {

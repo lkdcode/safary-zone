@@ -38,6 +38,7 @@ public class CaptureController {
 
                     if (!validateBallQuantity(throwBall)) {
                         outputView.notEnoughQuantity(throwBall);
+                        break;
                     }
                     outputView.throwBall(wildPokemonName, throwBall);
 
