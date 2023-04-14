@@ -1,4 +1,4 @@
-package controller;
+package View;
 
 import controller.menu.shop.exception.ErrorMessage;
 
