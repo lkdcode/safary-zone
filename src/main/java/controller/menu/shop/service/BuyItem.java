@@ -23,8 +23,7 @@ public class BuyItem {
     }
 
     protected void setPlayerMoney(int price) {
-        Player.getInstance().getInventory().setMoney(price);
+        Player.getInstance().getInventory().setMoneyByShop(price);
     }
-
 
 }
