@@ -1,5 +1,8 @@
 package controller.menu.save.view;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * 유저로부터 입력받은 값의 유효성 검사
  */
@@ -34,5 +37,11 @@ public class InputValidate {
         if (input.equals(FIRST_MENU) || input.equals(SECOND_MENU) || input.equals(BACK_MENU))
             return true;
         return false;
+    }
+
+    public void FileDuplicationValidate(String inputFileName) { // String
+        // TODO : 입력한 파일명이 중복일시, 다시 입력하게 하는 메서드 추가중입니다
+//        Pattern pattern = Pattern.compile()
+//        Matcher matcher =
     }
 }
