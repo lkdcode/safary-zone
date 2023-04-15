@@ -4,10 +4,17 @@ import controller.menu.playerinformation.PlayerInformationServiceLogic;
 import user.Inventory;
 import user.Player;
 
+import static common.MakeCommon.dottedPrint;
+
 /**
  * 콘솔에 출력하는 역할
  */
 public class OutputView {
+    private final String PLAYER_MENU = "📋 플레이어의 정보입니다 📋";
+    private final String INVENTORY_LIST = "1️⃣ 인벤토리, 계정 레벨";
+    private final String POKEMON_LIST = "2️⃣ 보유 포켓몬";
+    private final String EXIT_MENU = "3️⃣ 나가기";
+    private final String PLAYER_INVENTORY = "📦🎁플레이어 인벤토리🎁📦";
 
 
     public void showPokemonList(String pokemonList) {
@@ -15,10 +22,11 @@ public class OutputView {
     }
 
     public void showPlayerMenu() {
-        System.out.println("플레이어의 정보입니다");
-        System.out.println("1. 인벤토리, 계정 레벨");
-        System.out.println("2. 보유 포켓몬");
-        System.out.println("3. 나가기");
+        String printMessage = PLAYER_MENU+"\n"
+                +INVENTORY_LIST+"\n"
+                +POKEMON_LIST+"\n"
+                +EXIT_MENU+"\n";
+        dottedPrint(printMessage, 10);
     }
 
     public void backToMain() {
@@ -27,14 +35,19 @@ public class OutputView {
 
     public void showPlayerInventory(){
         Inventory inventory = Player.getInstance().getInventory();
-        System.out.println("<<플레이어 인벤토리>>");
-        System.out.println(inventory.getBallPouch().getBallList());
-        System.out.println(inventory.getBerryPouch().getBerryList());
-        System.out.printf("용돈: %d원\n\n", inventory.getMoney());
-
+        String PLAYER_BALL_LIST = inventory.getBallPouch().getBallList();
+        String PLAYER_BERRY_LIST = inventory.getBerryPouch().getBerryList();
+        String printMessage = PLAYER_INVENTORY+"\n"
+                +PLAYER_BALL_LIST+"\n"
+                +PLAYER_BERRY_LIST+"\n"
+                +"💵용돈: "+inventory.getMoney()+"원\n\n";
+        dottedPrint(printMessage, 5);
     }
+
     public void showPlayerLevel(){
-        System.out.printf("플레이어 레벨: Lv.%s\n\n",Player.getInstance().getLevel());
+        String printMessage =
+                "🏅플레이어 레벨🏅: "+"Lv."+Player.getInstance().getLevel()+"\n\n";
+        dottedPrint(printMessage, 5);
     }
 
 }
