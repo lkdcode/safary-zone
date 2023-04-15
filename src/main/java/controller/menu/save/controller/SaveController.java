@@ -34,25 +34,27 @@ public class SaveController {
 
     public void start() {
         // 저장, 불러오기, 돌아가기 중에 고르는 메뉴 출력
-        outputView.choiceMenu();
-        // 메뉴 선택에 따라 메서드 실행
-        // 메뉴 입력받기
-        String menu = inputView.inputMenu();
+        while (true) {
+            outputView.choiceMenu();
+            // 메뉴 선택에 따라 메서드 실행
+            // 메뉴 입력받기
+            String menu = inputView.inputMenu();
 
-        switch (menu) {
-            case SAVE:
-                save();
-                stopLine();
-                break;
-            case LOAD:
-                load();
-                stopLine();
-                break;
-            case EXIT:
-                outputView.exit();
-                break;
-            default:
-                ErrormessageSave.INPUT_MENU.print();
+            switch (menu) {
+                case SAVE:
+                    save();
+                    stopLine();
+                    break;
+                case LOAD:
+                    load();
+                    stopLine();
+                    break;
+                case EXIT:
+                    outputView.exit();
+                    return;
+                default:
+                    ErrormessageSave.INPUT_MENU.print();
+            }
         }
     }
 
