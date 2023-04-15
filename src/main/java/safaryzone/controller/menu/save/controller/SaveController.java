@@ -9,6 +9,8 @@ import safaryzone.controller.menu.save.view.InputView;
 import safaryzone.controller.menu.save.view.OutputView;
 import safaryzone.common.MakeCommon;
 
+import static safaryzone.controller.menu.save.Path.*;
+
 /**
  * 저장 / 불러오기 controller
  */
@@ -64,7 +66,7 @@ public class SaveController {
             outputView.saveFile();
             inputFileName = inputView.inputFileName();
             // 파일명 중복 체크
-            String file = Path.USER_SAVE_PATH + "/" + inputFileName + ".sav";
+            String file = PATH + "/" + inputFileName + ".sav";
             if (inputValidate.isLiveFile(file)) {
                 // 파일이 이미 존재하는 경우
                 outputView.fileDuplicationMenu();
