@@ -13,19 +13,25 @@ public class EndingServiceLogic {
 
     public boolean check() {
         boolean isEnding = checkGarden() && checkLevel();
-        if (isEnding) getLegendPokemon();
+        if (isEnding) {
+            getLegendPokemon();
+            resetGarden();
+        }
 
         return isEnding;
     }
 
     private void getLegendPokemon() {
-        // 플레이어에게 전설의 포켓몬스터를 추가한다.
         int legendBookSize = LegendPokemonBooks.values().length;
         int bookNumber = (int) getRandom(1, legendBookSize);
 
         Player.getInstance().getPokemonList().playerPokemonList().put(
                 bookNumber, LegendPokemonBooks.values()[bookNumber]
         );
+    }
+
+    private void resetGarden() {
+        Player.getInstance().resetGarden();
     }
 
 
