@@ -21,15 +21,16 @@ public class OutputView {
 
     public void menu() {
         System.out.println("➖➖➖➖➖  메인 메뉴  ➖➖➖➖➖");
-        System.out.println("🔻 1번 상점가기");
-        System.out.println("🔻 2번 정원 가꾸러 가기");
-        System.out.println("🔻 3번 포획하기");
-        System.out.println("🔻 4번 배틀라운드");
-        System.out.println("🔻 5번 내 정보 보기");
-        System.out.println("🔻 6번 저장/불러오기");
-        System.out.println("🔻 7번 종료하기\n");
+        System.out.println("🔻 1️⃣ 상점가기");
+        System.out.println("🔻 2️⃣ 정원 가꾸러 가기");
+        System.out.println("🔻 3️⃣ 포획하기");
+        System.out.println("🔻 4️⃣ 배틀라운드");
+        System.out.println("🔻 5️⃣ 진화");
+        System.out.println("🔻 6️⃣ 내 정보 보기");
+        System.out.println("🔻 7️⃣ 저장/불러오기");
+        System.out.println("🔻 8️⃣ 게임 설명서");
+        System.out.println("🔻 0️⃣ 종료하기\n");
         System.out.println("➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖");
-
     }
 
     public void shop() {
@@ -56,6 +57,12 @@ public class OutputView {
         stopLine();
     }
 
+    public void evolution() {
+        String message = "\n\n🪫 진화시키러 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
     public void information() {
         String message = "\n\nℹ️ 내 정보 보러 이동하는 중 .....🚶\n\n";
         dottedPrint(message, MILLIS);
@@ -68,6 +75,12 @@ public class OutputView {
         stopLine();
     }
 
+    public void help() {
+        String message = "\n\n📚 게임 설명보러 이동하는 중 .....🚶\n\n";
+        dottedPrint(message, MILLIS);
+        stopLine();
+    }
+
     public void isExit() {
         String message = "\n\n🤷 정말로 종료하시겠습니까? 🤷\n"
                 + "[1️⃣ 종료] [2️⃣ 돌아가기]\n";
@@ -75,7 +88,7 @@ public class OutputView {
     }
 
     public void exit() {
-        String message = "\n\n🙋🙋🙋🙋‍👋✋ 종료되었습니다. ✋👋🙋🙋🙋\n\n";
+        String message = "\n\n🙋🙋🙋‍👋✋ 종료되었습니다. ✋👋🙋🙋🙋\n\n";
         dottedPrint(message, MILLIS);
     }
 

@@ -11,8 +11,8 @@ public class OutputView {
     private final String APPEAR_FIRST = "\n\n야생의 [";
     private final String APPEAR_LAST = "] 이(가) 등장하였습니다. 😼";
     private final String INPUT_MENU = "매뉴를 선택해주세요. 👉\n\n";
-    private final String DO_IT_FIGHT = "1. 싸우기 🥊\n";
-    private final String EXIT_RUN = "2. 도망가기 🏃‍\n";
+    private final String DO_IT_FIGHT = "1️⃣ 싸우기 🥊\n";
+    private final String EXIT_RUN = "2️⃣ 도망가기 🏃‍\n";
     private final String INPUT_FIGHT = "\n🥊⚔️🥊 싸우기를 선택하였습니다. 🥊⚔️🥊\n";
     private final String INPUT_RUN = "\n\n도망가기를 선택하였습니다. 🏃‍💨💨\n\n";
     private final String CHOICE_MY_POKEMON = "\n\n😼포켓몬을 😾 선택해주세요 🙀\n";

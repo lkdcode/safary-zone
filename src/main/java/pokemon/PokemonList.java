@@ -23,6 +23,11 @@ public class PokemonList implements Serializable {
         return pokemonList;
     }
 
+
+    public void evolution(int bookNumber, Pokemon pokemon) {
+        this.pokemonList.put(bookNumber, pokemon);
+    }
+
     /**
      * 유저의 포켓몬리스트의 bookNumber(key) 를 입력해주고 null 로 초기값을 넣어줍니다.
      * NormalPokemon 리스트 중 무작위 포켓몬 하나를 추가로 넣어줍니다.

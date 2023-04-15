@@ -98,9 +98,9 @@ public class PlantingBerry {
             // 심을 위치를 확인하기 위해 플레이어의 정원 출력
             outputView.showMyGarden();
             // 1. 입력한 위치를 범위 안으로 입력했는지 검사
-            outputView.rowAndColumn("↔ 가로"); // row
+            outputView.rowAndColumn("↕ 세로"); // row
             plantLocation[0] = inputView.inputPlantLocation();
-            outputView.rowAndColumn("↕ 세로"); // column
+            outputView.rowAndColumn("↔ 가로"); // column
             plantLocation[1] = inputView.inputPlantLocation();
             // 1. 입력한 위치가 이미 열매가 심어진 곳인지 검사
             if (!inputValidate.plantingBerryValidate(plantLocation[0], plantLocation[1])) {

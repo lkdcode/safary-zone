@@ -14,4 +14,8 @@ public enum ErrorMessageBattle {
     public String getMessage() {
         return message;
     }
+
+    public void print() {
+        System.out.println(this.message);
+    }
 }

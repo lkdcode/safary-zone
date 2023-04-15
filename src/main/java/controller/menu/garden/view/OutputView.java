@@ -12,12 +12,12 @@ public class OutputView {
     private int[][] garden;
 
     private final String GARDEN_WELCOME_MESSAGE = "\n🌲 정원에 오신 걸 환영합니다.";
-    private final String GARDEN_FIRST_MENU = "1. 🌱 나의 정원 보기";
-    private final String GARDEN_SECOND_MENU = "2. 🍓 열매 심기";
-    private final String BACK_MENU = "0. 🔙 돌아가기";
-    private final String PLANTING_BLUE_BERRY = "1. 🍇 블루베리 심기 👉 [30% 확률로 좌,우로 열매를 뿌립니다.]";
-    private final String PLANTING_RASP_BERRY = "2. 🍓 라즈베리 심기 👉 [20% 확률로 상,하로 열매를 뿌립니다.]";
-    private final String PLANTING_BLACK_BERRY = "3. ♣️ 블랙베리 심기 👉 [10% 확률로 상,하,좌,우로 열매를 뿌립니다.]";
+    private final String GARDEN_FIRST_MENU = "1️⃣ 🌱 나의 정원 보기";
+    private final String GARDEN_SECOND_MENU = "2️⃣ 🍓 열매 심기";
+    private final String BACK_MENU = "0️⃣ 🔙 돌아가기";
+    private final String PLANTING_BLUE_BERRY = "1️⃣ 🍇 블루베리 심기 👉 [30% 확률로 좌,우로 열매를 뿌립니다.]";
+    private final String PLANTING_RASP_BERRY = "2️⃣ 🍓 라즈베리 심기 👉 [20% 확률로 상,하로 열매를 뿌립니다.]";
+    private final String PLANTING_BLACK_BERRY = "3️⃣ ♣️ 블랙베리 심기 👉 [10% 확률로 상,하,좌,우로 열매를 뿌립니다.]";
     private final String BACK = "\n돌아갑니다.\n";
     private final String OVER_CAPACITY = "\n\n현재 정원이 꽉 찼습니다! 🌼\n\n";
     private final int MILLIS = 30;
