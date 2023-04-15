@@ -1,9 +1,11 @@
 package controller.menu.playerinformation.view;
 
+import common.MakeCommon;
 import controller.menu.playerinformation.PlayerInformationServiceLogic;
 import user.Inventory;
 import user.Player;
 
+import static common.MakeCommon.*;
 import static common.MakeCommon.dottedPrint;
 
 /**
@@ -14,18 +16,22 @@ public class OutputView {
     private final String INVENTORY_LIST = "1️⃣ 인벤토리, 계정 레벨";
     private final String POKEMON_LIST = "2️⃣ 보유 포켓몬";
     private final String EXIT_MENU = "3️⃣ 나가기";
-    private final String PLAYER_INVENTORY = "📦🎁플레이어 인벤토리🎁📦";
+    private final String PLAYER_INVENTORY = "\n📦🎁플레이어 인벤토리🎁📦";
 
 
     public void showPokemonList(String pokemonList) {
-        System.out.println(pokemonList);
+        String message = "\n\n➖➖➖➖ 나의 포켓몬 리스트 ➖➖➖➖\n\n";
+        message += pokemonList;
+        message += "➖➖➖➖ ➖➖➖➖➖➖ ➖➖➖➖\n\n";
+        dottedPrint(message, 5);
+        stopLine();
     }
 
     public void showPlayerMenu() {
-        String printMessage = PLAYER_MENU+"\n"
-                +INVENTORY_LIST+"\n"
-                +POKEMON_LIST+"\n"
-                +EXIT_MENU+"\n";
+        String printMessage =
+                INVENTORY_LIST + "\n"
+                        + POKEMON_LIST + "\n"
+                        + EXIT_MENU + "\n";
         dottedPrint(printMessage, 10);
     }
 
@@ -33,21 +39,23 @@ public class OutputView {
         System.out.println("메인화면으로 돌아갑니다");
     }
 
-    public void showPlayerInventory(){
+    public void showPlayerInventory() {
         Inventory inventory = Player.getInstance().getInventory();
         String PLAYER_BALL_LIST = inventory.getBallPouch().getBallList();
         String PLAYER_BERRY_LIST = inventory.getBerryPouch().getBerryList();
-        String printMessage = PLAYER_INVENTORY+"\n"
-                +PLAYER_BALL_LIST+"\n"
-                +PLAYER_BERRY_LIST+"\n"
-                +"💵용돈: "+inventory.getMoney()+"원\n\n";
+        String printMessage = PLAYER_MENU + "\n"
+                + PLAYER_INVENTORY + "\n"
+                + PLAYER_BALL_LIST + "\n"
+                + PLAYER_BERRY_LIST + "\n"
+                + "💵용돈: " + inventory.getMoney() + "원\n";
         dottedPrint(printMessage, 5);
     }
 
-    public void showPlayerLevel(){
+    public void showPlayerLevel() {
         String printMessage =
-                "🏅플레이어 레벨🏅: "+"Lv."+Player.getInstance().getLevel()+"\n\n";
+                "🏅플레이어 레벨🏅: " + "Lv." + Player.getInstance().getLevel() + "\n\n";
         dottedPrint(printMessage, 5);
+        stopLine();
     }
 
 }
