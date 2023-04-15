@@ -1,4 +1,4 @@
-package controller.menu.playerinformation;
+package controller.menu.playerinformation.service;
 
 
 import pokemon.pokemon.Pokemon;
