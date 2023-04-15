@@ -11,20 +11,20 @@ import user.item.ball.MonsterBall;
  * 포획 controller
  */
 public class CaptureController {
-    private final CaptureServiceLogic captureServiceLogic;
     private final InputView inputView;
     private final OutputView outputView;
+    private CaptureServiceLogic captureServiceLogic;
     private final String THROW_BALL_MENU = "1";
     private final String GO_NEAR_MENU = "2";
     private final String EXIT_MENU = "0";
 
     public CaptureController() {
-        this.captureServiceLogic = new CaptureServiceLogic();
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
     public void start() {
+        this.captureServiceLogic = new CaptureServiceLogic();
         String wildPokemonName = captureServiceLogic.getWildPokemonName();
         outputView.ready(wildPokemonName);
 
