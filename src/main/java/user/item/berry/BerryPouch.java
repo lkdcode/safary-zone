@@ -10,6 +10,16 @@ public class BerryPouch implements Serializable {
 
     public BerryPouch() {
         this.berryPouch = new HashMap<>();
+        initialize();
+    }
+
+    /**
+     * 시작시 열매 1개씩 가지고 시작하게 하는 메서드
+     */
+    private void initialize() {
+        buyBerry(Berry.RASPBERRY, 1);
+        buyBerry(Berry.BLACKBERRY, 1);
+        buyBerry(Berry.BLUEBERRY, 1);
     }
 
     public void buyBerry(Berry berry, int quantity) {
@@ -38,8 +48,7 @@ public class BerryPouch implements Serializable {
     public String getBerryList() {
         String myBerryList = "";
         for (Berry berry : berryPouch.keySet()) {
-            if (berry != null)
-                myBerryList += "🟢 Type : [" + berry + "], 수량 : [" + this.berryPouch.get(berry) + "] 개 \n";
+            myBerryList += "🟢 Type : [" + berry + "], 수량 : [" + this.berryPouch.get(berry) + "] 개 \n";
         }
 
         return myBerryList;

@@ -107,11 +107,4 @@ public class InputView {
         }
     }
 
-    public void stopInput() {
-        try {
-            br.readLine();
-        } catch (IOException e) {
-            controller.menu.garden.exception.ErrorMessage.UNKNOWN_ERROR.print();
-        }
-    }
 }

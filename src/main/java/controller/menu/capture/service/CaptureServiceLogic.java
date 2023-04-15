@@ -25,7 +25,7 @@ public class CaptureServiceLogic {
     private double successPoint = 0;
 
     public CaptureServiceLogic() {
-        this.wildPokemon = new SummonServiceLogic().getWhildPokemon();
+        this.wildPokemon = new SummonServiceLogic().getWildPokemon();
         initialize();
     }
 

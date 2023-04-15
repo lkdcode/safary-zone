@@ -1,5 +1,6 @@
 package controller.menu.battle.view;
 
+import pokemon.pokemon.Pokemon;
 import user.Player;
 
 import static common.MakeCommon.dottedPrint;
@@ -20,11 +21,24 @@ public class FightOutputView {
      * @param damage   : 공격 데미지
      * @param targetHp : 데미지로 감소된 현재 체력
      */
-    public void attackResult(String attacker, String target, int damage, int targetHp) {
-        String message = "\n\n😼 [" + attacker + "] (이)가 🥊 ⚔️ [" + target + "] 을(를) 공격하였다 😵\n"
+    public void attackResult(String attacker, String target, int damage, int targetHp, int fightFlag) {
+        // fightFlag 가 2면 야생 포켓몬이 공격한 것.
+        // fightFlag 가 1이면 플레이어가 공격한것
+        String message = "";
+        String attackerName = "";
+        String targetName = "";
+        if (fightFlag == 1) {
+            attackerName = "플레이어의 ";
+            targetName = "야생의 ";
+        } else {
+            attackerName = "야생의 ";
+            targetName = "플레이어의 ";
+        }
+
+        message += "\n\n😼" + attackerName + "[" + attacker + "] (이)가 🥊 ⚔️" + targetName + "[" + target + "] 을(를) 공격하였다 😵\n "
                 + "...효과는 대단했다 ‼️\n"
-                + "😵 [" + target + "] 의 체력이 [" + damage + "] 만큼 감소하였다 🩸\n"
-                + "😵 [" + target + "] 의 현재 체력은 [" + targetHp + "] 이다 💔\n\n";
+                + "😵" + targetName + "[" + target + "] 의 체력이 [" + damage + "] 만큼 감소하였다 🩸\n"
+                + "😵" + targetName + "[" + target + "] 의 현재 체력은[" + targetHp + "] 이다 💔\n\n ";
 
         dottedPrint(message, MILLIS);
     }
@@ -36,16 +50,17 @@ public class FightOutputView {
     }
 
     public void lose() {
-        String message = "패배 하였습니다. ㅠㅠ ㅠㅠ ㅠㅠ";
+        String message = "😇 패배 하였습니다...😭😭ㅠㅠ\n\n\n";
         dottedPrint(message, MILLIS);
     }
 
-    public void win(boolean isGetWildPokemon, String wildPokemonName, String playerPokemonName, int money) {
+    public void win(boolean isGetWildPokemon, String wildPokemonName, String playerPokemonName, int money, boolean isDuplicate) {
         String message = "\n\n전투에서 승리하였습니다.\n\n"
                 + playerPokemonName + "의 레벨이 1 상승하였습니다. (최대 : 10)\n";
+        if (isDuplicate) message += "이미 보유한 [" + wildPokemonName + "] 입니다.\n";
         if (isGetWildPokemon) message += "야생의 [" + wildPokemonName + "] 을(를) 획득하였습니다.\n";
         message += "Player의 경험치가 올랐습니다.\n"
-                + "[" + money + "] 원을 획득하였습니다.\n"
+                + "[" + money + "] 원을 획득하였습니다.\n\n"
                 + "메인 메뉴로 돌아갑니다. \n\n";
 
         dottedPrint(message, MILLIS);
@@ -55,4 +70,5 @@ public class FightOutputView {
         String message = "🚫 # # # 전투 종료 # # # 🚫";
         dottedPrint(message, MILLIS);
     }
+
 }

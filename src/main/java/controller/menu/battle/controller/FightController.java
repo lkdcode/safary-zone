@@ -59,8 +59,9 @@ public class FightController {
         String targetName = fightServiceLogic.getTargetName();
         int damage = fightServiceLogic.getDamage();
         int targetHp = fightServiceLogic.getTargetHp();
+        int fightFlag = (fightServiceLogic.getFightFlag()) % 2;
 
-        fightOutputView.attackResult(attackerName, targetName, damage, targetHp);
+        fightOutputView.attackResult(attackerName, targetName, damage, targetHp, fightFlag);
     }
 
     /**
@@ -83,7 +84,12 @@ public class FightController {
 
     private void win() {
         fightServiceLogic.fightResult();
-        fightOutputView.win(fightServiceLogic.isGetWildPokemon(), wildPokemon.getInformation().getName(), playerPokemon.getInformation().getName(), fightServiceLogic.playerSetupMoney());
+        fightOutputView.win(fightServiceLogic.isGetWildPokemon(),
+                wildPokemon.getInformation().getName(),
+                playerPokemon.getInformation().getName(),
+                fightServiceLogic.playerSetupMoney(),
+                fightServiceLogic.isDuplicate(wildPokemon));
+
         this.isWon = true;
     }
 

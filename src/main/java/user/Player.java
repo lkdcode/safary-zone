@@ -17,8 +17,8 @@ public class Player implements Serializable {
     private final int MAX_LEVEL = 10;
     private PokemonList pokemonList;
     private Inventory inventory;
-    private int level;
     private Garden garden;
+    private int level;
     private int exp;
 
     private Player() {

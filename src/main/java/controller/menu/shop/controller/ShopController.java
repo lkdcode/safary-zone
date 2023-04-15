@@ -18,12 +18,8 @@ public class ShopController {
     private final String BUY_MONSTER_BALL_MENU = "1";
     private final String BUY_BERRY_MENU = "2";
     private final String EXIT = "0";
-
-
     private final InputView inputView;
     private final OutputView outputView;
-
-
     private final ValidateMoney validateMoney;
     private final BuyItem buyItem;
     // test
@@ -52,18 +48,18 @@ public class ShopController {
             switch (menu) {
                 case BUY_MONSTER_BALL_MENU:
                     buyMonsterBallMenu();
-                    stop();
+                    stopLine();
                     break;
                 case BUY_BERRY_MENU:
                     buyBerryMenu();
-                    stop();
+                    stopLine();
                     break;
                 case EXIT:
                     outputView.exit();
                     return;
                 default:
                     ErrorMessage.MENU.print();
-                    stop();
+                    stopLine();
             }
         }
 
@@ -113,8 +109,4 @@ public class ShopController {
         }
     }
 
-    private void stop() {
-        stopLine();
-        inputView.stopInput();
-    }
 }
