@@ -30,6 +30,7 @@ public class FightServiceLogic {
     private int fightFlag;
     private int targetHp;
     private boolean isSkillAttack;
+    private boolean isAlreadyHave;
 
 
     /**
@@ -128,11 +129,15 @@ public class FightServiceLogic {
     }
 
     /**
-     * 1. 일정 확률로 해당 야생 포켓몬스터를 획득할 수 있습니다.
+     * 일정 확률로 야생 포켓몬을 획득합니다.
+     * checkAlready() 메서드를 통해 이미 보유하고 있는지 체크하고
+     * 그게 아니라면 일정 확률로 해당 야생 포켓몬을 획득합니다.
      *
      * @return
      */
     public boolean isGetWildPokemon() {
+        if (checkAlready()) return false;
+
         if (MakeCommon.getRandom(1, 100) <= 11) {
             Player.getInstance().getPokemonList().playerPokemonList().put(wildPokemon.getInformation().getBookNumber(), wildPokemon);
             return true;
@@ -140,6 +145,20 @@ public class FightServiceLogic {
 
         return false;
     }
+
+    /**
+     * 플레이어가 전투한 야생 포켓몬을 이미 보유하고 있는지 확인합니다.
+     *
+     * @return
+     */
+    private boolean checkAlready() {
+        if (Player.getInstance().getPokemonList().playerPokemonList().containsValue(wildPokemon)) {
+            this.isAlreadyHave = true;
+            return false;
+        }
+        return true;
+    }
+
 
     /**
      * 2. 전투에 참여한 포켓몬스터의 레벨을 1 상승 시킵니다. (최대 : 10)
@@ -250,28 +269,11 @@ public class FightServiceLogic {
         }
     }
 
-
-    /**
-     * 야생 포켓몬스터의 이름과 도감 번호를 기준으로 현재 플레이어가 보유하고 있는지 확인하는 메서드
-     *
-     * @param wildPokemon : 야생 포켓몬스터
-     * @return
-     */
-    public boolean isDuplicate(Pokemon wildPokemon) {
-        PokemonList pokemonList = Player.getInstance().getPokemonList();
-        //TODO:TEST
-        for (Pokemon playerPokemon : pokemonList.playerPokemonList().values()) {
-            if (playerPokemon != null) {
-                if (wildPokemon.getInformation().getName().equals(playerPokemon.getInformation().getName())
-                        && wildPokemon.getInformation().getBookNumber() == playerPokemon.getInformation().getBookNumber()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
     public int getFightFlag() {
         return fightFlag;
+    }
+
+    public boolean isAlreadyHave() {
+        return isAlreadyHave;
     }
 }

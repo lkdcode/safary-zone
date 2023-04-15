@@ -7,7 +7,7 @@ import static common.MakeCommon.*;
  */
 public class OutputView {
     private final String READY = "🚨 잠시 후 야생 포켓몬과의 전투가 시작됩니다 ‼️\n";
-    private final String WARNING = "‼️‼️‼️‼️\n";
+    private final String WARNING = "⚠️ ‼️‼️‼️‼️‼️‼️‼️\n";
     private final String APPEAR_FIRST = "\n\n야생의 [";
     private final String APPEAR_LAST = "] 이(가) 등장하였습니다. 😼\n";
     private final String INPUT_MENU = "매뉴를 선택해주세요. 👉\n\n";
@@ -60,7 +60,7 @@ public class OutputView {
 
     public void goMyPokemon(String playerPokemonName) {
         String messge = "[" + playerPokemonName + "] 을(를) 꺼냈습니다.\n"
-                + "가라 [" + playerPokemonName + "] !!!!!!!!!!!!!!!!!!!\n\n";
+                + "가라 [" + playerPokemonName + "] ❕❗️❕❗️❕❗️❕❗️\n\n";
         dottedPrint(messge, MILLIS);
     }
 }

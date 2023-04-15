@@ -88,7 +88,7 @@ public class FightController {
                 wildPokemon.getInformation().getName(),
                 playerPokemon.getInformation().getName(),
                 fightServiceLogic.playerSetupMoney(),
-                fightServiceLogic.isDuplicate(wildPokemon));
+                fightServiceLogic.isAlreadyHave());
 
         this.isWon = true;
     }

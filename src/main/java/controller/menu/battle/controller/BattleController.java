@@ -14,6 +14,8 @@ public class BattleController {
     private final FightController fightController;
     private final OutputView outputView;
     private final InputView inputView;
+    private final String FIGHT_MENU = "1";
+    private final String RUN_MENU = "2";
     private SummonServiceLogic summonServiceLogic;
     private Pokemon wildPokemon;
 
@@ -34,14 +36,12 @@ public class BattleController {
             String inputMenu = inputView.battleMenu();
 
             switch (inputMenu) {
-                case "1":
-                    // 싸우기
+                case FIGHT_MENU:
                     outputView.inputFight();
                     setMyPokemon();
                     if (fightController.isWon()) return;
                     break;
-                case "2":
-                    // 도망가기
+                case RUN_MENU:
                     outputView.inputRun();
                     return;
                 default:

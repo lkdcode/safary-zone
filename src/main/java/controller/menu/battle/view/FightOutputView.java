@@ -1,8 +1,5 @@
 package controller.menu.battle.view;
 
-import pokemon.pokemon.Pokemon;
-import user.Player;
-
 import static common.MakeCommon.dottedPrint;
 import static common.MakeCommon.stopLine;
 
@@ -36,7 +33,7 @@ public class FightOutputView {
         }
 
         message += "\n\n😼" + attackerName + "[" + attacker + "] (이)가 🥊 ⚔️" + targetName + "[" + target + "] 을(를) 공격하였다 😵\n "
-                + "...효과는 대단했다 ‼️\n"
+                + "....효과는 대단했다 ‼️‼️\n"
                 + "😵" + targetName + "[" + target + "] 의 체력이 [" + damage + "] 만큼 감소하였다 🩸\n"
                 + "😵" + targetName + "[" + target + "] 의 현재 체력은[" + targetHp + "] 이다 💔\n\n ";
 
@@ -54,11 +51,11 @@ public class FightOutputView {
         dottedPrint(message, MILLIS);
     }
 
-    public void win(boolean isGetWildPokemon, String wildPokemonName, String playerPokemonName, int money, boolean isDuplicate) {
+    public void win(boolean isGetWildPokemon, String wildPokemonName, String playerPokemonName, int money, boolean isAlreadyHave) {
         String message = "\n\n전투에서 승리하였습니다.\n\n"
                 + playerPokemonName + "의 레벨이 1 상승하였습니다. (최대 : 10)\n";
-        if (isDuplicate) message += "이미 보유한 [" + wildPokemonName + "] 입니다.\n";
-        if (isGetWildPokemon) message += "야생의 [" + wildPokemonName + "] 을(를) 획득하였습니다.\n";
+        if (isAlreadyHave) message += "이미 보유한 [" + wildPokemonName + "] 입니다.\n";
+        if (isGetWildPokemon && !isAlreadyHave) message += "야생의 [" + wildPokemonName + "] 을(를) 획득하였습니다.\n";
         message += "Player의 경험치가 올랐습니다.\n"
                 + "[" + money + "] 원을 획득하였습니다.\n\n"
                 + "메인 메뉴로 돌아갑니다. \n\n";
