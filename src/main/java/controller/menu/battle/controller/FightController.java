@@ -70,7 +70,6 @@ public class FightController {
      * Player 의 상태를 업데이트해줍니다.
      */
     private void result() {
-        System.out.println("\n\n\n# 전 투 종 료 #\n\n\n");
         fightOutputView.fightExit();
         // 승리시
         if (fightServiceLogic.isWon()) {

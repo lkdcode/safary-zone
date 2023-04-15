@@ -1,7 +1,7 @@
 package controller.menu.playerinformation.controller;
 
 import controller.SystemController;
-import controller.menu.playerinformation.PlayerInformationServiceLogic;
+import controller.menu.playerinformation.service.PlayerInformationServiceLogic;
 import controller.menu.playerinformation.view.InputView;
 import controller.menu.playerinformation.view.OutputView;
 
@@ -16,6 +16,10 @@ public class PlayerInformationController {
     private final OutputView outputView;
     private final InputView inputView;
     private final PlayerInformationServiceLogic playerInformationServiceLogic;
+
+    private final String INVENTORY_AND_INFORMATION_MENU = "1";
+    private final String POKEMON_LIST_MENU = "2";
+    private final String EXIT = "0";
 
 
     //내 정보로 들어옴
@@ -40,17 +44,16 @@ public class PlayerInformationController {
 
 
             switch (selectPlayerInformation) {
-                case "1":
+                case INVENTORY_AND_INFORMATION_MENU:
                     outputView.showPlayerInventory();
                     outputView.showPlayerLevel();
-                    //인벤토리, 플레이어 레벨 보여줌
                     break;
-                case "2":
+                case POKEMON_LIST_MENU:
                     outputView.showPokemonList(playerInformationServiceLogic.playerPokemonList());
                     break;
-                case "3":
+                case EXIT:
                     outputView.backToMain();
-                    new SystemController().start();
+//                    new SystemController().start(); TODO: 이렇게 되면 재귀적으로 계속 호출하게 됩니다. 그냥 리턴으로 해당 메서드를 종료시켜야해요.
                     return;
             }
         }
