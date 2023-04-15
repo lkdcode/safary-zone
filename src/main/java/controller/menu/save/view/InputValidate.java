@@ -7,6 +7,9 @@ public class InputValidate {
 
     private final int NAME_LENGTH_MAX = 15;
     private final int NAME_LENGTH_MIN = 1;
+    private final String FIRST_MENU = "1";
+    private final String SECOND_MENU = "2";
+    private final String BACK_MENU = "0";
     public InputValidate() {
     }
 
@@ -17,10 +20,19 @@ public class InputValidate {
      */
     public boolean inputFileNameValidate(String fileName) {
         if (fileName.length() > NAME_LENGTH_MAX || fileName.length() < NAME_LENGTH_MIN) {
-            // TODO : ErrorMessage enum 추가해야합니다.
-            System.out.println("❌ 파일 이름은 1 ~ 15자 사이로 입력해주세요");
             return false;
         }
         return true;
+    }
+
+    /**
+     * 입력한 메뉴 숫자가 메뉴 범위에 포함되는지 검사합니다.
+     * @param input
+     * @return 메뉴 범위에 포함되면 true, 메뉴에 포함되지 않은 숫자나 문자를 입력하면 false 를 리턴합니다.
+     */
+    public boolean menuNumberValidate(String input) {
+        if (input.equals(FIRST_MENU) || input.equals(SECOND_MENU) || input.equals(BACK_MENU))
+            return true;
+        return false;
     }
 }

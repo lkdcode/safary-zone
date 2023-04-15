@@ -7,6 +7,7 @@ import controller.menu.capture.controller.CaptureController;
 import controller.menu.ending.controller.EndingController;
 import controller.menu.garden.controller.GardenController;
 import controller.menu.playerinformation.controller.PlayerInformationController;
+import controller.menu.save.controller.SaveController;
 import controller.menu.shop.controller.ShopController;
 
 /**
@@ -18,6 +19,7 @@ public class SystemController {
     private final CaptureController captureController;
     private final GardenController gardenController;
     private final PlayerInformationController playerInformationController;
+    private final SaveController saveController;
     private final EndingController endingController;
     private final OutputView outputView;
     private final InputView inputView;
@@ -37,6 +39,7 @@ public class SystemController {
         this.captureController = new CaptureController();
         this.gardenController = new GardenController();
         this.playerInformationController = new PlayerInformationController();
+        this.saveController = new SaveController();
         this.endingController = new EndingController();
         this.outputView = new OutputView();
         this.inputView = new InputView();
@@ -74,6 +77,7 @@ public class SystemController {
                     break;
                 case SAVE_MENU:
                     outputView.save();
+                    saveController.start();
                     break;
                 case EXIT_MENU:
                     outputView.isExit();

@@ -4,6 +4,9 @@ package controller.menu.save.view;
  * 유저로부터 입력을 받는 역할
  */
 
+import controller.menu.garden.exception.ErrorMessage;
+import controller.menu.save.exception.ErrormessageSave;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,10 +31,22 @@ public class InputView {
             try {
                 fileName = br.readLine();
                 if (inputValidate.inputFileNameValidate(fileName)) return fileName;
-                // TODO : ErrorMessage enum 만들어야합니다.
-                System.out.println("잘못입력햇음 15자 이내로 입력해");
+                ErrormessageSave.NAME_LENGTH_OVER.print();
             } catch (IOException e) {
-                System.out.println("IOException 발생");
+                ErrormessageSave.UNKNOWN_ERROR.print();
+            }
+        }
+    }
+
+    public String inputMenu() {
+        while(true) {
+            String inputMenuNumber = null;
+            try {
+                inputMenuNumber = br.readLine();
+                if (inputValidate.menuNumberValidate(inputMenuNumber)) return inputMenuNumber;
+                ErrormessageSave.INPUT_MENU.print();
+            } catch (IOException e) {
+                ErrormessageSave.UNKNOWN_ERROR.print();
             }
         }
     }

@@ -9,7 +9,7 @@ public class Inventory implements Serializable {
     private BallPouch ballPouch;
     private BerryPouch berryPouch;
     private int money;
-    private final int START_MONEY = 5000;
+    private final int START_MONEY = 50000;
 
     public Inventory() {
         this.ballPouch = new BallPouch();

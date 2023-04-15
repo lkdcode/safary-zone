@@ -5,7 +5,7 @@ import controller.menu.garden.service.*;
 import controller.menu.garden.view.InputView;
 import controller.menu.garden.view.OutputView;
 
-import static common.MakeCommon.stopLine;
+import static common.MakeCommon.*;
 
 /**
  * 정원 controller
