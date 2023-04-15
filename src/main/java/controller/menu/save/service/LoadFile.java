@@ -21,27 +21,21 @@ public class LoadFile {
         this.outputView = new OutputView();
     }
 
-    public void loadFile() {
-
-        // 불러올 파일명 입력
-        outputView.loadFileName();
-        String name = inputView.inputFileName();
-        // 불러오기
+    public boolean loadFile(String fileName) {
         try (FileInputStream fis
-                     = new FileInputStream(Path.USER_SAVE_PATH + "/" + name + ".sav")) {
+                     = new FileInputStream(Path.USER_SAVE_PATH + "/" + fileName + ".sav")) {
 
             ObjectInputStream ois = new ObjectInputStream(fis);
             Player.load((Player) ois.readObject());
 
         } catch (FileNotFoundException e) {
-            // TODO : ErrorMessage enum 추가해야합니다.
-            System.out.println("파일 찾을수없음!!");
+            return false;
         } catch (IOException e) {
-            System.out.println("예외발생!!");
+            return false;
         } catch (ClassNotFoundException e) {
-            System.out.println("클래스를 찾을수없음");
+            return false;
         }
-
+        return true;
     }
 
 }

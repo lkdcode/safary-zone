@@ -22,25 +22,19 @@ public class SaveFile {
         this.outputView = new OutputView();
     }
 
-    public void saveFile() {
-
+    public boolean saveFile(String fileName) {
         // 기존 플레이어 객체 가져오기
         Player savePlayer = Player.getInstance();
-        // 저장할 파일명 입력
-        outputView.saveFileName();
-        String name = inputView.inputFileName();
         // 입력한 파일명으로 기존 플레이어 객체 저장
         try (FileOutputStream fos
-                     = new FileOutputStream(Path.USER_SAVE_PATH + "/" + name + ".sav")) {
-            // 객체 저장
+                     = new FileOutputStream(Path.USER_SAVE_PATH + "/" + fileName + ".sav")) {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(savePlayer);
         } catch (FileNotFoundException e) {
-            System.out.println("❌ 파일 저장 처리에 실패했습니다.");
-            e.printStackTrace();
+            return false;
         } catch (IOException e) {
-            System.out.println("❌ 출력 시스템에 문제가 생겼습니다.");
-            e.printStackTrace();
+            return false;
         }
+        return true;
     }
 }
