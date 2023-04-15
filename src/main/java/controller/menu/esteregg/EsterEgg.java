@@ -12,7 +12,6 @@ import static common.MakeCommon.*;
  * 이스터 에그!!
  */
 public class EsterEgg {
-
     private final BufferedReader br;
 
     public EsterEgg() {
@@ -20,10 +19,28 @@ public class EsterEgg {
     }
 
     public void inputKey() {
+        timeSleep();
+        System.out.println("\n");
+        dottedPrint("?\n", 1000);
+        System.out.println("너 개발자구나?");
+        timeSleep();
+
+        dottedPrint(".\n", 800);
+        dottedPrint(".\n", 800);
+        dottedPrint(".\n", 800);
+        dottedPrint("\n", 500);
+        dottedPrint("\n", 500);
+        dottedPrint("\n", 500);
+        String hint = "....(char) 74 + 89 + 87 + \\n + 76 + 74 + 70 + \\n + 76 + 75 + 68 + \\n\n";
+
+        dottedPrint(hint, 50);
+
         try {
             String inputFirstKey = br.readLine();
             String inputSecondKey = br.readLine();
             String inputThirdKey = br.readLine();
+            timeSleep();
+            timeSleep();
             checkKey(inputFirstKey, inputSecondKey, inputThirdKey);
         } catch (IOException e) {
 
@@ -91,6 +108,13 @@ public class EsterEgg {
 
             dottedPrint(message.toString(), 2);
             System.exit(0);
+        }
+    }
+
+    private void timeSleep() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
         }
     }
 
