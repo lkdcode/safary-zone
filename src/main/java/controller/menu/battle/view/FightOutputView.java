@@ -35,7 +35,7 @@ public class FightOutputView {
         message += "\n\n😼" + attackerName + "[" + attacker + "] (이)가 🥊 ⚔️" + targetName + "[" + target + "] 을(를) 공격하였다 😵\n "
                 + "....효과는 대단했다 ‼️‼️\n"
                 + "😵" + targetName + "[" + target + "] 의 체력이 [" + damage + "] 만큼 감소하였다 🩸\n"
-                + "😵" + targetName + "[" + target + "] 의 현재 체력은[" + targetHp + "] 이다 💔\n\n ";
+                + "😵" + targetName + "[" + target + "] 의 현재 체력은 [" + targetHp + "] 이다 💔\n\n ";
 
         dottedPrint(message, MILLIS);
     }
@@ -64,7 +64,7 @@ public class FightOutputView {
     }
 
     public void fightExit() {
-        String message = "🚫 # # # 전투 종료 # # # 🚫";
+        String message = "\n🚫 # # # 전투 종료 # # # 🚫\n\n";
         dottedPrint(message, MILLIS);
     }
 
