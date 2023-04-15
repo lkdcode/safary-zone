@@ -14,7 +14,6 @@ import static pokemon.PokemonType.*;
 /**
  * 전투의 결과를 보관하는 클래스
  * 매 전투시 필드값들을 업데이트 시켜 보관합니다.
- * TODO : 리팩터링 필요
  */
 public class FightServiceLogic {
     private Pokemon wildPokemon;
@@ -137,8 +136,8 @@ public class FightServiceLogic {
      */
     public boolean isGetWildPokemon() {
         checkAlready();
-//        if (getRandom(1, 100) <= 11 && !isAlreadyHave) {
-        if (getRandom(1, 100) >= 0 && !isAlreadyHave) {
+        if (getRandom(1, 100) <= 11 && !isAlreadyHave) {
+//        if (getRandom(1, 100) >= 0 && !isAlreadyHave) { TODO : TEST CODE 100% 확률로 획득함.
             Player.getInstance().getPokemonList().playerPokemonList().put(wildPokemon.getInformation().getBookNumber(), wildPokemon);
             return true;
         }

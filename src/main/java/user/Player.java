@@ -49,6 +49,10 @@ public class Player implements Serializable {
         return garden;
     }
 
+    public void resetGarden() {
+        this.garden = new Garden();
+    }
+
     public int getLevel() {
         return level;
     }
