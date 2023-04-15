@@ -14,7 +14,7 @@ public enum RarePokemonBooks implements RarePokemon {
     NAEMSAEGGO(5, "냄새꼬", GRASS, 100, 1, 25, 48),
     MAGCANE(6, "마그케인", FIRE, 100, 1, 25, 48),
     GOLDUCK(7, "골덕", WATER, 100, 1, 25, 48),
-    DEGURI(8, "꼬마돌", ELECTRIC, 100, 1, 25, 48),
+    DEGURI(8, "데구리", ELECTRIC, 100, 1, 25, 48),
     BAYLEAF(9, "베이리프", GRASS, 100, 1, 25, 48),
     NINETAIL(10, "나인테일", FIRE, 100, 1, 25, 48),
     SOORYUKCHANGI(11, "수륙챙이", WATER, 10, 1, 25, 48),
