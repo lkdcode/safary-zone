@@ -29,7 +29,8 @@ public class BattleController {
         this.summonServiceLogic = new SummonServiceLogic();
         this.wildPokemon = summonServiceLogic.getWildPokemon();
         String wildPokemonName = wildPokemon.getInformation().getName();
-        outputView.appearWildPokemon(wildPokemonName);
+        String type = String.valueOf(wildPokemon.getInformation().getType());
+        outputView.appearWildPokemon(wildPokemonName, type);
 
         while (true) {
             outputView.choiceMenu();

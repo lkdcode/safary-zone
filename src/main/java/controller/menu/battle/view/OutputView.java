@@ -9,7 +9,7 @@ public class OutputView {
     private final String READY = "🚨 잠시 후 야생 포켓몬과의 전투가 시작됩니다 ‼️\n";
     private final String WARNING = "⚠️ ‼️‼️‼️‼️‼️‼️‼️\n";
     private final String APPEAR_FIRST = "\n\n야생의 [";
-    private final String APPEAR_LAST = "] 이(가) 등장하였습니다. 😼\n";
+    private final String APPEAR_LAST = "] 이(가) 등장하였습니다. 😼";
     private final String INPUT_MENU = "매뉴를 선택해주세요. 👉\n\n";
     private final String DO_IT_FIGHT = "1. 싸우기 🥊\n";
     private final String EXIT_RUN = "2. 도망가기 🏃‍\n";
@@ -22,8 +22,14 @@ public class OutputView {
     private final int MILLIS = 30;
     private final int SHORT_MILLS = 5;
 
-    public void appearWildPokemon(String wildPokemonName) {
-        String message = READY + WARNING + APPEAR_FIRST + wildPokemonName + APPEAR_LAST;
+    public void appearWildPokemon(String wildPokemonName, String type) {
+        String typeMessage = "";
+        if (type.equals("FIRE")) typeMessage = " 🔥";
+        else if (type.equals("WATER")) typeMessage = " 🌊";
+        else if (type.equals("ELECTRIC")) typeMessage = " ⚡️";
+        else if (type.equals("GRASS")) typeMessage = " 🍀";
+
+        String message = READY + WARNING + APPEAR_FIRST + wildPokemonName + APPEAR_LAST + "타입 [" + type + typeMessage + "]\n";
         dottedPrint(message, MILLIS);
         stopLine();
     }
