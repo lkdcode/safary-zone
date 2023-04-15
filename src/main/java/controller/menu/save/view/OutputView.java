@@ -16,7 +16,7 @@ public class OutputView {
     private final String EXIT = "0. 🔙 돌아가기\n";
     private final String EXIT_MAIN = "\n메인 메뉴로 돌아갑니다. 🔙\n\n";
     private final String SAVE_SUCCESS = "\n✔ 저장이 완료되었습니다.\n\n";
-    private final String LOAD_SUCCESS = "\n.✔ 불러오기가 완료되었습니다.\n\n돌아오신 걸 환영합니다! 😊✋\n";
+    private final String LOAD_SUCCESS = "\n✔ 불러오기가 완료되었습니다.\n\n돌아오신 걸 환영합니다! 😊✋\n";
     private final int MILLIS = 30;
     private final int SHORT_MILLS = 10;
 
