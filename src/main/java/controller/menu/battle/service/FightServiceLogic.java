@@ -1,7 +1,6 @@
 package controller.menu.battle.service;
 
 import common.MakeCommon;
-import pokemon.PokemonList;
 import pokemon.PokemonType;
 import pokemon.books.FinallyPokemonBooks;
 import pokemon.books.NormalPokemonBooks;
@@ -9,6 +8,7 @@ import pokemon.books.RarePokemonBooks;
 import pokemon.pokemon.Pokemon;
 import user.Player;
 
+import static common.MakeCommon.*;
 import static pokemon.PokemonType.*;
 
 /**
@@ -136,9 +136,9 @@ public class FightServiceLogic {
      * @return
      */
     public boolean isGetWildPokemon() {
-        if (checkAlready()) return false;
-
-        if (MakeCommon.getRandom(1, 100) <= 11) {
+        checkAlready();
+//        if (getRandom(1, 100) <= 11 && !isAlreadyHave) {
+        if (getRandom(1, 100) >= 0 && !isAlreadyHave) {
             Player.getInstance().getPokemonList().playerPokemonList().put(wildPokemon.getInformation().getBookNumber(), wildPokemon);
             return true;
         }
@@ -151,12 +151,12 @@ public class FightServiceLogic {
      *
      * @return
      */
-    private boolean checkAlready() {
+    private void checkAlready() {
         if (Player.getInstance().getPokemonList().playerPokemonList().containsValue(wildPokemon)) {
             this.isAlreadyHave = true;
-            return false;
+            return;
         }
-        return true;
+        this.isAlreadyHave = false;
     }
 
 
@@ -180,13 +180,13 @@ public class FightServiceLogic {
     public int playerSetupMoney() {
         int money = 0;
         if (wildPokemon instanceof NormalPokemonBooks) {
-            money = (int) MakeCommon.getRandom(200, 500);
+            money = (int) getRandom(200, 500);
         }
         if (wildPokemon instanceof RarePokemonBooks) {
-            money = (int) MakeCommon.getRandom(400, 800);
+            money = (int) getRandom(400, 800);
         }
         if (wildPokemon instanceof FinallyPokemonBooks) {
-            money = (int) MakeCommon.getRandom(700, 1200);
+            money = (int) getRandom(700, 1200);
         }
         Player.getInstance().getInventory().setMoneyByBattle(money);
         return money;
@@ -223,7 +223,7 @@ public class FightServiceLogic {
      * @return
      */
     private void setSkillAttack() {
-        if (MakeCommon.getRandom(1, 100) <= 11.0) {
+        if (getRandom(1, 100) <= 11.0) {
             this.isSkillAttack = true;
             return;
         }
