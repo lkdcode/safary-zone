@@ -169,7 +169,7 @@ public class FightServiceLogic {
         if (wildPokemon instanceof FinallyPokemonBooks) {
             money = (int) MakeCommon.getRandom(700, 1200);
         }
-        Player.getInstance().getInventory().setMoney(money);
+        Player.getInstance().getInventory().setMoneyByBattle(money);
         return money;
     }
 

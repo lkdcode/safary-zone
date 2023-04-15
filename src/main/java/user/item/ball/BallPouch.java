@@ -1,9 +1,9 @@
 package user.item.ball;
 
+import user.item.berry.Berry;
+
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class BallPouch implements Serializable {
     private Map<MonsterBall, Integer> ballPouch;
@@ -42,11 +42,26 @@ public class BallPouch implements Serializable {
     }
 
     public String getBallList() {
+        Queue<String> makeMyBerryList = new LinkedList<>();
         String myBallList = "";
+
         for (MonsterBall monsterBall : ballPouch.keySet()) {
             if (monsterBall != null)
-                myBallList += "🔴 Type : [" + monsterBall + "], 수량 : [" + this.ballPouch.get(monsterBall) + "] 개 \n";
+                makeMyBerryList.offer("🔴 Type : [" + monsterBall + "], 수량 : [" + this.ballPouch.get(monsterBall) + "] 개 \n");
         }
+
+
+        for (MonsterBall ball : MonsterBall.values()) {
+            while (true) {
+                String checkMessage = makeMyBerryList.poll();
+                if (checkMessage.contains(ball.toString())) {
+                    myBallList += checkMessage;
+                    break;
+                }
+                makeMyBerryList.offer(checkMessage);
+            }
+        }
+
 
         return myBallList;
     }

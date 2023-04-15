@@ -29,7 +29,11 @@ public class Inventory implements Serializable {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoneyByShop(int money) {
+        this.money = money;
+    }
+
+    public void setMoneyByBattle(int money) {
         this.money += money;
     }
 }

@@ -1,9 +1,7 @@
 package user.item.berry;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class BerryPouch implements Serializable {
     private Map<Berry, Integer> berryPouch;
@@ -46,9 +44,22 @@ public class BerryPouch implements Serializable {
     }
 
     public String getBerryList() {
+        Queue<String> makeMyBerryList = new LinkedList<>();
         String myBerryList = "";
+
         for (Berry berry : berryPouch.keySet()) {
-            myBerryList += "🟢 Type : [" + berry + "], 수량 : [" + this.berryPouch.get(berry) + "] 개 \n";
+            makeMyBerryList.offer("🟢 Type : [" + berry + "], 수량 : [" + this.berryPouch.get(berry) + "] 개 \n");
+        }
+
+        for (Berry berry : Berry.values()) {
+            while (true) {
+                String checkMessage = makeMyBerryList.poll();
+                if (checkMessage.contains(berry.toString())) {
+                    myBerryList += checkMessage;
+                    break;
+                }
+                makeMyBerryList.offer(checkMessage);
+            }
         }
 
         return myBerryList;
