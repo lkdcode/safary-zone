@@ -4,7 +4,6 @@ package controller.menu.save.view;
  * 유저로부터 입력을 받는 역할
  */
 
-import controller.menu.garden.exception.ErrorMessage;
 import controller.menu.save.exception.ErrormessageSave;
 
 import java.io.BufferedReader;
@@ -44,6 +43,19 @@ public class InputView {
             try {
                 inputMenuNumber = br.readLine();
                 if (inputValidate.menuNumberValidate(inputMenuNumber)) return inputMenuNumber;
+                ErrormessageSave.INPUT_MENU.print();
+            } catch (IOException e) {
+                ErrormessageSave.UNKNOWN_ERROR.print();
+            }
+        }
+    }
+
+    public String inputDupMenu() {
+        while(true) {
+            String inputMenuNumber = null;
+            try {
+                inputMenuNumber = br.readLine();
+                if (inputValidate.fileDuplicationMenu(inputMenuNumber)) return inputMenuNumber;
                 ErrormessageSave.INPUT_MENU.print();
             } catch (IOException e) {
                 ErrormessageSave.UNKNOWN_ERROR.print();

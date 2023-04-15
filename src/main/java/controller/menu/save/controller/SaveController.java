@@ -1,8 +1,10 @@
 package controller.menu.save.controller;
 
+import controller.menu.save.Path;
 import controller.menu.save.exception.ErrormessageSave;
 import controller.menu.save.service.LoadFile;
 import controller.menu.save.service.SaveFile;
+import controller.menu.save.view.InputValidate;
 import controller.menu.save.view.InputView;
 import controller.menu.save.view.OutputView;
 
@@ -18,6 +20,7 @@ public class SaveController {
     private final String EXIT = "0";
     private final OutputView outputView;
     private final InputView inputView;
+    private final InputValidate inputValidate;
     private final LoadFile loadFile;
     private final SaveFile saveFile;
 
@@ -26,6 +29,7 @@ public class SaveController {
         this.inputView = new InputView();
         this.loadFile = new LoadFile();
         this.saveFile = new SaveFile();
+        this.inputValidate = new InputValidate();
     }
 
     public void start() {
@@ -53,10 +57,35 @@ public class SaveController {
     }
 
     public void save() {
-        outputView.saveFile();
-        String saveFileName = inputView.inputFileName();
-        if (saveFile.saveFile(saveFileName)) outputView.saveSuccess();
+        String inputFileName;
+
+        while (true) {
+            outputView.saveFile();
+            inputFileName = inputView.inputFileName();
+            // 파일명 중복 체크
+            String file = Path.USER_SAVE_PATH + "/" + inputFileName + ".sav";
+            if (inputValidate.isLiveFile(file)) {
+                // 파일이 이미 존재하는 경우
+                outputView.fileDuplicationMenu();
+                String menu = inputView.inputDupMenu();
+                switch(menu) {
+                    case "1":
+                        break;
+                    case "2":
+                        continue;
+                    default:
+                        ErrormessageSave.INPUT_MENU.print();
+                }
+            }
+            break;
+        }
+
+        if (saveFile.saveFile(inputFileName)) outputView.saveSuccess();
         else ErrormessageSave.SAVE_ERROR_MESSAGE.print();
+    }
+
+    private void fileDuplicate() {
+
     }
 
     public void load() {
@@ -65,4 +94,5 @@ public class SaveController {
         if (loadFile.loadFile(loadFileName)) outputView.loadSuccess();
         else ErrormessageSave.LOAD_ERROR_MESSAGE.print();
     }
+
 }

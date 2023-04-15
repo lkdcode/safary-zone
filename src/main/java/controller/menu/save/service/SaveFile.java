@@ -1,6 +1,7 @@
 package controller.menu.save.service;
 
 import controller.menu.save.Path;
+import controller.menu.save.view.InputValidate;
 import controller.menu.save.view.InputView;
 import controller.menu.save.view.OutputView;
 import user.Player;
@@ -16,10 +17,12 @@ public class SaveFile {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final InputValidate inputValidate;
 
     public SaveFile() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
+        this.inputValidate = new InputValidate();
     }
 
     public boolean saveFile(String fileName) {
@@ -28,6 +31,7 @@ public class SaveFile {
         // 입력한 파일명으로 기존 플레이어 객체 저장
         try (FileOutputStream fos
                      = new FileOutputStream(Path.USER_SAVE_PATH + "/" + fileName + ".sav")) {
+
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(savePlayer);
         } catch (FileNotFoundException e) {
