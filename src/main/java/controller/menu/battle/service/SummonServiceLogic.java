@@ -1,5 +1,6 @@
 package controller.menu.battle.service;
 
+import common.MakeCommon;
 import controller.menu.battle.controller.WildPokemonList;
 import pokemon.books.FinallyPokemonBooks;
 import pokemon.books.NormalPokemonBooks;
@@ -9,6 +10,8 @@ import user.Player;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+
+import static common.MakeCommon.*;
 
 /**
  * 야생의 포켓몬을 소환하는 클래스
@@ -51,20 +54,20 @@ public class SummonServiceLogic {
      * @return
      */
     private Pokemon lowLevelSummon() {
-        if (random(RATE_RANGE_MIN, RATE_RANGE_MAX) >= 99.9) return finallyPokemonRandomPick();
-        if (random(RATE_RANGE_MIN, RATE_RANGE_MAX) <= 5.0) return rarePokemonRandomPick();
+        if (getRandom(RATE_RANGE_MIN, RATE_RANGE_MAX) >= 99.9) return finallyPokemonRandomPick();
+        if (getRandom(RATE_RANGE_MIN, RATE_RANGE_MAX) <= 5.0) return rarePokemonRandomPick();
         else return normalPokemonRandomPick();
     }
 
     private Pokemon middleLevelSummon() {
-        if (random(RATE_RANGE_MIN, RATE_RANGE_MAX) >= 89.9) return finallyPokemonRandomPick();
-        if (random(RATE_RANGE_MIN, RATE_RANGE_MAX) <= 11.0) return rarePokemonRandomPick();
+        if (getRandom(RATE_RANGE_MIN, RATE_RANGE_MAX) >= 89.9) return finallyPokemonRandomPick();
+        if (getRandom(RATE_RANGE_MIN, RATE_RANGE_MAX) <= 11.0) return rarePokemonRandomPick();
         else return normalPokemonRandomPick();
     }
 
     private Pokemon highLevelSummon() {
-        if (random(RATE_RANGE_MIN, RATE_RANGE_MAX) >= 70.0) return finallyPokemonRandomPick();
-        if (random(RATE_RANGE_MIN, RATE_RANGE_MAX) <= 11.0) return normalPokemonRandomPick();
+        if (getRandom(RATE_RANGE_MIN, RATE_RANGE_MAX) >= 70.0) return finallyPokemonRandomPick();
+        if (getRandom(RATE_RANGE_MIN, RATE_RANGE_MAX) <= 11.0) return normalPokemonRandomPick();
         else return rarePokemonRandomPick();
     }
 
@@ -79,43 +82,23 @@ public class SummonServiceLogic {
      */
     private Pokemon normalPokemonRandomPick() {
         int normalBookSize = NormalPokemonBooks.values().length;
-        int keyIndex = (int) random(MIN_BOOK_NUMBER, normalBookSize);
+        int keyIndex = (int) getRandom(MIN_BOOK_NUMBER, normalBookSize);
 
         return wildPokemonList.getNORMAL_POKEMON_LIST().get(keyIndex);
     }
 
     private Pokemon rarePokemonRandomPick() {
         int rareBookSize = RarePokemonBooks.values().length;
-        int index = (int) random(MIN_BOOK_NUMBER, rareBookSize);
+        int keyIndex = (int) getRandom(MIN_BOOK_NUMBER, rareBookSize);
 
-        return wildPokemonList.getRARE_POKEMON_LIST().get(index);
+        return wildPokemonList.getRARE_POKEMON_LIST().get(keyIndex);
     }
 
     private Pokemon finallyPokemonRandomPick() {
         int finallyBookSize = FinallyPokemonBooks.values().length;
-        int index = (int) random(MIN_BOOK_NUMBER, finallyBookSize);
+        int keyIndex = (int) getRandom(MIN_BOOK_NUMBER, finallyBookSize);
 
-        return wildPokemonList.getFINALLY_POKEMON_LIST().get(index);
-    }
-
-    /**
-     * 난수를 생성하는 Math.random() 은 의사 난수 생성이라 seed 값이 똑같다면 항상 같은
-     * 난수를 리턴합니다. 때문에 SecureRandom 클래스를 사용해서 난수를 생성했습니다.
-     * min 이상 max 미만의 수를 리턴하기 위해 매개변수를 받습니다.
-     *
-     * @param minRange : 난수 생성 범위의 최소 값
-     * @param maxRange : 난수 생성 범위의 최대 값
-     * @return
-     */
-    private double random(int minRange, int maxRange) {
-        try {
-            SecureRandom instanceStrong = SecureRandom.getInstanceStrong();
-            return (instanceStrong.nextDouble() * maxRange) + minRange;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        return (Math.random() * maxRange) + minRange;
+        return wildPokemonList.getFINALLY_POKEMON_LIST().get(keyIndex);
     }
 
 }
