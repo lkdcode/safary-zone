@@ -43,7 +43,7 @@ public class CaptureController {
                     outputView.throwBall(wildPokemonName, throwBall);
 
                     if (captureServiceLogic.throwBall(throwBall)) {
-                        outputView.successCapture(wildPokemonName);
+                        outputView.successCapture(wildPokemonName, captureServiceLogic.isAlready());
                         return;
                     }
 

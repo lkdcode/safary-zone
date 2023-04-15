@@ -21,8 +21,9 @@ public class CaptureServiceLogic {
     private final double POINT = 5;
     private final int MAX_RANGE = 100;
     private final int MIN_RANGE = 1;
-    private final double DEFAULT_GO_NEAR_SUCCESS_RATE = 100.0; // TODO : 테스트용 100.0, 기존 11.0
+    private final double DEFAULT_GO_NEAR_SUCCESS_RATE = 31.0; // TODO : 테스트용 100.0
     private double successPoint = 0;
+    private boolean isAlready;
 
     public CaptureServiceLogic() {
         this.wildPokemon = new SummonServiceLogic().getWildPokemon();
@@ -39,6 +40,7 @@ public class CaptureServiceLogic {
         if (this.wildPokemon instanceof NormalPokemonBooks) this.runRate = 30;
         else if (this.wildPokemon instanceof RarePokemonBooks) this.runRate = 40;
         else if (this.wildPokemon instanceof FinallyPokemonBooks) this.runRate = 50;
+        checkAlready();
     }
 
     /**
@@ -76,10 +78,20 @@ public class CaptureServiceLogic {
         return false;
     }
 
+    private void checkAlready() {
+        for (Pokemon playerPokemon : Player.getInstance().getPokemonList().playerPokemonList().values()) {
+            if (playerPokemon.getInformation().getName().equals(wildPokemon.getInformation().getName())) {
+                this.isAlready = true;
+            }
+        }
+    }
+
+
     /**
-     * 1. 야생 포켓몬스터의 도감 번호를 가져옵니다.
-     * 2. 도감 번호를 기준으로 플레이어에게서 꺼내옵니다.
-     * 3. 만약에, (꺼내온 플레이어의 포켓몬스터, 야생 몬스터)
+     * 1. 야생 포켓몬스터를 이미 보유하고 있다면 해당 메서드를 종료합니다.
+     * 2. 야생 포켓몬스터의 도감 번호를 가져옵니다.
+     * 3. 도감 번호를 기준으로 플레이어에게서 꺼내옵니다.
+     * 4. 만약에, (꺼내온 플레이어의 포켓몬스터, 야생 몬스터)
      * - 플레이어의 포켓몬스터가 노말 등급이면서 야생 몬스터가 레어 등급이라면 추가합니다.
      * - 플레이어의 포켓몬스터가 노말 등급이면서 야생 몬스터가 파이널리 등급이라면 추가합니다.
      * - 플레이어의 포켓몬스터가 레어 등급이면서 야생 몬스터가 파이널리 등급이라면 추가합니다.
@@ -89,6 +101,7 @@ public class CaptureServiceLogic {
      * 2. 보유하고 있는 포켓몬스터의 등급이 적어도 같거나 높기 때문에 추가해주지 않습니다.
      */
     private void addWildPokemon() {
+        if (isAlready) return;
         int bookNumber = this.wildPokemon.getInformation().getBookNumber();
         Pokemon playerPokemon = Player.getInstance().getPokemonList().playerPokemonList().get(bookNumber);
 
@@ -135,4 +148,7 @@ public class CaptureServiceLogic {
         return wildPokemon.getInformation().getName();
     }
 
+    public boolean isAlready() {
+        return isAlready;
+    }
 }

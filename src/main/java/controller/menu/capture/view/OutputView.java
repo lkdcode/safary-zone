@@ -8,11 +8,16 @@ import static common.MakeCommon.*;
  * 콘솔에 출력하는 역할
  */
 public class OutputView {
-    private final int MILLIS = 30;
+    private final int MILLIS = 15;
 
     public void menu() {
-        System.out.println("👉 매뉴 번호를 입력해주세요");
-        System.out.println("[1️⃣ 몬스터볼 던지기] [2️⃣ 다가가기] [0️⃣ 종료하기]");
+        String message = "포획을 할 준비를 합니다. 🤔\n\n";
+        message += "👉 매뉴 번호를 입력해주세요\n";
+        message += "1️⃣ 몬스터볼 던지기\n";
+        message += "2️⃣ 다가가기\n";
+        message += "0️⃣ 종료하기\n";
+
+        dottedPrint(message, MILLIS);
     }
 
     public void ready(String wildPokemonName) {
@@ -21,10 +26,10 @@ public class OutputView {
                 + "..🕢...\n"
                 + "..........🕥......\n"
                 + "‼️‼️‼️‼️\n"
-                + "\n야생의 [" + wildPokemonName + "] 이(가) 등장하였습니다. ❕ 🐾🐾🐾\n"
-                + "포획을 할 준비를 합니다. 🤔\n\n";
+                + "\n야생의 [" + wildPokemonName + "] 이(가) 등장하였습니다. ❕ 🐾🐾🐾\n";
 
         dottedPrint(message, MILLIS);
+        stopLine();
     }
 
     public void showBallList(String myBallList) {
@@ -32,7 +37,7 @@ public class OutputView {
                 + "➖➖➖➖ 나의 몬스터 볼 리스트 ➖➖➖➖\n\n"
                 + myBallList
                 + "\n➖➖➖➖ ➖➖➖➖➖➖ ➖➖➖➖\n\n"
-                + "몬스터 볼의 이름을 입력해주세요 : ✅\n\n";
+                + "🔴 몬스터 볼의 이름을 입력해주세요 : \n\n";
         dottedPrint(message, MILLIS);
     }
 
@@ -48,10 +53,17 @@ public class OutputView {
         dottedPrint(message, MILLIS);
     }
 
-    public void successCapture(String wildPokemonName) {
-        String message = "\n\n........효과는 굉장했다!! 🎉🎉\n"
-                + "🎊 야생의 [" + wildPokemonName + "] 을(를) 포획하였습니다.!!! 🎊\n"
-                + "😆 내 포켓몬리스트에 추가되었습니다.!! 👍👍\n\n";
+    public void successCapture(String wildPokemonName, boolean already) {
+        String message = "\n\n........효과는 굉장했다!! 🎉🎉\n";
+        message += "🎊 야생의 [" + wildPokemonName + "] 을(를) 포획하였습니다.!!! 🎊\n";
+
+        if (already) {
+            message += "하지만 이미 보유하고 있어서 포켓몬도감에 새로 추가되지 않았습니다.. 😅\n";
+            message += "(괜히 기분만 좋아졌다..!🤔) \n\n";
+        } else {
+            message += "😆 내 포켓몬리스트에 추가되었습니다.!! 👍👍\n\n";
+        }
+
 
         dottedPrint(message, MILLIS);
     }
