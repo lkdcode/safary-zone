@@ -21,7 +21,7 @@ public class CaptureServiceLogic {
     private final double POINT = 5;
     private final int MAX_RANGE = 100;
     private final int MIN_RANGE = 1;
-    private final double DEFAULT_GO_NEAR_SUCCESS_RATE = 31.0; // TODO : 테스트용 100.0
+    private final double DEFAULT_GO_NEAR_SUCCESS_RATE = 31.0; // TODO : TEST 100.0
     private double successPoint = 0;
     private boolean isAlready;
 

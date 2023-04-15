@@ -14,7 +14,7 @@ public class BallPouch implements Serializable {
     }
 
     /**
-     * TODO : test 용 시작부터 몬스터볼을 1개씩 가지고 시작함,
+     * TODO : TEST 시작부터 몬스터볼을 1개씩 가지고 시작함
      */
     private void initialize() {
         for (MonsterBall monsterBall : MonsterBall.values()) {
