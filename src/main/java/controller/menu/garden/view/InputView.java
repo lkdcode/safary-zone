@@ -85,11 +85,4 @@ public class InputView {
         return answer;
     }
 
-    public void stopInput() {
-        try {
-            br.readLine();
-        } catch (IOException e) {
-            ErrorMessage.UNKNOWN_ERROR.print();
-        }
-    }
 }

@@ -1,6 +1,7 @@
 package controller.menu.garden.view;
 
 import static common.MakeCommon.*;
+
 import user.Player;
 
 /**
@@ -18,6 +19,7 @@ public class OutputView {
     private final String PLANTING_RASP_BERRY = "2. 🍓 라즈베리 심기 👉 [일정 확률로 좌,우로 열매를 뿌립니다.]";
     private final String PLANTING_BLACK_BERRY = "3. ♣️ 블랙베리 심기 👉 [일정 확률로 상,하,좌,우로 열매를 뿌립니다.]";
     private final String BACK = "\n돌아갑니다.\n";
+    private final String OVER_CAPACITY = "\n\n현재 정원이 꽉 찼습니다! 🌼\n\n";
     private final int MILLIS = 30;
     private final int SHORT_MILLS = 10;
 
@@ -47,7 +49,7 @@ public class OutputView {
             for (int j = 0; j < inGardenArr.length; j++) {
                 System.out.print(inGardenArr[j] + "\t");
             }
-            System.out.println(i+1);
+            System.out.println(i + 1);
         }
         System.out.println();
     }
@@ -64,5 +66,14 @@ public class OutputView {
 
     public void exit() {
         dottedPrint(BACK, MILLIS);
+    }
+
+    public void showMyBerryList() {
+        String message = Player.getInstance().getInventory().getBerryPouch().getBerryList();
+        dottedPrint(message, MILLIS);
+    }
+
+    public void checkCapacity() {
+        dottedPrint(OVER_CAPACITY, MILLIS);
     }
 }

@@ -33,7 +33,7 @@ public class SummonServiceLogic {
      *
      * @return
      */
-    public Pokemon getWhildPokemon() {
+    public Pokemon getWildPokemon() {
         int playerLevel = Player.getInstance().getLevel();
 
         if (playerLevel <= LOW_LEVEL) return lowLevelSummon();

@@ -24,7 +24,8 @@ public class Garden implements Serializable {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 map[i][j] = LAWN; // 🌱 대입
-                countMap[i][j] = EMPTY_COUNT_MAP; // 0 대입
+//                countMap[i][j] = EMPTY_COUNT_MAP;
+                countMap[i][j] = 3; // TODO : 정원이 꽉 차있게 설정. TEST
             }
         }
     }

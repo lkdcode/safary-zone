@@ -25,7 +25,7 @@ public class BattleController {
 
     public void start() {
         this.summonServiceLogic = new SummonServiceLogic();
-        this.wildPokemon = summonServiceLogic.getWhildPokemon();
+        this.wildPokemon = summonServiceLogic.getWildPokemon();
         String wildPokemonName = wildPokemon.getInformation().getName();
         outputView.appearWildPokemon(wildPokemonName);
 

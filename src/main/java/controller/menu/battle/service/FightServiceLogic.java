@@ -1,6 +1,7 @@
 package controller.menu.battle.service;
 
 import common.MakeCommon;
+import pokemon.PokemonList;
 import pokemon.PokemonType;
 import pokemon.books.FinallyPokemonBooks;
 import pokemon.books.NormalPokemonBooks;
@@ -249,4 +250,28 @@ public class FightServiceLogic {
         }
     }
 
+
+    /**
+     * 야생 포켓몬스터의 이름과 도감 번호를 기준으로 현재 플레이어가 보유하고 있는지 확인하는 메서드
+     *
+     * @param wildPokemon : 야생 포켓몬스터
+     * @return
+     */
+    public boolean isDuplicate(Pokemon wildPokemon) {
+        PokemonList pokemonList = Player.getInstance().getPokemonList();
+        //TODO:TEST
+        for (Pokemon playerPokemon : pokemonList.playerPokemonList().values()) {
+            if (playerPokemon != null) {
+                if (wildPokemon.getInformation().getName().equals(playerPokemon.getInformation().getName())
+                        && wildPokemon.getInformation().getBookNumber() == playerPokemon.getInformation().getBookNumber()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int getFightFlag() {
+        return fightFlag;
+    }
 }

@@ -11,15 +11,21 @@ import static common.MakeCommon.stopLine;
  * 정원 controller
  */
 public class GardenController {
-
+    private final GardenServiceLogic gardenServiceLogic;
+    private final InputView inputView;
+    private final OutputView outputView;
     private final String CHECK_MY_GARDEN = "1";
     private final String PLANTING_BERRY = "2";
     private final String EXIT = "0";
-    private final InputView inputView;
-    private final OutputView outputView;
     private final PlantingBerry plantingBerry;
+    private final String PLANTING_BLUE_BERRY = "1";
+    private final String PLANTING_RASP_BERRY = "2";
+    private final String PLANTING_BLACK_BERRY = "3";
+    private final String FIRST_MENU = "1";
+    private final String BACK = "2";
 
     public GardenController() {
+        this.gardenServiceLogic = new GardenServiceLogic();
         this.inputView = new InputView();
         this.outputView = new OutputView();
         this.plantingBerry = new PlantingBerry();
@@ -39,22 +45,19 @@ public class GardenController {
             switch (menu) {
                 case CHECK_MY_GARDEN:
                     outputView.showMyGarden();
-                    stop();
+                    outputView.showMyBerryList();
+                    stopLine();
                     break;
                 case PLANTING_BERRY:
                     plantingMenu();
-                    stop();
+                    stopLine();
                     break;
                 case EXIT:
-                    // test
-//                    ShopController shopController = new ShopController();
-//                    shopController.menu();
-                    // test
                     outputView.exit();
                     return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
-                    stop();
+                    stopLine();
             }
         }
     }
@@ -69,43 +72,41 @@ public class GardenController {
      * 잘못된 문자를 입력하면 오류 메세지가 출력되고 재입력 요청합니다.
      */
     public void plantingMenu() {
+        if (gardenServiceLogic.checkCapacity()) {
+            outputView.checkCapacity();
+            outputView.showMyGarden();
+            return;
+        }
         while (true) {
             outputView.showMyGarden();
+            outputView.showMyBerryList();
             outputView.showPlantingMenu();
             String menu = inputView.inputPlantingMenu();
             switch (menu) {
-                case "1": // 블루베리 심기
+                case PLANTING_BLUE_BERRY:
                     plantingBerry.plantingBlueBerry();
-                    stop();
+                    stopLine();
                     break;
-                case "2": // 라즈베리 심기
+                case PLANTING_RASP_BERRY:
                     plantingBerry.plantingRaspBerry();
-                    stop();
+                    stopLine();
                     break;
-                case "3": // 블랙베리 심기
+                case PLANTING_BLACK_BERRY:
                     plantingBerry.plantingBlackBerry();
-                    stop();
+                    stopLine();
                     break;
-                case EXIT: // 이전 메뉴로 돌아가기
+                case EXIT:
                     outputView.exit();
                     return;
                 default:
                     ErrorMessage.GARDEN_MENU.print();
-                    stop();
+                    stopLine();
             }
-            // 심은 뒤 정원을 출력하고, 더 심을지 확인
             outputView.showMyGarden();
             String answer = inputView.plantingMore();
-            // 더 심을거면 베리 선택 메뉴로 돌아가기
-            if (answer.equals("1")) continue;
-            // 그만 심을거면 메인 메뉴로 돌아가기
-            if (answer.equals("2")) return;
+            if (answer.equals(FIRST_MENU)) continue;
+            if (answer.equals(BACK)) return;
         }
-    }
-
-    private void stop() {
-        stopLine();
-        inputView.stopInput();
     }
 
 }
