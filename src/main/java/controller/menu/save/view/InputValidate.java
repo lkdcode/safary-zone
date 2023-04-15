@@ -1,7 +1,6 @@
 package controller.menu.save.view;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.File;
 
 /**
  * 유저로부터 입력받은 값의 유효성 검사
@@ -33,15 +32,34 @@ public class InputValidate {
      * @param input
      * @return 메뉴 범위에 포함되면 true, 메뉴에 포함되지 않은 숫자나 문자를 입력하면 false 를 리턴합니다.
      */
+    public boolean fileDuplicationMenu(String input) {
+        if (input.equals(FIRST_MENU) || input.equals(SECOND_MENU))
+            return true;
+        return false;
+    }
+
     public boolean menuNumberValidate(String input) {
         if (input.equals(FIRST_MENU) || input.equals(SECOND_MENU) || input.equals(BACK_MENU))
             return true;
         return false;
     }
 
-    public void FileDuplicationValidate(String inputFileName) { // String
+//    public boolean FileDuplicationValidate(String inputFileName) {
         // TODO : 입력한 파일명이 중복일시, 다시 입력하게 하는 메서드 추가중입니다
 //        Pattern pattern = Pattern.compile()
 //        Matcher matcher =
+//        String returnFileName = "";
+//
+//        if (new File(inputFileName + ".sav").exists()) {
+//            return false;
+//        }
+//        return true;
+//    }
+
+    public boolean isLiveFile(String inputFile) {
+        File file = new File(inputFile);
+
+        if (file.exists()) return true;
+        return false;
     }
 }

@@ -16,7 +16,10 @@ public class OutputView {
     private final String EXIT = "0. 🔙 돌아가기\n";
     private final String EXIT_MAIN = "\n메인 메뉴로 돌아갑니다. 🔙\n\n";
     private final String SAVE_SUCCESS = "\n✔ 저장이 완료되었습니다.\n\n";
-    private final String LOAD_SUCCESS = "\n.✔ 불러오기가 완료되었습니다.\n\n돌아오신 걸 환영합니다! 😊✋\n";
+    private final String LOAD_SUCCESS = "\n✔ 불러오기가 완료되었습니다.\n\n돌아오신 걸 환영합니다! 😊✋\n";
+    private final String FILE_DUPLICATION= "\n이미 존재하는 파일입니다. 덮어씌우시겠습니까?\n";
+    private final String PROCEED_SAVE = "1. ⭕ 덮어쓰기\n";
+    private final String SAVE_DIFFERENT_NAME = "2. ❌ 다른 이름으로 저장\n\n";
     private final int MILLIS = 30;
     private final int SHORT_MILLS = 10;
 
@@ -28,13 +31,13 @@ public class OutputView {
         dottedPrint(SAVE_FILE_NAME, SHORT_MILLS);
     }
 
-    // TODO : 에러메세지로 옮기기
-    public void NameLengthEmergency() {
-        dottedPrint(FILE_NAME_LENGTH, SHORT_MILLS);
-    }
-
     public void choiceMenu() {
         String message = WELCOME_SAVELOAD + SAVE + LOAD + EXIT;
+        dottedPrint(message, MILLIS);
+    }
+
+    public void fileDuplicationMenu() {
+        String message = FILE_DUPLICATION + PROCEED_SAVE + SAVE_DIFFERENT_NAME;
         dottedPrint(message, MILLIS);
     }
 
