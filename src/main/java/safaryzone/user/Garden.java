@@ -1,5 +1,7 @@
 package safaryzone.user;
 
+import safaryzone.common.MakeCommon;
+
 import java.io.Serializable;
 
 /**
@@ -27,6 +29,22 @@ public class Garden implements Serializable {
                 countMap[i][j] = EMPTY_COUNT_MAP;
             }
         }
+
+        // TODO: TEST LKD 🔻
+//        String[] input = {"🍓", "🍇", "♣️"};
+//        for (int i = 0; i < SIZE; i++) {
+//            for (int j = 0; j < SIZE; j++) {
+//                if (i != 4) {
+//                    map[i][j] = input[(int) MakeCommon.getRandom(0, 3)];
+//                    countMap[i][j] = 99;
+//                }
+//            }
+//        }
+//        for (int i = 0; i < 4; i++) {
+//            map[4][i] = input[(int) MakeCommon.getRandom(0, 3)];
+//            countMap[4][i] = 99;
+//        }
+        // TODO : TEST LKD 🔺
     }
 
     /**
@@ -39,6 +57,7 @@ public class Garden implements Serializable {
     public void planting(String berry, int row, int column) {
         this.map[row][column] = berry;
         this.countMap[row][column] = 5; // 열매를 심은 위치에 5 대입
+//        this.countMap[row][column] = 1; // TODO : TEST JYW
     }
 
     public String[][] getMap() {

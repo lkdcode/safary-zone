@@ -12,6 +12,7 @@ import java.io.Serializable;
 public class Player implements Serializable {
     private static Player instance;
     private final int START_LEVEL = 1;
+    //    private final int START_LEVEL = 10; // TODO : TEST LKD
     private final int START_EXP = 0;
     private final int LEVEL_UP_POINT = 3;
     private final int MAX_LEVEL = 10;

@@ -20,6 +20,7 @@ public class PlantableBlackBerry extends PlantingRate implements GardenService {
     private final int[] BLACKBERRY_ROW = {1, -1, 0, 0};
     private final int[] BLACKBERRY_COLUMN = {0, 0, 1, -1};
     private final double BLACKBERRY_RATE = 10.0;
+    //    private final double BLACKBERRY_RATE = 50.0; // TODO : TEST JYW
     private final String BLACK_BERRY = "♣️";
     private final int SIZE = 5;
 

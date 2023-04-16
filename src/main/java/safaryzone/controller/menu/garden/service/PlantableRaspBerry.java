@@ -10,6 +10,7 @@ public class PlantableRaspBerry extends PlantingRate implements GardenService {
     private final int[] RASPBERRY_ROW = {-1, 1};
     private final int[] RASPBERRY_COLUMN = {0, 0};
     private final double RASPBERRY_RATE = 20.0;
+    //    private final double RASPBERRY_RATE = 50.0; // TODO : TEST JYW
     private final String RASP_BERRY = "🍓";
 
     private final int SIZE = 5;

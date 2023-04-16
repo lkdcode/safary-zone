@@ -10,6 +10,7 @@ public class PlantableBlueBerry extends PlantingRate implements GardenService {
     private final int[] BLUEBERRY_ROW = {0, 0};
     private final int[] BLUEBERRY_COLUMN = {-1, 1};
     private final double BLUEBERRY_RATE = 30.0;
+    //    private final double BLUEBERRY_RATE = 50.0; // TODO : TEST JYW
     private final String BLUE_BERRY = "🍇";
     private final int SIZE = 5;
 
