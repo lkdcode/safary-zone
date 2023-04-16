@@ -14,7 +14,7 @@ public class OutputView {
         System.out.println("🔸 5️⃣ 진화 이용하는 방법");
         System.out.println("🔸 6️⃣ 내 정보 보기 이용하는 방법");
         System.out.println("🔸 7️⃣ 저장/불러오기 이용하는 방법");
-        System.out.println("🔸 8️⃣ 메인 메뉴로 돌아가기..");
+        System.out.println("🔸 0️⃣ 메인 메뉴로 돌아가기..");
     }
 
     public void shopHelp() {
@@ -54,17 +54,16 @@ public class OutputView {
 
     public void captureHelp() {
         String message = "\n\n🎣 포획하기 이용하는 방법 .....🚶\n\n";
-        message += "1. 플레이어의 레벨에 따라 만날 수 있는 몬스터의 등급이 달라집니다!\n";
-        message += "👉 Lv1~3 : Normal 95%, Rare 4%, Finally 1%\n";
-        message += "👉 Lv4~7 : Normal 30%, Rare 60%, Finally 10%\n";
-        message += "👉 Lv8~10 : Normal 10%, Rare 60%, Finally 30%\n\n";
-        message += "2. 몬스터 볼마다 포획 확률이 다릅니다.\n";
-        message += "👉 [NORMAL] 포획 확률 : 20%\n";
-        message += "👉 [HYPER] 포획 확률 : 35%\n";
-        message += "👉 [MASTER] 포획 확률 : 45%\n\n";
-        message += "3. 다가가기에 성공하면 포획 확률을 올릴 수 있습니다.\n";
-        message += "4. 야생 포켓몬스터는 언제든 도망갈 수 있습니다.\n";
-        message += "5. 다양한 포켓몬을 획득해보세요!\n";
+        message += "1. 입장하면 랜덤하게 포켓몬이랑 만나게 됩니다!\n";
+        message += "2. 플레이어는 포켓몬에게 볼을 던지거나 가까이 다가갈 수 있습니다!\n";
+        message += "👉 볼은 던지면 포켓몬을 포획할 수 있습니다\n";
+        message += "👉 🔴NORMAL볼, 🟡HYPER볼, 🟣MASTERBALL 순으로 포획할 확률이 높습니다\n";
+        message += "👉 🪄볼이 다 떨어지면 포획할 수 없게 되므로 꼭 챙기세요!\n";
+        message += "👉 포획하기 어렵다면 먼저 다가가보세요👣👣!\n";
+        message += "👉 포켓몬에게 다가가면 잡기 쉬워집니다🎯🎯!\n";
+        message += "👉 대신 다가가기에 실패하면 포켓몬이 플레이어를 발견해 도망칩니다🏃🏃!\n\n";
+        message += "3. 포획한 포켓몬은 📋보유한 포켓몬📋에 추가됩니다!\n";
+        message += "4. 다양한 포켓몬을 잡아봅시다! 어쩌면 ⭐⭐귀한 포켓몬⭐⭐을 만날지도...?!\n";
         message += "\n\n";
 
         MakeCommon.dottedPrint(message, MILLIS);
@@ -106,9 +105,12 @@ public class OutputView {
 
     public void informationHelp() {
         String message = "\n\n🏪 내 정보 보기 이용하는 방법 .....🚶\n\n";
-
-        message += "1. 플레이어의 정보와 인벤토리, 보유한 금액을 확인할 수 있습니다.\n";
-        message += "2. 현재 보유한 포켓몬스터의 도감을 볼 수 있습니다\n";
+        message += "📂 내 정보 보는 방법 📂\n";
+        message += "1. 이 곳에서 🪪플레이어의 정보를 볼 수 있습니다!\n";
+        message += "2. 보고 싶은 메뉴의 번호를 입력해주세요!\n";
+        message += "👉 1️⃣ 플레이어가 현재 가지고 있는 📕볼 📗열매 📘게임 머니 📙계정 레벨을 보여줍니다!\n";
+        message += "👉 2️⃣ 플레이어가 가지고 있는 📖모든 포켓몬들의 상세 스텟📖을 보여줍니다!\n";
+        message += "👉 0️⃣ 메인 메뉴로 돌아갑니다↪️↪️!\n";
         message += "\n\n";
 
         MakeCommon.dottedPrint(message, MILLIS);
