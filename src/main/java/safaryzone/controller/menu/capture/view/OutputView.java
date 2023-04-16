@@ -98,7 +98,7 @@ public class OutputView {
     }
 
     public void exit() {
-        String message = "\n\n도망가기를 선택하였습니다.\n"
+        String message = "\n\n종료하기를 선택하였습니다.\n"
                 + "메인 메뉴로 돌아갑니다. 🔙\n\n";
 
         MakeCommon.dottedPrint(message, MILLIS);
