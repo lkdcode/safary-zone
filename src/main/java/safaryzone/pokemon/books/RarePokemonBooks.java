@@ -15,8 +15,8 @@ public enum RarePokemonBooks implements RarePokemon {
     DEGURI(8, "데구리", PokemonType.ELECTRIC, 100, 1, 25, 48),
     BAYLEAF(9, "베이리프", PokemonType.GRASS, 100, 1, 25, 48),
     NINETAIL(10, "나인테일", PokemonType.FIRE, 100, 1, 25, 48),
-    SOORYUKCHANGI(11, "수륙챙이", PokemonType.WATER, 10, 1, 25, 48),
-    RARECOIL(12, "레어코일", PokemonType.ELECTRIC, 10, 1, 25, 48),
+    SOORYUKCHANGI(11, "수륙챙이", PokemonType.WATER, 100, 1, 25, 48),
+    RARECOIL(12, "레어코일", PokemonType.ELECTRIC, 100, 1, 25, 48),
     ;
     private PokemonInformation information;
 

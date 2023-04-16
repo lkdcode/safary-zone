@@ -15,8 +15,8 @@ public enum FinallyPokemonBooks implements FinallyPokemon {
     DDAKGURI(8, "딱구리", PokemonType.ELECTRIC, 1000, 1, 125, 248),
     MEGANIUM(9, "메가니움", PokemonType.GRASS, 1000, 1, 125, 248),
     ELEVENTAIL(10, "일레븐테일", PokemonType.FIRE, 1000, 1, 125, 248),
-    GANGCHANGI(11, "강챙이", PokemonType.WATER, 100, 1, 125, 248),
-    UNIQUECOIL(12, "유니크코일", PokemonType.ELECTRIC, 10, 1, 125, 248),
+    GANGCHANGI(11, "강챙이", PokemonType.WATER, 1000, 1, 125, 248),
+    UNIQUECOIL(12, "유니크코일", PokemonType.ELECTRIC, 1000, 1, 125, 248),
     ;
 
     private PokemonInformation information;
