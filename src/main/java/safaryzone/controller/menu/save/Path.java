@@ -1,7 +1,11 @@
 package safaryzone.controller.menu.save;
 
+import java.io.File;
+
 public interface Path {
 
-    String ROOT_PATH = "D:/safary-zone";
-    String USER_SAVE_PATH = ROOT_PATH + "/userLibrary";
+    String SAVE_DIRECTORY = "user_library";
+    String PATH = System.getProperty("user.dir")
+            + File.separator
+            + SAVE_DIRECTORY;
 }
