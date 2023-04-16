@@ -25,7 +25,7 @@ public class EndingServiceLogic {
         int bookNumber = (int) MakeCommon.getRandom(1, legendBookSize);
 
         Player.getInstance().getPokemonList().playerPokemonList().put(
-                bookNumber, LegendPokemonBooks.values()[bookNumber]
+                bookNumber, LegendPokemonBooks.values()[bookNumber - 1]
         );
     }
 
