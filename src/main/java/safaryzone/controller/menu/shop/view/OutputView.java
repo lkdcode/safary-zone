@@ -14,9 +14,9 @@ public class OutputView {
     private final String SECOND_MENU = "2️⃣ 🍓 열매 구매";
     private final String BACK_MENU = "0️⃣ 🔙 돌아가기";
     private final String BUY_MONSTER_BALL_MENU = "\n# 몬스터 볼 구매 매뉴\n";
-    private final String FIRST_BALL = "1️⃣ 일반 몬스터 볼 - 1200머니 👉 [포획 확률 : 20%]";
-    private final String SECOND_BALL = "2️⃣ 하이퍼 몬스터 볼 - 5000머니 👉 [포획 확률 : 35%]";
-    private final String THIRD_BALL = "3️⃣ 마스터 몬스터 볼 - 7500머니 👉 [포획 확률 : 45%]";
+    private final String FIRST_BALL = "1️⃣ 일반 몬스터 볼 - 1200머니 👉 [포획 확률 : 30%]";
+    private final String SECOND_BALL = "2️⃣ 하이퍼 몬스터 볼 - 5000머니 👉 [포획 확률 : 50%]";
+    private final String THIRD_BALL = "3️⃣ 마스터 몬스터 볼 - 7500머니 👉 [포획 확률 : 75%]";
     private final String BUY_BERRY_MENU = "\n# 열매 구매 매뉴\n";
     private final String FIRST_BERRY = "1️⃣ 🍇 블루 베리 - 1000머니 👉 [30% 확률로 좌,우로 열매를 뿌립니다.]";
     private final String SECOND_BERRY = "2️⃣ 🍓 라즈 베리 - 1200머니 👉 [20% 확률로 상,하로 열매를 뿌립니다.]";

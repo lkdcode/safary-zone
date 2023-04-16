@@ -15,13 +15,16 @@ public class CaptureServiceLogic {
     private final Pokemon wildPokemon;
     private double captureRate;
     private double runRate;
-    private final double NORMAL_BALL_RATE = 20;
-    private final double HYPER_BALL_RATE = 35;
-    private final double MASTER_BALL_RATE = 45;
+    private final double NORMAL_BALL_RATE = 30;
+    //    private final double NORMAL_BALL_RATE = 50; // TODO : TEST LJF
+    private final double HYPER_BALL_RATE = 50;
+    //    private final double HYPER_BALL_RATE = 50; // TODO : TEST LJF
+    private final double MASTER_BALL_RATE = 75;
+    //    private final double MASTER_BALL_RATE = 100; // TODO : TEST LJF
     private final double POINT = 5;
     private final int MAX_RANGE = 100;
     private final int MIN_RANGE = 1;
-    private final double DEFAULT_GO_NEAR_SUCCESS_RATE = 31.0; // TODO : TEST 100.0
+    private final double DEFAULT_GO_NEAR_SUCCESS_RATE = 50.0;
     private double successPoint = 0;
     private boolean isAlready;
 
