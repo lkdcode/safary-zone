@@ -4,6 +4,7 @@ import safaryzone.controller.menu.battle.exception.ErrorMessageBattle;
 import safaryzone.controller.menu.battle.service.SummonServiceLogic;
 import safaryzone.controller.menu.battle.view.InputView;
 import safaryzone.controller.menu.battle.view.OutputView;
+import safaryzone.controller.menu.garden.service.DeleteBerry;
 import safaryzone.pokemon.pokemon.Pokemon;
 import safaryzone.user.Player;
 
@@ -31,6 +32,7 @@ public class BattleController {
         String wildPokemonName = wildPokemon.getInformation().getName();
         String type = String.valueOf(wildPokemon.getInformation().getType());
         outputView.appearWildPokemon(wildPokemonName, type);
+        new DeleteBerry().deleteBerry();
 
         while (true) {
             outputView.choiceMenu();

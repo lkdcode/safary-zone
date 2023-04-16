@@ -4,6 +4,7 @@ package safaryzone.controller.menu.capture.controller;
 import safaryzone.controller.menu.capture.service.CaptureServiceLogic;
 import safaryzone.controller.menu.capture.view.InputView;
 import safaryzone.controller.menu.capture.view.OutputView;
+import safaryzone.controller.menu.garden.service.DeleteBerry;
 import safaryzone.user.Player;
 import safaryzone.user.item.ball.MonsterBall;
 
@@ -24,6 +25,7 @@ public class CaptureController {
     }
 
     public void start() {
+        new DeleteBerry().deleteBerry();
         this.captureServiceLogic = new CaptureServiceLogic();
         String wildPokemonName = captureServiceLogic.getWildPokemonName();
         outputView.ready(wildPokemonName);
