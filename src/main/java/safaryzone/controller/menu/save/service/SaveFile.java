@@ -30,10 +30,6 @@ public class SaveFile {
     public boolean saveFile(String fileName) {
         // 기존 플레이어 객체 가져오기
         Player savePlayer = Player.getInstance();
-        // 폴더 없으면 현재 작업중인 폴더(safari-zone)에 저장용폴더 생성
-
-        File fileInfo = new File(PATH);
-        if (!fileInfo.exists()) fileInfo.mkdir();
         // 입력한 파일명으로 기존 플레이어 객체 저장
         try (FileOutputStream fos
                      = new FileOutputStream(PATH + "/" + fileName + ".sav")) {

@@ -20,11 +20,16 @@ public class OutputView {
     private final String FILE_DUPLICATION= "\n이미 존재하는 파일입니다. 덮어씌우시겠습니까?\n";
     private final String PROCEED_SAVE = "1. ⭕ 덮어쓰기\n";
     private final String SAVE_DIFFERENT_NAME = "2. ❌ 다른 이름으로 저장\n\n";
+    private final String NOW_FILE_LIST = "\n🖨 저장된 파일 목록 🖨\n";
     private final int MILLIS = 30;
     private final int SHORT_MILLS = 10;
 
     public void loadFile() {
         MakeCommon.dottedPrint(LOAD_FILE_NAME, SHORT_MILLS);
+    }
+
+    public void fileList() {
+        MakeCommon.dottedPrint(NOW_FILE_LIST, MILLIS);
     }
 
     public void saveFile() {
@@ -43,6 +48,9 @@ public class OutputView {
 
     public void exit() {
         MakeCommon.dottedPrint(EXIT_MAIN, MILLIS);
+    }
+    public void print(String message) {
+        MakeCommon.dottedPrint(message + "\n", SHORT_MILLS);
     }
 
     public void saveSuccess() {

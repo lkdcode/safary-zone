@@ -44,18 +44,6 @@ public class InputValidate {
         return false;
     }
 
-//    public boolean FileDuplicationValidate(String inputFileName) {
-        // TODO : 입력한 파일명이 중복일시, 다시 입력하게 하는 메서드 추가중입니다
-//        Pattern pattern = Pattern.compile()
-//        Matcher matcher =
-//        String returnFileName = "";
-//
-//        if (new File(inputFileName + ".sav").exists()) {
-//            return false;
-//        }
-//        return true;
-//    }
-
     public boolean isLiveFile(String inputFile) {
         File file = new File(inputFile);
 

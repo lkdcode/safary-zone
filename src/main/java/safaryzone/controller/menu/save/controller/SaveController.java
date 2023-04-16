@@ -61,7 +61,8 @@ public class SaveController {
 
     public void save() {
         String inputFileName;
-
+        outputView.fileList();
+        loadFile.fileList();
         while (true) {
             outputView.saveFile();
             inputFileName = inputView.inputFileName();
@@ -92,6 +93,8 @@ public class SaveController {
     }
 
     public void load() {
+        outputView.fileList();
+        loadFile.fileList();
         outputView.loadFile();
         String loadFileName = inputView.inputFileName();
         if (loadFile.loadFile(loadFileName)) outputView.loadSuccess();

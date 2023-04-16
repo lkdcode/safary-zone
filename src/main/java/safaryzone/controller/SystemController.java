@@ -12,6 +12,10 @@ import safaryzone.controller.menu.playerinformation.controller.PlayerInformation
 import safaryzone.controller.menu.save.controller.SaveController;
 import safaryzone.controller.menu.shop.controller.ShopController;
 
+import java.io.File;
+
+import static safaryzone.controller.menu.save.Path.PATH;
+
 /**
  * main controller
  */
@@ -58,6 +62,10 @@ public class SystemController {
 
         while (true) {
             endingController.check();
+
+            // TODO : 프로그램 실행시 유저
+            File fileInfo = new File(PATH);
+            if (!fileInfo.exists()) fileInfo.mkdir();
 
             outputView.menu();
             String input = inputView.menu();

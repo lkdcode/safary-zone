@@ -27,10 +27,8 @@ public class LoadFile {
     public boolean loadFile(String fileName) {
         try (FileInputStream fis
                      = new FileInputStream(PATH + "/" + fileName + ".sav")) {
-
             ObjectInputStream ois = new ObjectInputStream(fis);
             Player.load((Player) ois.readObject());
-
         } catch (FileNotFoundException e) {
             return false;
         } catch (IOException e) {
@@ -39,6 +37,15 @@ public class LoadFile {
             return false;
         }
         return true;
+    }
+
+    public void fileList() {
+        File dir = new File("./user_library");
+        File files[] = dir.listFiles();
+
+        for (File file : files) {
+            outputView.print(file.getName());
+        }
     }
 
 }
