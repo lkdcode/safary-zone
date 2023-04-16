@@ -80,7 +80,8 @@ public class CaptureServiceLogic {
 
     private void checkAlready() {
         for (Pokemon playerPokemon : Player.getInstance().getPokemonList().playerPokemonList().values()) {
-            if (playerPokemon.getInformation().getName().equals(wildPokemon.getInformation().getName())) {
+            if (playerPokemon != null
+                    && playerPokemon.getInformation().getName().equals(wildPokemon.getInformation().getName())) {
                 this.isAlready = true;
             }
         }
